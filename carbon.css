@@ -1,0 +1,1808 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    color: white;
+    background-color: #ffffff;
+    min-height: 100vh;
+    font-weight: 400;
+    display: flex;
+    overflow-x: hidden;
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: flex-start;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Загрузочный экран */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Новый прозрачный фон */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(13.4px); /* Эффект размытия для заднего фона */
+    -webkit-backdrop-filter: blur(13.4px); /* Поддержка для Safari */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Поверх всех элементов */
+  }
+
+/* Стили для нового спиннера */
+.loader {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+}
+
+.loader div {
+  width: 8%;
+  height: 24%;
+  background: rgb(128, 128, 128);
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  opacity: 0;
+  border-radius: 50px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  animation: fade458 1s linear infinite;
+}
+
+@keyframes fade458 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.25;
+  }
+}
+
+.loader .bar1 {
+  transform: rotate(0deg) translate(0, -130%);
+  animation-delay: 0s;
+}
+
+.loader .bar2 {
+  transform: rotate(30deg) translate(0, -130%);
+  animation-delay: -1.1s;
+}
+
+.loader .bar3 {
+  transform: rotate(60deg) translate(0, -130%);
+  animation-delay: -1s;
+}
+
+.loader .bar4 {
+  transform: rotate(90deg) translate(0, -130%);
+  animation-delay: -0.9s;
+}
+
+.loader .bar5 {
+  transform: rotate(120deg) translate(0, -130%);
+  animation-delay: -0.8s;
+}
+
+.loader .bar6 {
+  transform: rotate(150deg) translate(0, -130%);
+  animation-delay: -0.7s;
+}
+
+.loader .bar7 {
+  transform: rotate(180deg) translate(0, -130%);
+  animation-delay: -0.6s;
+}
+
+.loader .bar8 {
+  transform: rotate(210deg) translate(0, -130%);
+  animation-delay: -0.5s;
+}
+
+.loader .bar9 {
+  transform: rotate(240deg) translate(0, -130%);
+  animation-delay: -0.4s;
+}
+
+.loader .bar10 {
+  transform: rotate(270deg) translate(0, -130%);
+  animation-delay: -0.3s;
+}
+
+.loader .bar11 {
+  transform: rotate(300deg) translate(0, -130%);
+  animation-delay: -0.2s;
+}
+
+.loader .bar12 {
+  transform: rotate(330deg) translate(0, -130%);
+  animation-delay: -0.1s;
+}
+
+
+@font-face {
+    font-family: 'nanum-pen-regular';
+    src: url('fonts/nanum-pen-regular.ttf') format('truetype');
+}
+
+/* Стили для контейнера, содержащего кнопки */
+.contain {
+    max-width: 400px; /* Максимальная ширина контейнера */
+     /* Обрезаем содержимое, если оно выходит за границы */
+    display: flex; /* Используем flex-контейнер */
+    justify-content: center; /* Выравнивание по горизонтали по центру */
+    align-items: center; /* Выравнивание по вертикали по центру */
+    flex-direction: column; /* Добавлено для вертикального выравнивания */
+}
+
+.navigation {
+    display: flex;
+    justify-content: center; /* Выравнивание по горизонтали по центру */
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    gap: 10px;
+}
+
+.navigationcase {
+    display: flex;
+    justify-content: center; /* Выравнивание по горизонтали по центру */
+    width: 100%;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.tgoper {
+    align-items: center;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    
+    background-color:#ffffff;
+    color: rgb(0, 0, 0);
+
+
+    border-radius: 20px;
+    border: none;
+    
+    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
+}
+.tgoper:active {
+    color: #666;
+    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
+    transform: translateY(2px);
+}
+
+.tgkanal {
+    align-items: center;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    background-color:#ffffff;
+    color: rgb(0, 0, 0);
+
+
+    border-radius: 20px;
+    border: none;
+    
+    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
+}
+.tgkanal:active {
+    color: #666;
+    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
+    transform: translateY(2px);
+}
+
+.tginst {
+    align-items: center;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    background-color:#ffffff;
+    color: rgb(0, 0, 0);
+
+
+    border-radius: 20px;
+    border: none;
+    
+    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
+}
+.tginst:active {
+    color: #666;
+    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
+    transform: translateY(2px);
+}
+
+.tgoper1 {
+    align-items: center;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    background-color:#ffffff;
+    color: rgb(0, 0, 0);
+
+
+    border-radius: 20px;
+    border: none;
+    
+    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
+}
+
+.tgoper1:active {
+    color: #666;
+    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
+    transform: translateY(2px);
+}
+
+.tgkanal1 {
+    align-items: center;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    background-color:#ffffff;
+    color: rgb(0, 0, 0);
+
+
+    border-radius: 20px;
+    border: none;
+    
+    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
+}
+
+.tgkanal1:active {
+    color: #666;
+    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
+    transform: translateY(2px);
+}
+
+.tginst1 {
+    align-items: center;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    background-color:#ffffff;
+    color: rgb(0, 0, 0);
+
+
+    border-radius: 20px;
+    border: none;
+    
+    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
+}
+
+.tginst1:active {
+    color: #666;
+    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
+    transform: translateY(2px);
+}
+
+.tgoper2 {
+    align-items: center;
+    margin-top: 5px;
+    height: 26px;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+
+    background: rgba(0, 0, 0, 0.32);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.7px);
+    -webkit-backdrop-filter: blur(5.7px);
+    border: none;  
+}
+.tgoper2:active {
+    transform: translateY(2px);
+}
+
+.tgkanal2 {
+    align-items: center;
+    margin-top: 5px;
+    height: 26px;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+
+    background: rgba(0, 0, 0, 0.32);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.7px);
+    -webkit-backdrop-filter: blur(5.7px);
+    border: none;  
+}
+.tgkanal2:active {
+    transform: translateY(2px);
+}
+
+.tginst2 {
+    align-items: center;
+    margin-top: 5px;
+    height: 26px;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+
+    background: rgba(0, 0, 0, 0.32);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.7px);
+    -webkit-backdrop-filter: blur(5.7px);
+    border: none;  
+}
+.tginst2:active {
+    transform: translateY(2px);
+}
+
+
+
+
+.telegram-logo {
+    width: 22px;
+    height: 22px;
+    margin-right: 2px;
+    margin-left: 5px;
+}
+
+.textlogo {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#kanal {
+    font-size: 16px;
+    color: rgb(151, 151, 151);
+    display: block;
+    width: 100%;
+    letter-spacing: 0,5px;
+    margin-bottom: 4px;
+}
+
+#kanalcase {
+    font-size: 14px;
+    color: rgb(150, 150, 150);
+    display: block;
+    width: 100%;
+    letter-spacing: 0,5px;
+    margin-bottom: 4px;
+}
+
+#kanal2 {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 120%;
+    color: rgb(121, 121, 121);
+}
+
+
+.ph1 {
+    margin-top: 1px;
+    margin-bottom: -50px;
+}
+
+.video {
+    margin-top: -50px;
+    margin-bottom: -50px;
+}
+
+.video2 {
+    margin-top: -60px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    height: 100%;
+}
+
+
+
+
+
+
+.button { 
+    justify-content: center;
+    font-size: 18px;
+    width: 180px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-image: url('kovcarbon.JPG');
+    background-size: cover;
+    box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
+      #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.button:active {
+    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,#545251 -3.2px -3.2px 8px 0px inset;
+}
+.button:active .button_text {
+    transform: translateY(0.5px);
+}
+
+
+.butair { 
+    justify-content: center;
+    font-size: 18px;
+    width: 180px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-image: url('kovcarbon.JPG');
+    background-size: cover;
+    box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
+      #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    color: #ffffff;
+    z-index: 999;
+}
+
+.butair:active {
+    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,#545251 -3.2px -3.2px 8px 0px inset;
+}
+.butair:active .button_text {
+    transform: translateY(0.5px);
+}
+  
+
+
+
+
+
+
+
+.contplanet {
+    max-width: 400px;
+    display: none;
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center;
+    text-align: center;
+    background: #ffffff;
+}
+
+.clothes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(100px, 1fr);
+    width: 100%;
+    margin-top: 10px;
+}
+
+.cloth {
+    width: 100%;
+}
+
+.imgclothes {
+    width: 90%;
+}
+
+.прайс {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    
+    margin-bottom: 3px; /* Отступ снизу */
+    text-align: center;
+}
+
+.купить { 
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold; /* Делаем текст жирным */
+    width: 100%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-image: url('kovcarbon.JPG');
+    background-size: cover;
+    box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
+      #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.купить:active {
+    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,#545251 -3.2px -3.2px 8px 0px inset;
+}
+.купить:active .button_text {
+    transform: translateY(0.5px);
+}
+
+
+
+
+
+
+.цена {
+    color: rgb(200, 200, 200);
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px; /* Отступ сверху */
+    margin-bottom: 5px; /* Отступ снизу */
+    justify-content: center;
+    align-items: center;
+}
+
+.nameclothes {
+    margin-bottom: 0px;
+    font-size: 12px;
+    color: rgb(160, 160, 160);
+    word-wrap: break-word; /* Обрыв длинных слов */
+    box-sizing: border-box;
+    flex-shrink: 0;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    line-height: 140%;
+    min-height: 0;
+    height: auto;
+    overflow: hidden; /* Скрытие избыточного текста */
+    width: 100%; /* Занимать всю доступную ширину */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.window {
+    display: none;
+    text-align: center;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+}
+.img3 {
+    width: 100%;
+}
+.img4 {
+    width: 100%;
+    border-radius: 20px;
+}
+.y {
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 140%;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    align-items: center;
+    padding: 0 5px;
+    width: fit-content;
+    margin-top: -35px;
+    margin-left: 30px;
+    margin-bottom: 5px;
+    z-index: 9999;
+    position: relative;
+    
+
+    background: rgba(0, 0, 0, 0.60);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.7px);
+    -webkit-backdrop-filter: blur(3.7px);
+}
+
+.pufforder { 
+    justify-content: center;
+    font-weight: bold;
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-image: url('kovcarbon.JPG');
+    background-size: cover;
+    box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
+      #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    padding: 10px 10px;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.pufforder:active {
+    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,#545251 -3.2px -3.2px 8px 0px inset;
+}
+.pufforder:active .button_text {
+    transform: translateY(0.5px);
+}
+
+.pufforderinactive {
+    color: #666;
+    box-shadow: 3px 3px 12px #e1e1e1, -1px -1px 12px #e9e9e9;
+    transform: translateY(2px);
+    opacity: 0.5;
+}
+
+.nameclothes2 {
+    color: rgb(160, 160, 160);
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px; /* Отступ сверху */
+}
+
+.цена1 {
+    color: rgb(5, 5, 5);
+    text-align: left;
+    font-size: 14px;
+    margin-top: 1px;
+    font-weight: bold;
+}
+
+.цена2 {
+    color: rgb(5, 5, 5);
+    text-align: left;
+    font-size: 14px;
+    margin-top: 1px;
+    font-weight: bold;
+}
+
+.цена3 {
+    color: rgb(5, 5, 5);
+    text-align: left;
+    font-size: 14px;
+    margin-top: 1px;
+    font-weight: bold;
+}
+
+.rr {
+    display: flex;
+    justify-content: space-between;
+}
+.s {
+    color: rgb(194, 71, 196);
+    font-size: 14px;
+    margin-top: 10px; /* Отступ сверху */
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    color: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.setka {
+    width: 400px;
+    
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.imgsetka {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.imgl {
+    width: 100%;
+}
+
+.close-button {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 1px;
+    right: 8px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+
+
+.v {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    margin-top: 10px; /* Отступ сверху */
+}
+
+.razmers {
+    display: flex;
+    gap: 20px;
+    padding: 0 15px;
+    margin: 5px -15px 0;
+}
+
+.razmer1 {
+    width: 60px;
+    height: 30px;
+    padding: 5px 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+
+    background-color:#ffffff;
+    color: rgb(0, 0, 0);
+    font-weight: bold; /* Делаем текст жирным */
+
+
+    border: none;
+    
+    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
+}
+
+.razmer1active {
+    color: #666;
+    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
+    transform: translateY(2px);
+    opacity: 0.5;
+}
+
+.razmer2 {
+    width: 60px;
+    height: 30px;
+    padding: 5px 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+
+    background-color:#ffffff;
+    color: rgb(0, 0, 0);
+    font-weight: bold; /* Делаем текст жирным */
+
+
+    border: none;
+    
+    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
+}
+
+.razmer2active {
+    color: #666;
+    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
+    transform: translateY(2px);
+    opacity: 0.5;
+}
+
+.razmer3 {
+    width: 60px;
+    height: 30px;
+    padding: 5px 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+
+    background-color:#ffffff;
+    color: rgb(0, 0, 0);
+    font-weight: bold; /* Делаем текст жирным */
+
+
+    border: none;
+    
+    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
+}
+
+.razmer3active {
+    color: #666;
+    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
+    transform: translateY(2px);
+    opacity: 0.5;
+}
+
+#gallery {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 200px;
+    margin-bottom: 10px;
+    border-radius: 20px 0 0 20px;
+}
+
+.photo {
+    display: inline-block;
+    cursor: pointer;
+}
+
+#overlayPP {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#overlayPP img {
+    width: 400px;
+    border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container {
+    max-width: 400px;
+    display: none;
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center;
+    background: #ffffff;
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px 20px;
+    margin: 20px 10px;
+}
+
+.img {
+    width: 100%;
+}
+
+.item {
+    display: grid;
+    width: 100%;
+    align-items: center;
+    align-content: space-between;
+}
+
+
+.btn { 
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold; /* Делаем текст жирным */
+    width: 100%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-image: url('kovcarbon.JPG');
+    background-size: cover;
+    box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
+      #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.btn:active {
+    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,#545251 -3.2px -3.2px 8px 0px inset;
+}
+.btn:active .button_text {
+    transform: translateY(0.5px);
+}
+
+
+
+
+
+
+
+
+.price {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px; /* Отступ сверху */
+    margin-bottom: 3px; /* Отступ снизу */
+    text-align: center;
+}
+
+.skidprice {
+    color:rgb(255, 54, 54);
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 9px; /* Отступ сверху */
+    margin-bottom: 0; /* Отступ снизу */
+}
+
+.pricecompl {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 0; /* Отступ сверху */
+    margin-bottom: 3px; /* Отступ снизу */
+    text-decoration: line-through;
+}
+
+.namecase {
+    font-size: 12px;
+    color: rgb(110, 110, 110);
+    text-align: center;
+    word-wrap: break-word; /* Обрыв длинных слов */
+    box-sizing: border-box;
+    flex-shrink: 0;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    line-height: 140%;
+    
+    width: 100%; /* Занимать всю доступную ширину */
+}
+
+form {
+    display: none;
+    text-align: center;
+    width: 400px;
+    
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    padding: 10px;
+}
+
+.product-details {
+    overflow: hidden;
+}
+
+.img2 {
+    width: 90%;
+    margin-top: 10px;
+}
+
+/* Стили для точек навигации */
+.swiper-pagination-bullet {
+    background-color: grey; /* Цвет неактивных точек */
+    opacity: 0.7; /* Прозрачность неактивных точек */
+}
+
+.swiper-pagination-bullet-active {
+    background-color: black; /* Цвет активной точки */
+    opacity: 1; /* Прозрачность активной точки */
+}
+
+.namecase2 {
+    color: black;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.price1 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price2 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price3 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price4 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.pricecompl-container {
+    display: flex;
+}
+
+.price5 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.plus {
+    color: rgb(110, 110, 110);
+    font-size: 14px;
+    margin: 0 10px; /* Добавьте отступы с обеих сторон знака "+" */
+}
+
+.price50 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price6 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price7 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price8 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price9 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price10 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price11 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price12 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price13 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price14 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price15 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price16 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price17 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price18 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price19 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price20 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price21 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price22 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price23 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price24 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price25 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price26 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price27 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price28 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price29 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price30 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.zakaz {
+    color: rgb(255, 54, 54);
+    font-size: 14px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.p {
+    color: black;
+    font-size: 14px;
+    text-align: left;
+    margin-top: 15px; /* Отступ сверху */
+}
+
+.models {
+    display: flex;
+    gap: 4px;
+    padding: 0 15px;
+    margin: 10px -15px 0;
+    overflow-x: scroll;
+    color: white;
+}
+
+
+
+.model2 {
+    color: black;
+    font-size: 14px;
+    background-color:rgb(230, 230, 230);
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    border: 1px solid var(--background-secondary);
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.model3 {
+    color: black;
+    font-size: 14px;
+    background-color:rgb(230, 230, 230);
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    border: 1px solid var(--background-secondary);
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.model4 {
+    font-size: 14px; /* Размер шрифта для моделей iPhone */
+    padding: 8px; /* Отступы для каждой модели */
+    cursor: pointer; /* Курсор в виде руки при наведении */
+    color: rgb(193, 193, 193); /* Цвет текста */
+    text-align: left; /* Текст выравнивается по левому краю */
+    padding: 10px; /* Внутренние отступы */
+    padding-left: 30px;
+}
+
+.model4:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* Подсветка при наведении */
+}
+
+.model4 + .model4 {
+    border-top: 1px solid rgb(88, 88, 88); /* Черная линия между моделями */
+}
+
+.modelcompl {
+    color: black;
+    font-size: 14px;
+    background-color:rgb(230, 230, 230);
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    border: 1px solid var(--background-secondary);
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.modelcomplair {
+    color: black;
+    font-size: 14px;
+    background-color:rgb(230, 230, 230);
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    border: 1px solid var(--background-secondary);
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.m {
+    color: black;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.pricem {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 130%;
+    letter-spacing: -.01em;
+    color:black;
+}
+
+
+.swiper-container {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    
+    margin-top: 5px;
+}
+
+.swiper-slide {
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+
+.namecont {
+    display: flex; /* Устанавливаем контейнер в режим Flexbox */
+    justify-content: space-between; /* Пространство между колонками */
+    align-items: center;
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+.namecontAir {
+    display: flex; /* Устанавливаем контейнер в режим Flexbox */
+    justify-content: space-between; /* Пространство между колонками */
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+  
+.left-column {
+    display: flex;
+    flex-direction: column; /* Расположение элементов в колонку */
+    justify-content: flex-start; /* Выровнять элементы по началу колонки */
+}
+  
+.right-column {
+    display: flex;
+   
+}
+
+
+
+.order { 
+    justify-content: center;
+    font-weight: bold;
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-image: url('kovcarbon.JPG');
+    background-size: cover;
+    box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
+      #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    padding: 10px 10px;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.order:active {
+    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,#545251 -3.2px -3.2px 8px 0px inset;
+}
+.order:active .button_text {
+    transform: translateY(0.5px);
+}
+
+.orderinactive {
+    color: #666;
+    box-shadow: 3px 3px 12px #e1e1e1, -1px -1px 12px #e9e9e9;
+    transform: translateY(2px);
+    opacity: 0.5;
+}
+
+
+
+.size-button {
+    width: 100%; /* Ширина 100% */
+    height: 50px; /* Высота 30px */
+    border: 1px solid grey; /* Серая граница */
+    background-color: white; /* Белый фон */
+    color: black; /* Цвет текста */
+    text-align: center;
+    text-align: left;
+    font-size: 12px;
+    align-items: flex-start; /* Выравнивание текста по левому краю */
+    
+    position: relative; /* Для стрелки */
+    padding: 5px; /* Отступы */
+    padding-left: 15px;
+    cursor: pointer; /* Курсор при наведении */
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.size-text {
+    font-size: 12px; /* Размер шрифта для текста SIZE */
+    margin: 0; /* Убираем отступы */
+    color: grey;
+}
+
+.arrow {
+    position: absolute; /* Абсолютное позиционирование стрелки */
+    right: 5px; /* Отступ справа */
+    top: 50%; /* Центрирование по вертикали */
+    transform: translateY(-50%) rotate(90deg); /* Поворот на 90 градусов для галочки */
+    color: grey; /* Серый цвет стрелки */
+    font-size: 14px; /* Размер шрифта для стрелки */
+    margin-right: 10px;
+}
+
+#iphoneModelsWindow {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindow2 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindow3 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindow4 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindow5 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}#iphoneModelsWindow6 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindowAir1 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 180px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindowAir2 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 180px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindowAir3 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 180px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.model1 {
+    font-size: 14px; /* Размер шрифта для моделей iPhone */
+    padding: 8px; /* Отступы для каждой модели */
+    cursor: pointer; /* Курсор в виде руки при наведении */
+    color: rgb(193, 193, 193); /* Цвет текста */
+    text-align: left; /* Текст выравнивается по левому краю */
+    padding: 10px; /* Внутренние отступы */
+    padding-left: 30px;
+}
+
+.model1:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* Подсветка при наведении */
+}
+
+.model1 + .model1 {
+    border-top: 1px solid rgb(88, 88, 88); /* Черная линия между моделями */
+}
+
+
+
+.strip {
+    width: 100%;
+    height: 1px; /* Высота полоски */
+    background-color: #cdcdcd; /* Цвет полоски */
+    margin-top: 30px;
+}
+
+.del {
+    align-items: flex-start;
+    display: flex;
+    padding-top: 20px;
+    flex-flow: row wrap;
+    margin-bottom: -10px;
+}
+.svg-container {
+    height: 25px;
+    margin-top: -1px;
+    margin-inline-end: 8px;
+    width: 25px;
+}
+.text-container {
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -.016em;
+    line-height: 1.4285914286;
+    text-align: left;
+}
+.text-container p {
+    margin: 2px; /* Убирает отступы между текстовыми элементами */
+    color: #000000;
+}
+
+
+.information {
+    background-color:rgb(230, 230, 230);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.card1 {
+    border-bottom: 3px solid white;
+}
+
+.order-card {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.TPC {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 5px;
+    align-items: center;
+    gap: 5px;
+    font-weight:bold;
+    font-size: 18px;
+    line-height: 130%;
+    letter-spacing: -.01em
+}
+
+.info {
+    font-size: 15px;
+    text-align: left; /* Текст начинается слева */
+    white-space: normal; /* Перенос слов на следующую строку */
+    margin: 5px 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
