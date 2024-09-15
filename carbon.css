@@ -1688,7 +1688,7 @@ form {
     left: 50%; /* Выравнивание по центру по горизонтали */
     transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
     width: 300px; /* Ширина окна */
-    max-height: auto; /* Максимальная высота окна */
+    max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
@@ -1701,6 +1701,19 @@ form {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow9::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow9::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow9::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
 }
 
 #iphoneModelsWindow10 {
@@ -1709,7 +1722,7 @@ form {
     left: 50%; /* Выравнивание по центру по горизонтали */
     transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
     width: 300px; /* Ширина окна */
-    max-height: auto; /* Максимальная высота окна */
+    max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
@@ -1722,6 +1735,19 @@ form {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow10::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow10::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow10::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
 }
 
 #iphoneModelsWindow11 {
@@ -1730,7 +1756,7 @@ form {
     left: 50%; /* Выравнивание по центру по горизонтали */
     transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
     width: 300px; /* Ширина окна */
-    max-height: auto; /* Максимальная высота окна */
+    max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
@@ -1743,6 +1769,19 @@ form {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow11::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow11::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow11::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
 }
 
 #iphoneModelsWindow12 {
@@ -1751,7 +1790,7 @@ form {
     left: 50%; /* Выравнивание по центру по горизонтали */
     transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
     width: 300px; /* Ширина окна */
-    max-height: auto; /* Максимальная высота окна */
+    max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
@@ -1764,6 +1803,19 @@ form {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow12::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow12::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow12::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
 }
 #iphoneModelsWindow13 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
@@ -1771,7 +1823,7 @@ form {
     left: 50%; /* Выравнивание по центру по горизонтали */
     transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
     width: 300px; /* Ширина окна */
-    max-height: auto; /* Максимальная высота окна */
+    max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
@@ -1784,6 +1836,19 @@ form {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow13::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow13::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow13::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
 }
 #iphoneModelsWindow14 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
@@ -1791,7 +1856,7 @@ form {
     left: 50%; /* Выравнивание по центру по горизонтали */
     transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
     width: 300px; /* Ширина окна */
-    max-height: auto; /* Максимальная высота окна */
+    max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
@@ -1805,13 +1870,26 @@ form {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 }
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow14::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow14::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow14::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
 #iphoneModelsWindow15 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
     top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
     left: 50%; /* Выравнивание по центру по горизонтали */
     transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
     width: 300px; /* Ширина окна */
-    max-height: auto; /* Максимальная высота окна */
+    max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
@@ -1824,6 +1902,19 @@ form {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow15::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow15::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow15::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
 }
 
 #iphoneModelsWindowAir1 {
