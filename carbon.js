@@ -15,6 +15,13 @@ let form5 = document.getElementById("form5");
 let form6 = document.getElementById("form6");
 let form7 = document.getElementById("form7");
 let form8 = document.getElementById("form8");
+let form9 = document.getElementById("form9");
+let form10 = document.getElementById("form10");
+let form11 = document.getElementById("form11");
+let form12 = document.getElementById("form12");
+let form13 = document.getElementById("form13");
+let form14 = document.getElementById("form14");
+let form15 = document.getElementById("form15");
 let btn1 = document.getElementById("btn1");
 let btn2 = document.getElementById("btn2");
 let btn3 = document.getElementById("btn3");
@@ -23,6 +30,13 @@ let btn5 = document.getElementById("btn5");
 let btn6 = document.getElementById("btn6");
 let btn7 = document.getElementById("btn7");
 let btn8 = document.getElementById("btn8");
+let btn9 = document.getElementById("btn9");
+let btn10 = document.getElementById("btn10");
+let btn11 = document.getElementById("btn11");
+let btn12 = document.getElementById("btn12");
+let btn13 = document.getElementById("btn13");
+let btn14 = document.getElementById("btn14");
+let btn15 = document.getElementById("btn15");
 let homeContent = document.getElementById("thepuffercase");
 let order1 = document.getElementById("order1");
 let order2 = document.getElementById("order2");
@@ -32,6 +46,13 @@ let order5 = document.getElementById("order5");
 let order6 = document.getElementById("order6");
 let order7 = document.getElementById("order7");
 let order8 = document.getElementById("order8");
+let order9 = document.getElementById("order9");
+let order10 = document.getElementById("order10");
+let order11 = document.getElementById("order11");
+let order12 = document.getElementById("order12");
+let order13 = document.getElementById("order13");
+let order14 = document.getElementById("order14");
+let order15 = document.getElementById("order15");
 let selectedModel = ""; // Для хранения выбранной модели
 let selectedRazmer = ""; // Для хранения выбранной модели
 let selectedPrice = ""; // Для хранения выбранной цены
@@ -46,6 +67,7 @@ let priceElementForm5 = document.querySelector(".price5");
 let priceElementForm6 = document.querySelector(".price6");
 let priceElementForm7 = document.querySelector(".price7");
 let priceElementForm8 = document.querySelector(".price8");
+let priceElementForm9 = document.querySelector(".price9");
 
 document.addEventListener('DOMContentLoaded', function() {
     const loadingScreen = document.getElementById('loading-screen');
@@ -301,12 +323,23 @@ const modelInfo2 = {
 
 
 const modelInfo3 = {
-    "iPhone 13 Pro Max": "1899₽",
-    "iPhone 13 Pro": "1699₽",
-    "iPhone 13": "1699₽",
-    "iPhone 12 Pro Max": "1899₽",
-    "iPhone 12/12 Pro": "1699₽",
-    "iPhone 11": "1699₽",
+    "iPhone 16 Pro Max": "2099₽",
+    "iPhone 16 Pro": "2099₽",
+    "iPhone 16": "2099₽",
+    "iPhone 15 Pro Max": "2099₽",
+    "iPhone 15 Pro": "2099₽",
+    "iPhone 15": "2099₽",
+    "iPhone 14 Pro Max": "2099₽",
+    "iPhone 14 Pro": "2099₽",
+    "iPhone 14": "2099₽",
+    "iPhone 13 Pro Max": "2099₽",
+    "iPhone 13 Pro": "2099₽",
+    "iPhone 13": "2099₽",
+    "iPhone 12 Pro Max": "2099₽",
+    "iPhone 12/12 Pro": "2099₽",
+    "iPhone 11 Pro Max": "2099₽",
+    "iPhone 11 Pro": "2099₽",
+    "iPhone 11": "2099₽",
 };
 
 
@@ -393,6 +426,13 @@ const sizeButton5 = document.getElementById("sizeButton5");
 const sizeButton6 = document.getElementById("sizeButton6");
 const sizeButton7 = document.getElementById("sizeButton7");
 const sizeButton8 = document.getElementById("sizeButton8");
+const sizeButton9 = document.getElementById("sizeButton9");
+const sizeButton10 = document.getElementById("sizeButton10");
+const sizeButton11 = document.getElementById("sizeButton11");
+const sizeButton12 = document.getElementById("sizeButton12");
+const sizeButton13 = document.getElementById("sizeButton13");
+const sizeButton14 = document.getElementById("sizeButton14");
+const sizeButton15 = document.getElementById("sizeButton15");
 const iphoneModelsWindowAir1 = document.getElementById("iphoneModelsWindowAir1");
 const iphoneModelsWindowAir2 = document.getElementById("iphoneModelsWindowAir2");
 const iphoneModelsWindowAir3 = document.getElementById("iphoneModelsWindowAir3");
@@ -409,6 +449,13 @@ const iphoneModelsWindow5 = document.getElementById("iphoneModelsWindow5");
 const iphoneModelsWindow6 = document.getElementById("iphoneModelsWindow6");
 const iphoneModelsWindow7 = document.getElementById("iphoneModelsWindow7");
 const iphoneModelsWindow8 = document.getElementById("iphoneModelsWindow8");
+const iphoneModelsWindow9 = document.getElementById("iphoneModelsWindow9");
+const iphoneModelsWindow10 = document.getElementById("iphoneModelsWindow10");
+const iphoneModelsWindow11 = document.getElementById("iphoneModelsWindow11");
+const iphoneModelsWindow12 = document.getElementById("iphoneModelsWindow12");
+const iphoneModelsWindow13 = document.getElementById("iphoneModelsWindow13");
+const iphoneModelsWindow14 = document.getElementById("iphoneModelsWindow14");
+const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
 
 
 
@@ -2313,6 +2360,814 @@ order8.addEventListener("click", (event) => {
     }   
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+
+//товар9zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+btn9.addEventListener("click", () => {
+    document.getElementById("thepuffercase").style.display = "none"
+    document.getElementById("form9").style.display = "block"
+
+
+    // Делаем кнопку "order9" неактивной
+    order9.orderinactive = true;
+    order9.classList.add("orderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form9").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
+
+
+});
+
+
+
+// Обработчик события для кнопки "SIZE"
+sizeButton9.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindow9.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model1").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindow9.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButton9.textContent = `Размер: ${selectedModel}`;
+    });
+});
+
+model1.forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo3[selectedModel];
+
+        // Удаляем границу у всех кнопок
+        model1.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        model.classList.add("selected");
+
+
+        order9.orderinactive = false;
+        order9.classList.remove("orderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementForm9.textContent = selectedPrice;
+        
+        selectedModel = model.textContent;
+    });
+});
+
+
+
+
+// Добавьте обработчик события click для кнопки "Add"
+order9.disabled = false;
+order9.addEventListener("click", (event) => {
+    if (!order9.disabled) {
+        event.preventDefault();
+        
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = modelInfo3[selectedModel];
+
+        // Вычисляем общую цену
+        const deliveryPrice = "199₽";
+        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
+        
+        // Обновляем текст и видимость кнопки MainButton
+        tg.MainButton.text = "Оплатить через оператора";
+        tg.MainButton.show();
+        
+        // Сохраняем выбранные данные для передачи боту
+        const itemName = "FORGED HYBRID-QUARTZ";
+        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
+        const message = `
+            Заказ: ${itemName}
+            Размер: ${selectedModel}
+            Цена: ${selectedPrice}
+            Доставка: ${deliveryPrice}
+            Общая цена: ${totalPrice}
+        `;
+        // Добавьте обработчик для кнопки MainButton
+        tg.MainButton.onClick(async () => {
+            await sendMessageToBot(instructionMessage);
+            await sendMessageToBotWithKeyboard(message, keyboard);
+            
+            tg.close();
+        });
+    }   
+});
+//zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+
+//товар10zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+btn10.addEventListener("click", () => {
+    document.getElementById("thepuffercase").style.display = "none"
+    document.getElementById("form10").style.display = "block"
+
+
+    // Делаем кнопку "order9" неактивной
+    order10.orderinactive = true;
+    order10.classList.add("orderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form10").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
+
+
+});
+
+
+
+// Обработчик события для кнопки "SIZE"
+sizeButton10.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindow10.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model1").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindow10.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButton10.textContent = `Размер: ${selectedModel}`;
+    });
+});
+
+model1.forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo3[selectedModel];
+
+        // Удаляем границу у всех кнопок
+        model1.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        model.classList.add("selected");
+
+
+        order10.orderinactive = false;
+        order10.classList.remove("orderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementForm9.textContent = selectedPrice;
+        
+        selectedModel = model.textContent;
+    });
+});
+
+
+
+
+// Добавьте обработчик события click для кнопки "Add"
+order10.disabled = false;
+order10.addEventListener("click", (event) => {
+    if (!order10.disabled) {
+        event.preventDefault();
+        
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = modelInfo3[selectedModel];
+
+        // Вычисляем общую цену
+        const deliveryPrice = "199₽";
+        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
+        
+        // Обновляем текст и видимость кнопки MainButton
+        tg.MainButton.text = "Оплатить через оператора";
+        tg.MainButton.show();
+        
+        // Сохраняем выбранные данные для передачи боту
+        const itemName = "FORGED HYBRID-SILBER";
+        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
+        const message = `
+            Заказ: ${itemName}
+            Размер: ${selectedModel}
+            Цена: ${selectedPrice}
+            Доставка: ${deliveryPrice}
+            Общая цена: ${totalPrice}
+        `;
+        // Добавьте обработчик для кнопки MainButton
+        tg.MainButton.onClick(async () => {
+            await sendMessageToBot(instructionMessage);
+            await sendMessageToBotWithKeyboard(message, keyboard);
+            
+            tg.close();
+        });
+    }   
+});
+//zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+
+//товар11zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+btn11.addEventListener("click", () => {
+    document.getElementById("thepuffercase").style.display = "none"
+    document.getElementById("form11").style.display = "block"
+
+
+    // Делаем кнопку "order9" неактивной
+    order11.orderinactive = true;
+    order11.classList.add("orderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form11").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
+
+
+});
+
+
+
+// Обработчик события для кнопки "SIZE"
+sizeButton11.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindow11.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model1").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindow11.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButton11.textContent = `Размер: ${selectedModel}`;
+    });
+});
+
+model1.forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo3[selectedModel];
+
+        // Удаляем границу у всех кнопок
+        model1.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        model.classList.add("selected");
+
+
+        order11.orderinactive = false;
+        order11.classList.remove("orderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementForm9.textContent = selectedPrice;
+        
+        selectedModel = model.textContent;
+    });
+});
+
+
+
+
+// Добавьте обработчик события click для кнопки "Add"
+order11.disabled = false;
+order11.addEventListener("click", (event) => {
+    if (!order11.disabled) {
+        event.preventDefault();
+        
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = modelInfo3[selectedModel];
+
+        // Вычисляем общую цену
+        const deliveryPrice = "199₽";
+        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
+        
+        // Обновляем текст и видимость кнопки MainButton
+        tg.MainButton.text = "Оплатить через оператора";
+        tg.MainButton.show();
+        
+        // Сохраняем выбранные данные для передачи боту
+        const itemName = "FORGED HYBRID-SAPHIR";
+        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
+        const message = `
+            Заказ: ${itemName}
+            Размер: ${selectedModel}
+            Цена: ${selectedPrice}
+            Доставка: ${deliveryPrice}
+            Общая цена: ${totalPrice}
+        `;
+        // Добавьте обработчик для кнопки MainButton
+        tg.MainButton.onClick(async () => {
+            await sendMessageToBot(instructionMessage);
+            await sendMessageToBotWithKeyboard(message, keyboard);
+            
+            tg.close();
+        });
+    }   
+});
+//zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+
+//товар12zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+btn12.addEventListener("click", () => {
+    document.getElementById("thepuffercase").style.display = "none"
+    document.getElementById("form12").style.display = "block"
+
+
+    // Делаем кнопку "order9" неактивной
+    order12.orderinactive = true;
+    order12.classList.add("orderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form12").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
+
+
+});
+
+
+
+// Обработчик события для кнопки "SIZE"
+sizeButton12.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindow12.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model1").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindow12.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButton12.textContent = `Размер: ${selectedModel}`;
+    });
+});
+
+model1.forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo3[selectedModel];
+
+        // Удаляем границу у всех кнопок
+        model1.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        model.classList.add("selected");
+
+
+        order12.orderinactive = false;
+        order12.classList.remove("orderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementForm9.textContent = selectedPrice;
+        
+        selectedModel = model.textContent;
+    });
+});
+
+
+
+
+// Добавьте обработчик события click для кнопки "Add"
+order12.disabled = false;
+order12.addEventListener("click", (event) => {
+    if (!order12.disabled) {
+        event.preventDefault();
+        
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = modelInfo3[selectedModel];
+
+        // Вычисляем общую цену
+        const deliveryPrice = "199₽";
+        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
+        
+        // Обновляем текст и видимость кнопки MainButton
+        tg.MainButton.text = "Оплатить через оператора";
+        tg.MainButton.show();
+        
+        // Сохраняем выбранные данные для передачи боту
+        const itemName = "FORGED HYBRID-AMETHYST";
+        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
+        const message = `
+            Заказ: ${itemName}
+            Размер: ${selectedModel}
+            Цена: ${selectedPrice}
+            Доставка: ${deliveryPrice}
+            Общая цена: ${totalPrice}
+        `;
+        // Добавьте обработчик для кнопки MainButton
+        tg.MainButton.onClick(async () => {
+            await sendMessageToBot(instructionMessage);
+            await sendMessageToBotWithKeyboard(message, keyboard);
+            
+            tg.close();
+        });
+    }   
+});
+//zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+
+//товар13zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+btn13.addEventListener("click", () => {
+    document.getElementById("thepuffercase").style.display = "none"
+    document.getElementById("form13").style.display = "block"
+
+
+    // Делаем кнопку "order9" неактивной
+    order13.orderinactive = true;
+    order13.classList.add("orderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form13").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
+
+
+});
+
+
+
+// Обработчик события для кнопки "SIZE"
+sizeButton13.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindow13.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model1").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindow13.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButton13.textContent = `Размер: ${selectedModel}`;
+    });
+});
+
+model1.forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo3[selectedModel];
+
+        // Удаляем границу у всех кнопок
+        model1.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        model.classList.add("selected");
+
+
+        order13.orderinactive = false;
+        order13.classList.remove("orderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementForm9.textContent = selectedPrice;
+        
+        selectedModel = model.textContent;
+    });
+});
+
+
+
+
+// Добавьте обработчик события click для кнопки "Add"
+order13.disabled = false;
+order13.addEventListener("click", (event) => {
+    if (!order13.disabled) {
+        event.preventDefault();
+        
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = modelInfo3[selectedModel];
+
+        // Вычисляем общую цену
+        const deliveryPrice = "199₽";
+        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
+        
+        // Обновляем текст и видимость кнопки MainButton
+        tg.MainButton.text = "Оплатить через оператора";
+        tg.MainButton.show();
+        
+        // Сохраняем выбранные данные для передачи боту
+        const itemName = "FORGED HYBRID-RUBIN";
+        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
+        const message = `
+            Заказ: ${itemName}
+            Размер: ${selectedModel}
+            Цена: ${selectedPrice}
+            Доставка: ${deliveryPrice}
+            Общая цена: ${totalPrice}
+        `;
+        // Добавьте обработчик для кнопки MainButton
+        tg.MainButton.onClick(async () => {
+            await sendMessageToBot(instructionMessage);
+            await sendMessageToBotWithKeyboard(message, keyboard);
+            
+            tg.close();
+        });
+    }   
+});
+//zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+
+//товар14zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+btn14.addEventListener("click", () => {
+    document.getElementById("thepuffercase").style.display = "none"
+    document.getElementById("form14").style.display = "block"
+
+
+    // Делаем кнопку "order9" неактивной
+    order14.orderinactive = true;
+    order14.classList.add("orderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form14").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
+
+
+});
+
+
+
+// Обработчик события для кнопки "SIZE"
+sizeButton14.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindow14.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model1").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindow14.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButton14.textContent = `Размер: ${selectedModel}`;
+    });
+});
+
+model1.forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo3[selectedModel];
+
+        // Удаляем границу у всех кнопок
+        model1.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        model.classList.add("selected");
+
+
+        order14.orderinactive = false;
+        order14.classList.remove("orderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementForm9.textContent = selectedPrice;
+        
+        selectedModel = model.textContent;
+    });
+});
+
+
+
+
+// Добавьте обработчик события click для кнопки "Add"
+order14.disabled = false;
+order14.addEventListener("click", (event) => {
+    if (!order14.disabled) {
+        event.preventDefault();
+        
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = modelInfo3[selectedModel];
+
+        // Вычисляем общую цену
+        const deliveryPrice = "199₽";
+        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
+        
+        // Обновляем текст и видимость кнопки MainButton
+        tg.MainButton.text = "Оплатить через оператора";
+        tg.MainButton.show();
+        
+        // Сохраняем выбранные данные для передачи боту
+        const itemName = "FORGED HYBRID-EMERALD";
+        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
+        const message = `
+            Заказ: ${itemName}
+            Размер: ${selectedModel}
+            Цена: ${selectedPrice}
+            Доставка: ${deliveryPrice}
+            Общая цена: ${totalPrice}
+        `;
+        // Добавьте обработчик для кнопки MainButton
+        tg.MainButton.onClick(async () => {
+            await sendMessageToBot(instructionMessage);
+            await sendMessageToBotWithKeyboard(message, keyboard);
+            
+            tg.close();
+        });
+    }   
+});
+//zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+
+//товар15zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+btn15.addEventListener("click", () => {
+    document.getElementById("thepuffercase").style.display = "none"
+    document.getElementById("form15").style.display = "block"
+
+
+    // Делаем кнопку "order9" неактивной
+    order15.orderinactive = true;
+    order15.classList.add("orderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form15").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
+
+
+});
+
+
+
+// Обработчик события для кнопки "SIZE"
+sizeButton15.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindow15.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model1").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindow15.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButton15.textContent = `Размер: ${selectedModel}`;
+    });
+});
+
+model1.forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo3[selectedModel];
+
+        // Удаляем границу у всех кнопок
+        model1.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        model.classList.add("selected");
+
+
+        order15.orderinactive = false;
+        order15.classList.remove("orderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementForm9.textContent = selectedPrice;
+        
+        selectedModel = model.textContent;
+    });
+});
+
+
+
+
+// Добавьте обработчик события click для кнопки "Add"
+order15.disabled = false;
+order15.addEventListener("click", (event) => {
+    if (!order15.disabled) {
+        event.preventDefault();
+        
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = modelInfo3[selectedModel];
+
+        // Вычисляем общую цену
+        const deliveryPrice = "199₽";
+        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
+        
+        // Обновляем текст и видимость кнопки MainButton
+        tg.MainButton.text = "Оплатить через оператора";
+        tg.MainButton.show();
+        
+        // Сохраняем выбранные данные для передачи боту
+        const itemName = "FORGED HYBRID-GOLD";
+        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
+        const message = `
+            Заказ: ${itemName}
+            Размер: ${selectedModel}
+            Цена: ${selectedPrice}
+            Доставка: ${deliveryPrice}
+            Общая цена: ${totalPrice}
+        `;
+        // Добавьте обработчик для кнопки MainButton
+        tg.MainButton.onClick(async () => {
+            await sendMessageToBot(instructionMessage);
+            await sendMessageToBotWithKeyboard(message, keyboard);
+            
+            tg.close();
+        });
+    }   
+});
+//zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+
+
+
 
 
 

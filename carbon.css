@@ -1682,6 +1682,150 @@ form {
     -webkit-backdrop-filter: blur(20px);
 }
 
+#iphoneModelsWindow9 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+#iphoneModelsWindow10 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+#iphoneModelsWindow11 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+#iphoneModelsWindow12 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindow13 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindow14 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindow15 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
 #iphoneModelsWindowAir1 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
     top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
