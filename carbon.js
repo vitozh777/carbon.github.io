@@ -1601,6 +1601,13 @@ document.querySelectorAll(".model1").forEach(model => {
         sizeButton2.textContent = `Размер: ${selectedModel}`;
     });
 });
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon2'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
+});
 
 model1.forEach(model => {
     model.addEventListener("click", (event) => {
@@ -1715,6 +1722,13 @@ document.querySelectorAll(".model1").forEach(model => {
         // Изменяем текст кнопки "SIZE" на выбранную модель
         sizeButton3.textContent = `Размер: ${selectedModel}`;
     });
+});
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon3'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
 });
 
 model1.forEach(model => {
@@ -1831,6 +1845,13 @@ document.querySelectorAll(".model1").forEach(model => {
         sizeButton4.textContent = `Размер: ${selectedModel}`;
     });
 });
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon4'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
+});
 
 model1.forEach(model => {
     model.addEventListener("click", (event) => {
@@ -1900,7 +1921,7 @@ order4.addEventListener("click", (event) => {
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
-//товар3zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+//товар5zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 btn5.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form5").style.display = "block"
@@ -1945,6 +1966,13 @@ document.querySelectorAll(".model1").forEach(model => {
         // Изменяем текст кнопки "SIZE" на выбранную модель
         sizeButton5.textContent = `Размер: ${selectedModel}`;
     });
+});
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon5'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
 });
 
 model1.forEach(model => {
@@ -2015,7 +2043,7 @@ order5.addEventListener("click", (event) => {
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
-//товар3zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+//товар6zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 btn6.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form6").style.display = "block"
@@ -2060,6 +2088,13 @@ document.querySelectorAll(".model1").forEach(model => {
         // Изменяем текст кнопки "SIZE" на выбранную модель
         sizeButton6.textContent = `Размер: ${selectedModel}`;
     });
+});
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon6'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
 });
 
 model1.forEach(model => {
@@ -2175,6 +2210,13 @@ document.querySelectorAll(".model1").forEach(model => {
         // Изменяем текст кнопки "SIZE" на выбранную модель
         sizeButton7.textContent = `Размер: ${selectedModel}`;
     });
+});
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon7'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
 });
 
 model1.forEach(model => {
@@ -2292,6 +2334,13 @@ document.querySelectorAll(".model1").forEach(model => {
         sizeButton8.textContent = `Размер: ${selectedModel}`;
     });
 });
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon8'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
+});
 
 model1.forEach(model => {
     model.addEventListener("click", (event) => {
@@ -2406,6 +2455,13 @@ document.querySelectorAll(".model1").forEach(model => {
         // Изменяем текст кнопки "SIZE" на выбранную модель
         sizeButton9.textContent = `Размер: ${selectedModel}`;
     });
+});
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon9'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
 });
 
 model1.forEach(model => {
@@ -2522,6 +2578,13 @@ document.querySelectorAll(".model1").forEach(model => {
         sizeButton10.textContent = `Размер: ${selectedModel}`;
     });
 });
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon10'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
+});
 
 model1.forEach(model => {
     model.addEventListener("click", (event) => {
@@ -2636,6 +2699,13 @@ document.querySelectorAll(".model1").forEach(model => {
         // Изменяем текст кнопки "SIZE" на выбранную модель
         sizeButton11.textContent = `Размер: ${selectedModel}`;
     });
+});
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon11'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
 });
 
 model1.forEach(model => {
@@ -2752,6 +2822,13 @@ document.querySelectorAll(".model1").forEach(model => {
         sizeButton12.textContent = `Размер: ${selectedModel}`;
     });
 });
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon12'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
+});
 
 model1.forEach(model => {
     model.addEventListener("click", (event) => {
@@ -2866,6 +2943,13 @@ document.querySelectorAll(".model1").forEach(model => {
         // Изменяем текст кнопки "SIZE" на выбранную модель
         sizeButton13.textContent = `Размер: ${selectedModel}`;
     });
+});
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon13'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
 });
 
 model1.forEach(model => {
@@ -2982,6 +3066,13 @@ document.querySelectorAll(".model1").forEach(model => {
         sizeButton14.textContent = `Размер: ${selectedModel}`;
     });
 });
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon14'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
+});
 
 model1.forEach(model => {
     model.addEventListener("click", (event) => {
@@ -3096,6 +3187,13 @@ document.querySelectorAll(".model1").forEach(model => {
         // Изменяем текст кнопки "SIZE" на выбранную модель
         sizeButton15.textContent = `Размер: ${selectedModel}`;
     });
+});
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon15'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
 });
 
 model1.forEach(model => {
