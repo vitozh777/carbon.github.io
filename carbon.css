@@ -2078,6 +2078,897 @@ form {
     -webkit-backdrop-filter: blur(20px);
 }
 
+
+.delivery-options {
+    width: 100%;
+    background-color: #ffffff; /* bg-slate-50 */
+    margin-top: 20px;
+}
+
+.airdelivery-btn1 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+
+.airdelivery-btn1.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+
+.airdelivery-btn1:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+
+.icon {
+    width: 25px;
+    height: 25px; /* Высота иконки */
+    margin-right: 10px;
+}
+
+.circle {
+    width: 12px; /* Размер большого кружка */
+    height: 12px;
+    border: 1px solid gray; /* Цвет границы */
+    border-radius: 50%; /* Круглая форма */
+    position: relative; /* Для позиционирования маленького кружка */
+    margin-left: auto;
+}
+
+.inner-circle {
+    width: 10px; /* Размер маленького кружка */
+    height: 10px;
+    background-color: rgb(93, 93, 236); /* Цвет закрашенного кружка */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрирование маленького кружка */
+    display: none; /* Скрываем по умолчанию */
+}
+
+.airdelivery-btn1.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+
+
+.airdelivery-btn2 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn2.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn2:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn2.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.airdelivery-btn3 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn3.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn3:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn3.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.airdelivery-btn4 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn4.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn4:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn4.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.airdelivery-btn5 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn5.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn5:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn5.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.airdelivery-btn6 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn6.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn6:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn6.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.airdelivery-btn7 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn7.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn7:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn7.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.airdelivery-btn8 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn8.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn8:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn8.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+
+.delivery-btn1 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn1.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn1:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn1.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn2 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn2.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn2:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn2.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn3 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn3.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn3:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn3.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn4 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn4.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn4:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn4.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn5 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn5.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn5:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn5.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn6 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn6.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn6:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn6.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn7 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn7.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn7:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn7.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn8 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn8.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn8:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn8.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn9 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn9.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn9:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn9.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn10 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn10.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn10:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn10.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn11 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn11.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn11:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn11.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn12 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn12.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn12:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn12.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn13 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn13.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn13:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn13.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn14 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn14.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn14:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn14.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.delivery-btn15 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn15.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn15:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn15.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.aircheckmark1 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.aircheckmark2 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.aircheckmark3 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.aircheckmark4 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.aircheckmark5 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.aircheckmark6 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.aircheckmark7 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.aircheckmark8 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+
+
+
+.checkmark1 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark2 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark3 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark4 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark5 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark6 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark7 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark8 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark9 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark10 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark11 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark12 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark13 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark14 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+.checkmark15 {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+}
+
+
+
+
+
+.recommendation {
+    color: gray; /* Серый цвет текста */
+    font-size: 12px; /* Размер шрифта */
+    margin-left: 10px;
+}
+
+
+.deliveryprice1 {
+    color: rgb(0, 0, 0); /* Серый цвет текста */
+    font-size: 13px; /* Размер шрифта */
+    font-weight: bold;
+    margin-left: 10px;
+    font-weight: 500;
+    margin-left: 85px;
+}
+.deliveryprice2 {
+    color: rgb(0, 0, 0); /* Серый цвет текста */
+    font-size: 13px; /* Размер шрифта */
+    font-weight: bold;
+    margin-left: 10px;
+    font-weight: 500;
+    margin-left: 130px;
+}
+.deliveryprice3 {
+    color: rgb(0, 0, 0); /* Серый цвет текста */
+    font-size: 13px; /* Размер шрифта */
+    font-weight: bold;
+    margin-left: 10px;
+    font-weight: 500;
+    margin-left: 189px;
+}
+
+
+
+
+
+
+
+
+
+
 .model1 {
     font-size: 14px; /* Размер шрифта для моделей iPhone */
     padding: 8px; /* Отступы для каждой модели */
