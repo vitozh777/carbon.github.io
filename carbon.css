@@ -621,7 +621,7 @@ body {
     align-items: center;
 }
 .img3 {
-    width: 100%;
+    width: 95%;
 }
 .img4 {
     width: 100%;
@@ -1051,6 +1051,7 @@ form {
 .img2 {
     width: 90%;
     margin-top: 10px;
+    
 }
 
 /* Стили для точек навигации */
