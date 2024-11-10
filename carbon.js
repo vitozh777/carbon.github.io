@@ -1097,7 +1097,7 @@ pufforder2.addEventListener("click", function (event) {
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
-        imageUrl: "air2.jpg",
+        imageUrl: "air2.JPG",
     });
 
     updateCartDisplay();
@@ -1221,7 +1221,7 @@ pufforder3.addEventListener("click", function (event) {
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
-        imageUrl: "air3.jpg",
+        imageUrl: "air3.JPG",
     });
 
     updateCartDisplay();
@@ -1343,7 +1343,7 @@ pufforder4.addEventListener("click", function (event) {
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
-        imageUrl: "air4.jpg",
+        imageUrl: "air4.JPG",
     });
 
     updateCartDisplay();
@@ -1465,7 +1465,7 @@ pufforder5.addEventListener("click", function (event) {
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
-        imageUrl: "air5.jpg",
+        imageUrl: "air5.JPG",
     });
 
     updateCartDisplay();
@@ -1587,7 +1587,7 @@ pufforder6.addEventListener("click", function (event) {
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
-        imageUrl: "air6.jpg",
+        imageUrl: "air6.JPG",
     });
 
     updateCartDisplay();
