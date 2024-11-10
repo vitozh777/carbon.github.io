@@ -1,5 +1,7 @@
 body {
-    margin: 0;
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
     padding: 0;
     font-size: 10px;
     color: white;
@@ -126,300 +128,687 @@ body {
     src: url('fonts/nanum-pen-regular.ttf') format('truetype');
 }
 
+
+
+.back-button {
+    background-color: transparent;
+    border: none;
+    color: #000000; /* iOS blue color */
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 10px;
+    display: none;
+    margin-left: 15px;
+    text-align: center;
+}
+
+.strelka {
+    float: left;
+    width: 14px;
+    height: 14px;
+    border-left: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    transform: rotate(45deg);
+    margin-right: 2px;
+    margin-top: 2px;
+}
+
+
+
+
+
 /* Стили для контейнера, содержащего кнопки */
 .contain {
-    max-width: 400px; /* Максимальная ширина контейнера */
-     /* Обрезаем содержимое, если оно выходит за границы */
-    display: flex; /* Используем flex-контейнер */
-    justify-content: center; /* Выравнивание по горизонтали по центру */
-    align-items: center; /* Выравнивание по вертикали по центру */
-    flex-direction: column; /* Добавлено для вертикального выравнивания */
+    width: 100%; /* Максимальная ширина контейнера */
+    text-align: center; /* Центрируем содержимое по горизонтали */
+    margin: 0 auto; /* Центрируем контейнер по горизонтали */
+    overflow: hidden;
 }
+
+.videohome {
+    margin-top: 40px;
+    width: 100%;
+    text-align: center; /* Центрируем содержимое по горизонтали */
+}
+
+
+
 
 .navigation {
-    display: flex;
-    justify-content: center; /* Выравнивание по горизонтали по центру */
-    align-items: center;
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    gap: 10px;
-}
-
-.navigationcase {
-    display: flex;
-    justify-content: center; /* Выравнивание по горизонтали по центру */
-    width: 100%;
-    margin-bottom: 15px;
-    gap: 10px;
-}
-
-.tgoper {
-    align-items: center;
-    z-index: 1000;
-    border-radius: 20px;
-    padding: 4px 10px 4px 4px;
-    gap: 5px;
-    columns: 2;
-    display: flex;
-    flex-direction: row;
-    line-height: 100%;
+    position: fixed; /* Фиксированное позиционирование */
+    top: 0; /* Вверху страницы */
+    color: rgb(0, 0, 0); /* Цвет текста */
+    display: flex; /* Flexbox для выравнивания кнопок */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    justify-content: center;
     
-    background-color:#ffffff;
-    color: rgb(0, 0, 0);
 
+    z-index: 1000; /* Убедитесь, что панель выше остальных элементов */
+    width: 100%; /* Ширина на всю страницу */
+    height: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
 
-    border-radius: 20px;
-    border: none;
-    
-    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
-}
-.tgoper:active {
-    color: #666;
-    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
-    transform: translateY(2px);
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    background-color: rgba(255, 255, 255, 0.33);
+    border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
-.tgkanal {
-    align-items: center;
-    z-index: 1000;
-    border-radius: 20px;
-    padding: 4px 10px 4px 4px;
-    gap: 5px;
-    columns: 2;
+.cart-button {
+    background: none; /* Убираем фон */
+    border: none; /* Убираем рамку */
+    cursor: pointer; /* Курсор при наведении */
+    width: 45px;
+    height: 45px;
+    margin-left: auto; /* Отталкиваем элемент в крайний правый угол */
+    margin-right: 25px
+}
+
+
+.cart-counter {
+    position: absolute;
+    top: 22px;
+    margin-right: 25px;
+    background-color: black;
+    color: white;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
     display: flex;
-    flex-direction: row;
-    line-height: 100%;
-    background-color:#ffffff;
-    color: rgb(0, 0, 0);
-
-
-    border-radius: 20px;
-    border: none;
-    
-    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
-}
-.tgkanal:active {
-    color: #666;
-    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
-    transform: translateY(2px);
-}
-
-.tginst {
     align-items: center;
-    z-index: 1000;
-    border-radius: 20px;
-    padding: 4px 10px 4px 4px;
-    gap: 5px;
-    columns: 2;
-    display: flex;
-    flex-direction: row;
-    line-height: 100%;
-    background-color:#ffffff;
-    color: rgb(0, 0, 0);
-
-
-    border-radius: 20px;
-    border: none;
-    
-    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
-}
-.tginst:active {
-    color: #666;
-    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
-    transform: translateY(2px);
-}
-
-.tgoper1 {
-    align-items: center;
-    z-index: 1000;
-    border-radius: 20px;
-    padding: 4px 10px 4px 4px;
-    gap: 5px;
-    columns: 2;
-    display: flex;
-    flex-direction: row;
-    line-height: 100%;
-    background-color:#ffffff;
-    color: rgb(0, 0, 0);
-
-
-    border-radius: 20px;
-    border: none;
-    
-    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
-}
-
-.tgoper1:active {
-    color: #666;
-    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
-    transform: translateY(2px);
-}
-
-.tgkanal1 {
-    align-items: center;
-    z-index: 1000;
-    border-radius: 20px;
-    padding: 4px 10px 4px 4px;
-    gap: 5px;
-    columns: 2;
-    display: flex;
-    flex-direction: row;
-    line-height: 100%;
-    background-color:#ffffff;
-    color: rgb(0, 0, 0);
-
-
-    border-radius: 20px;
-    border: none;
-    
-    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
-}
-
-.tgkanal1:active {
-    color: #666;
-    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
-    transform: translateY(2px);
-}
-
-.tginst1 {
-    align-items: center;
-    z-index: 1000;
-    border-radius: 20px;
-    padding: 4px 10px 4px 4px;
-    gap: 5px;
-    columns: 2;
-    display: flex;
-    flex-direction: row;
-    line-height: 100%;
-    background-color:#ffffff;
-    color: rgb(0, 0, 0);
-
-
-    border-radius: 20px;
-    border: none;
-    
-    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
-}
-
-.tginst1:active {
-    color: #666;
-    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
-    transform: translateY(2px);
-}
-
-.tgoper2 {
-    align-items: center;
-    margin-top: 5px;
-    height: 26px;
-    z-index: 1000;
-    border-radius: 20px;
-    padding: 4px 10px 4px 4px;
-    gap: 5px;
-    columns: 2;
-    display: flex;
-    flex-direction: row;
-    line-height: 100%;
-
-    background: rgba(0, 0, 0, 0.32);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5.7px);
-    -webkit-backdrop-filter: blur(5.7px);
-    border: none;  
-}
-.tgoper2:active {
-    transform: translateY(2px);
-}
-
-.tgkanal2 {
-    align-items: center;
-    margin-top: 5px;
-    height: 26px;
-    z-index: 1000;
-    border-radius: 20px;
-    padding: 4px 10px 4px 4px;
-    gap: 5px;
-    columns: 2;
-    display: flex;
-    flex-direction: row;
-    line-height: 100%;
-
-    background: rgba(0, 0, 0, 0.32);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5.7px);
-    -webkit-backdrop-filter: blur(5.7px);
-    border: none;  
-}
-.tgkanal2:active {
-    transform: translateY(2px);
-}
-
-.tginst2 {
-    align-items: center;
-    margin-top: 5px;
-    height: 26px;
-    z-index: 1000;
-    border-radius: 20px;
-    padding: 4px 10px 4px 4px;
-    gap: 5px;
-    columns: 2;
-    display: flex;
-    flex-direction: row;
-    line-height: 100%;
-
-    background: rgba(0, 0, 0, 0.32);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5.7px);
-    -webkit-backdrop-filter: blur(5.7px);
-    border: none;  
-}
-.tginst2:active {
-    transform: translateY(2px);
-}
-
-
-
-
-.telegram-logo {
-    width: 22px;
-    height: 22px;
-    margin-right: 2px;
-    margin-left: 5px;
-}
-
-.textlogo {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-#kanal {
-    font-size: 16px;
-    color: rgb(151, 151, 151);
-    display: block;
-    width: 100%;
-    letter-spacing: 0,5px;
-    margin-bottom: 4px;
-}
-
-#kanalcase {
-    font-size: 14px;
-    color: rgb(150, 150, 150);
-    display: block;
-    width: 100%;
-    letter-spacing: 0,5px;
-    margin-bottom: 4px;
-}
-
-#kanal2 {
-    font-weight: 400;
+    justify-content: center;
     font-size: 10px;
-    line-height: 120%;
-    color: rgb(121, 121, 121);
+    z-index: 1000000;
 }
+.hidden {
+    display: none;
+}
+
+.cart-message {
+    position: fixed;
+    top: 48px;
+    right: 10px;
+    background-color: gray;
+    color: white;
+    padding: 5px 10px;
+    font-size: 10px;
+    border-radius: 5px;
+    display: none;
+    z-index: 100000000;
+    font-weight:bold ;
+}
+.cart-message::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 6px 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent gray transparent;
+    border-radius: 10px; /* Закругляем нижние углы треугольника */
+}
+
+
+
+
+
+
+
+.cart {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    color: #000;
+    padding: 10px;
+    
+}
+
+
+
+.cart.hidden {
+    display: none;
+}
+
+.cart-header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    color: #000;
+}
+
+
+.cart-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+
+.close-button {
+    width: 30px;
+    position: absolute;
+    right: 25px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+  
+.close-button:before, .close-button:after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background-color: #000000;
+    border-radius: 1px;
+}
+  
+.close-button:before {
+    transform: rotate(45deg);
+    top: 50%;
+    left: 0;
+}
+  
+.close-button:after {
+    transform: rotate(-45deg);
+    top: 50%;
+    left: 0;
+}
+  
+.close-button:hover:before, .close-button:hover:after {
+    background-color: #555; /* Цвет крестика при наведении */
+}
+
+
+#apply-discount {
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: -10px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 90%;
+    height: 40px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.apply-title {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sticker-gift {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    background-color: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sticker-title {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#sticker-price {
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.containerrr {
+    width: 45px;
+    height: 28px;
+    position: relative;
+    display: inline-block;
+}
+
+.checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.switch {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: #e9e9eb;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out;
+}
+
+.slider {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15), 0px 3px 1px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease-out;
+}
+
+.checkbox:checked + .switch {
+    background-color: #1b8536;
+}
+
+.checkbox:checked + .switch .slider {
+    left: 19px;
+}
+
+
+.sticker-hint {
+    width: 90%;
+    font-size: 9px;
+    color: rgb(118, 118, 118); /* Красный цвет для заметности */
+    text-align: left;
+    margin-top: -10px;
+    margin-bottom: -20px;
+}
+
+
+
+.cart-items {
+    display: block;
+    width: 100%;
+    height: 260px;
+    justify-content: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-bottom: 1px solid #cdcdcd;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 400px;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+.cart-item .item-img {
+    width: 80px;
+    height: 80px;
+    margin-left: 15px;
+}
+
+.cart-item .item-img img {
+    width: auto;
+    height: 100%;
+}
+
+.cart-item .item-info {
+    flex-grow: 1;
+    text-align: left;
+    margin-bottom: auto;
+}
+
+.cart-item .item-name {
+    color: #7d7d7d; /* Серый цвет для названия */
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.cart-item .item-model {
+    margin-top: 2px;
+    color: #7d7d7d; /* Серый цвет для модели */
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.cart-item .item-price {
+    margin-top: 2px;
+    color: #000000; /* Черный цвет для цены */
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.cart-item .item-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    background-color: #ffffff;
+    margin-left: auto;
+    margin-right: 60px;
+    margin-bottom: 5px;
+    width: 10px;
+}
+
+.cart-item .item-quantity button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: #ffffff;
+}
+
+.cart-item .item-quantity input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 20px;
+    text-align: center;
+    background: #dcdcdc;
+    border-radius: 3px;
+    border: 1px solid #dcdcdc;
+    font-weight: bold;
+}
+
+
+
+.cart-footer {
+    width: 97%;
+    height: 40px;
+    background-color: #202020;
+    text-align: right;
+    position: absolute;
+    bottom: 20px;
+    color: #ffffff;
+    font-size: 15px;
+    border-radius: 15px 15px 0 0;
+    z-index: 200000;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+    margin-right: 2px;
+}
+
+.new-price {
+    color: gray; /* До применения скидки общая цена серая */
+    font-weight: bold;
+}
+
+.discount-applied {
+    color: red; /* Красный цвет для новой цены после применения скидки */
+}
+
+.hidden {
+    display: none; /* Скрываем элемент, когда он не нужен */
+}
+
+.totalzena {
+    margin-right: 20px;
+    margin-top: 12px;
+}
+
+.obzena {
+    color: #c1c1c1;
+}
+
+.promo-popup {
+    position: fixed;
+    margin-top: 150px;
+
+    width: 80%;
+    background-color: #f8f8f8;
+    border-radius: 6px;
+    z-index: 10001;
+
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.promo-popup.hidden {
+    display: none;
+}
+
+.discount-icon {
+    width: auto;
+    height: 80px;
+    margin-bottom: 10px; /* Отступ от иконки */
+    margin-top: 5px;
+}
+
+.promo-content input {
+    margin-bottom: 10px;
+
+
+}
+
+.promo-content button {
+    background-color: #737371;
+    color: #2eceff;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.input {
+  width: 97%;
+  height: 40px;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 14px;
+  color: #555;
+  box-shadow: inset 8px 8px 8px #cbced1,
+              inset -8px -8px 8px #ffffff;
+  border-radius: 25px;
+  padding-left: 10px;
+}
+
+.input::placeholder {
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.input:focus::placeholder {
+  color: #999;
+}
+
+/* Фоновый слой с размытием */
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(10px); /* Размытие фона */
+    background: rgba(0, 0, 0, 0.3); /* Полупрозрачный темный фон */
+    z-index: 10000; /* Позади promo-popup */
+}
+
+/* Скрываем promo-popup по умолчанию */
+.promo-popup.hidden, .blur-overlay.hidden {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+/* Анимация для иконки корзины */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1); /* Начальный и конечный масштаб */
+    }
+    50% {
+        transform: scale(1.1); /* Увеличение на 10% в середине */
+    }
+}
+
+
+
+
+
+
+
+.arrow-4 {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 10px; /* Уменьшение ширины стрелки */
+    height: 5px;  /* Соответственно уменьшение высоты */
+    margin-left: 30px;
+}
+
+.arrow-4-left,
+.arrow-4-right {
+    position: absolute;
+    background-color: transparent;
+    width: 10px;  /* Ширина уменьшена до 10px */
+    height: 3px;  /* Высота уменьшена до 3px */
+    display: block;
+}
+
+.arrow-4-left {
+    top: 3px;
+    left: 0;
+    transform: rotate(35deg);
+}
+
+.arrow-4-left:after {
+    content: "";
+    background-color: #000000; /* Белая стрелка */
+    width: 10px;  /* Ширина уменьшена до 10px */
+    height: 3px;  /* Высота уменьшена до 3px */
+    display: block;
+    border-radius: 6px 10px 10px 6px;
+    transition: transform 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+}
+
+.arrow-4-right {
+    top: 3px;
+    left: 7px;  /* Скорректировано положение */
+    transform: rotate(-35deg);
+}
+
+.arrow-4-right:after {
+    content: "";
+    background-color: #000000; /* Белая стрелка */
+    width: 10px;  /* Ширина уменьшена до 10px */
+    height: 3px;  /* Высота уменьшена до 3px */
+    display: block;
+    border-radius: 10px 6px 6px 10px;
+    transition: transform 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+}
+
+.open .arrow-4-left:after {
+    transform: rotate(-70deg);
+}
+
+.open .arrow-4-right:after {
+    transform: rotate(70deg);
+}
+
+.contacts-header {
+    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 135px;
+    background: #ffffff;
+    border: 1px solid rgb(200, 200, 200);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 8px;
+    border-radius: 10px;
+    margin-left: 30px;
+    height: 20px;
+    text-align: center;
+}
+
+.contacts-header span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.contacts-buttons {
+
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+
+    width: 150px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+
+    margin-top: 10px;
+    margin-left: -7px;
+    background: #ffffff;
+    border: 1px solid rgb(200, 200, 200);
+    
+}
+
+.contact-icon {
+    width: 16px; /* Ширина иконки */
+    height: 16px; /* Высота иконки */
+    align-items: center;
+    padding-right: 5px;
+}
+
+.contact-btn {
+    display: flex;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 5px;
+    padding-left: 10px;
+    transition: background-color 0.3s;
+    color: #000000;
+    text-align: left; /* Выравнивание текста по левому краю */
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.contact-btn:hover {
+    background-color: #e9e9e951;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
+
+
+
 
 
 .ph1 {
@@ -427,10 +816,6 @@ body {
     margin-bottom: -50px;
 }
 
-.video {
-    margin-top: -50px;
-    margin-bottom: -50px;
-}
 
 .video2 {
     margin-top: -60px;
@@ -446,57 +831,52 @@ body {
 
 .button { 
     justify-content: center;
-    font-size: 18px;
+    color: #fff;
     width: 180px;
     height: 50px;
+    font-size: 18px;
     border-radius: 10px;
-    border: none;
-    outline: none;
-    background-image: url('kovcarbon.JPG');
-    background-size: cover;
-    box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
-      #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
-    cursor: pointer;
-    transition: 0.1s ease-in-out;
+    background: #222;
+    border: 1px solid #212121;
+    box-shadow:
+    6px 6px 12px #ababab,
+    -6px -6px 12px #ffffff;
     margin-top: 20px;
     margin-bottom: 30px;
     color: #ffffff;
 }
 
 .button:active {
-    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,#545251 -3.2px -3.2px 8px 0px inset;
+    color: #666;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
-.button:active .button_text {
-    transform: translateY(0.5px);
-}
+
 
 
 .butair { 
     justify-content: center;
-    font-size: 18px;
+    color: #fff;
     width: 180px;
     height: 50px;
+    font-size: 18px;
     border-radius: 10px;
-    border: none;
-    outline: none;
-    background-image: url('kovcarbon.JPG');
-    background-size: cover;
-    box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
-      #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
-    cursor: pointer;
-    transition: 0.1s ease-in-out;
+    background: #222;
+    border: 1px solid #212121;
+    box-shadow:
+    6px 6px 12px #ababab,
+    -6px -6px 12px #ffffff;
     margin-top: 0px;
     margin-bottom: 30px;
-    color: #ffffff;
     z-index: 999;
+    margin: 0 auto 30px;
 }
 
 .butair:active {
-    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,#545251 -3.2px -3.2px 8px 0px inset;
+    color: #666;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
-.butair:active .button_text {
-    transform: translateY(0.5px);
-}
+
+
   
 
 
@@ -505,13 +885,20 @@ body {
 
 
 
+
+
+
+
+
+
 .contplanet {
-    max-width: 400px;
+    width: 100%;
     display: none;
     justify-content: center; /* Выравнивание по горизонтали */
     align-items: center;
     text-align: center;
     background: #ffffff;
+    padding: 10px;
 }
 
 .clothes {
@@ -548,19 +935,22 @@ body {
     border-radius: 10px;
     border: none;
     outline: none;
-    background-image: url('kovcarbon.JPG');
     background-size: cover;
-    box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
-      #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
     cursor: pointer;
     transition: 0.1s ease-in-out;
     margin-top: 10px;
     margin-bottom: 10px;
     color: #ffffff;
+    background: #222;
+    border: 1px solid #212121;
+    box-shadow:
+    6px 6px 12px #ababab,
+    -6px -6px 12px #ffffff;
 }
 
 .купить:active {
-    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,#545251 -3.2px -3.2px 8px 0px inset;
+    color: #666;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
 .купить:active .button_text {
     transform: translateY(0.5px);
@@ -612,14 +1002,6 @@ body {
 
 
 
-
-.window {
-    display: none;
-    text-align: center;
-    width: 400px;
-    justify-content: center;
-    align-items: center;
-}
 .img3 {
     width: 95%;
 }
@@ -662,19 +1044,21 @@ body {
     border-radius: 20px;
     border: none;
     outline: none;
-    background-image: url('kovcarbon.JPG');
-    background-size: cover;
-    box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
-      #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
     cursor: pointer;
     transition: 0.1s ease-in-out;
     padding: 10px 10px;
     margin-top: 10px;
     color: #ffffff;
+    background: #222;
+    border: 1px solid #212121;
+    box-shadow:
+    6px 6px 12px #ababab,
+    -6px -6px 12px #ffffff;
 }
 
 .pufforder:active {
-    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,#545251 -3.2px -3.2px 8px 0px inset;
+    color: #666;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
 .pufforder:active .button_text {
     transform: translateY(0.5px);
@@ -747,41 +1131,11 @@ body {
     z-index: 999;
 }
 
-.setka {
-    width: 400px;
-    
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    background: rgba(95, 95, 95, 0.52);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.29);
-}
-
-.imgsetka {
-    width: 100%;
-    margin-bottom: 20px;
-}
 
 .imgl {
     width: 100%;
 }
 
-.close-button {
-    color: rgb(255, 255, 255);
-    position: absolute;
-    top: 1px;
-    right: 8px;
-    font-size: 30px;
-    cursor: pointer;
-}
 
 
 
@@ -905,7 +1259,7 @@ body {
 }
 
 #overlayPP img {
-    width: 400px;
+    width: 100%;
     border-radius: 20px;
 }
 
@@ -933,18 +1287,19 @@ body {
 
 
 .container {
-    max-width: 400px;
+    width: 100%;
     display: none;
     justify-content: center; /* Выравнивание по горизонтали */
     align-items: center;
     background: #ffffff;
+    padding: 10px;
 }
 
 .inner {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px 20px;
-    margin: 20px 10px;
+    margin: 50px 10px;
 }
 
 .img {
@@ -968,19 +1323,21 @@ body {
     border-radius: 10px;
     border: none;
     outline: none;
-    background-image: url('kovcarbon.JPG');
-    background-size: cover;
-    box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
-      #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
     cursor: pointer;
     transition: 0.1s ease-in-out;
     margin-top: 10px;
     margin-bottom: 10px;
     color: #ffffff;
+    background: #222;
+    border: 1px solid #212121;
+    box-shadow:
+    6px 6px 12px #ababab,
+    -6px -6px 12px #ffffff;
 }
 
 .btn:active {
-    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,#545251 -3.2px -3.2px 8px 0px inset;
+    color: #666;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
 .btn:active .button_text {
     transform: translateY(0.5px);
@@ -1036,12 +1393,12 @@ body {
 form {
     display: none;
     text-align: center;
-    width: 400px;
+    width: 100%;
     
     justify-content: center;
     align-items: center;
     background: #ffffff;
-    padding: 10px;
+    padding: 20px;
 }
 
 .product-details {
@@ -1049,8 +1406,8 @@ form {
 }
 
 .img2 {
-    width: 90%;
-    margin-top: 10px;
+    width: 80%;
+    margin-top: 25px;
     
 }
 
@@ -1415,7 +1772,7 @@ form {
     background-color: #ffffff;
     border-radius: 20px;
     
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .swiper-slide {
@@ -1460,10 +1817,11 @@ form {
     border-radius: 20px;
     border: none;
     outline: none;
-    background-image: url('kovcarbon.JPG');
-    background-size: cover;
-    box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
-      #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
+    background: #222;
+    border: 1px solid #212121;
+    box-shadow:
+    6px 6px 12px #ababab,
+    -6px -6px 12px #ffffff;
     cursor: pointer;
     transition: 0.1s ease-in-out;
     padding: 10px 10px;
@@ -1472,7 +1830,8 @@ form {
 }
 
 .order:active {
-    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,#545251 -3.2px -3.2px 8px 0px inset;
+    color: #666;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
 .order:active .button_text {
     transform: translateY(0.5px);
@@ -1486,6 +1845,13 @@ form {
 }
 
 
+
+.vbrazmera {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .size-button {
     width: 100%; /* Ширина 100% */
@@ -1522,18 +1888,35 @@ form {
     margin-right: 10px;
 }
 
-#iphoneModelsWindow {
+#iphoneModelsWindowAir1 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 70px;
+    margin-left: 25%;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+#iphoneModelsWindow {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    width: 50%; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-bottom: 220px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1544,16 +1927,14 @@ form {
 }
 #iphoneModelsWindow2 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 220px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1564,16 +1945,14 @@ form {
 }
 #iphoneModelsWindow3 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 220px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1584,16 +1963,14 @@ form {
 }
 #iphoneModelsWindow4 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 220px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1604,16 +1981,14 @@ form {
 }
 #iphoneModelsWindow5 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 220px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1624,16 +1999,14 @@ form {
 }
 #iphoneModelsWindow6 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 220px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1644,16 +2017,14 @@ form {
 }
 #iphoneModelsWindow7 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 400px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1664,16 +2035,14 @@ form {
 }
 #iphoneModelsWindow8 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 400px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1685,16 +2054,14 @@ form {
 
 #iphoneModelsWindow9 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 400px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1719,16 +2086,14 @@ form {
 
 #iphoneModelsWindow10 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 400px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1753,16 +2118,14 @@ form {
 
 #iphoneModelsWindow11 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 400px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1787,16 +2150,14 @@ form {
 
 #iphoneModelsWindow12 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 400px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1820,16 +2181,14 @@ form {
 }
 #iphoneModelsWindow13 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 400px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1853,16 +2212,14 @@ form {
 }
 #iphoneModelsWindow14 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 400px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1886,16 +2243,14 @@ form {
 }
 #iphoneModelsWindow15 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 350px;
+    margin-bottom: 400px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1917,19 +2272,16 @@ form {
 #iphoneModelsWindow15::-webkit-scrollbar-track {
     background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
 }
-
-#iphoneModelsWindowAir1 {
+#iphoneModelsWindow16 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
-    max-height: auto; /* Максимальная высота окна */
+    width: 50%; /* Ширина окна */
+    max-height: 400px; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 180px;
+    margin-bottom: 220px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1938,18 +2290,93 @@ form {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 }
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow16::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow16::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow16::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
+#iphoneModelsWindow17 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    width: 50%; /* Ширина окна */
+    max-height: 400px; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-bottom: 220px;
+    margin-left: 25%;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow17::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow17::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow17::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
+#iphoneModelsWindow18 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    width: 50%; /* Ширина окна */
+    max-height: 400px; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-bottom: 220px;
+    margin-left: 25%;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow18::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow18::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow18::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
+
+
 #iphoneModelsWindowAir2 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 180px;
+    margin-bottom: 70px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1960,16 +2387,14 @@ form {
 }
 #iphoneModelsWindowAir3 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 180px;
+    margin-bottom: 70px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -1980,16 +2405,14 @@ form {
 }
 #iphoneModelsWindowAir4 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 180px;
+    margin-bottom: 70px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -2000,16 +2423,14 @@ form {
 }
 #iphoneModelsWindowAir5 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 180px;
+    margin-bottom: 70px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -2020,16 +2441,14 @@ form {
 }
 #iphoneModelsWindowAir6 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 180px;
+    margin-bottom: 70px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -2040,16 +2459,14 @@ form {
 }
 #iphoneModelsWindowAir7 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 180px;
+    margin-bottom: 70px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -2060,16 +2477,14 @@ form {
 }
 #iphoneModelsWindowAir8 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
-    left: 50%; /* Выравнивание по центру по горизонтали */
-    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 180px;
+    margin-bottom: 70px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
@@ -2079,16 +2494,29 @@ form {
     -webkit-backdrop-filter: blur(20px);
 }
 
+.del {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 8px;
+}
+
+.cart-delivery {
+    width: 90%;
+    margin-top: auto;
+    margin-bottom: 60px;
+}
 
 .delivery-options {
     width: 100%;
     background-color: #ffffff; /* bg-slate-50 */
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .airdelivery-btn1 {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     height: 50px;
     padding: 10px;
@@ -2112,7 +2540,6 @@ form {
 .icon {
     width: 25px;
     height: 25px; /* Высота иконки */
-    margin-right: 10px;
 }
 
 .circle {
@@ -2141,793 +2568,15 @@ form {
 }
 
 
-
-.airdelivery-btn2 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.airdelivery-btn2.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.airdelivery-btn2:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.airdelivery-btn2.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.airdelivery-btn3 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.airdelivery-btn3.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.airdelivery-btn3:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.airdelivery-btn3.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.airdelivery-btn4 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.airdelivery-btn4.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.airdelivery-btn4:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.airdelivery-btn4.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.airdelivery-btn5 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.airdelivery-btn5.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.airdelivery-btn5:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.airdelivery-btn5.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.airdelivery-btn6 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.airdelivery-btn6.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.airdelivery-btn6:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.airdelivery-btn6.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.airdelivery-btn7 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.airdelivery-btn7.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.airdelivery-btn7:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.airdelivery-btn7.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.airdelivery-btn8 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.airdelivery-btn8.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.airdelivery-btn8:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.airdelivery-btn8.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-
-.delivery-btn1 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn1.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn1:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn1.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn2 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn2.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn2:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn2.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn3 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn3.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn3:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn3.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn4 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn4.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn4:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn4.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn5 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn5.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn5:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn5.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn6 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn6.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn6:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn6.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn7 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn7.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn7:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn7.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn8 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn8.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn8:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn8.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn9 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn9.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn9:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn9.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn10 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn10.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn10:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn10.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn11 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn11.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn11:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn11.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn12 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn12.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn12:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn12.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn13 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn13.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn13:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn13.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn14 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn14.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn14:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn14.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-.delivery-btn15 {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid grey; /* Серая граница */
-    margin-bottom: 5px; /* Отступ снизу */
-    background-color: #ffffff;
-}
-.delivery-btn15.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-}
-.delivery-btn15:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-}
-.delivery-btn15.active .inner-circle {
-    display: block; /* Показываем маленький кружок, когда активен класс active */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .aircheckmark1 {
     margin-left: 10px;
     font-weight: 600; /* font-semibold */
-    position: relative;
     transition: transform 0.3s, opacity 0.3s;
     opacity: 1; /* По умолчанию текст виден */
     transform: translateY(0);
     color: black; /* Черный цвет текста */
     font-size: 14px;
 }
-.aircheckmark2 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.aircheckmark3 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.aircheckmark4 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.aircheckmark5 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.aircheckmark6 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.aircheckmark7 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.aircheckmark8 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-
-
-
-.checkmark1 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark2 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark3 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark4 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark5 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark6 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark7 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark8 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark9 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark10 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark11 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark12 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark13 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark14 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-.checkmark15 {
-    margin-left: 10px;
-    font-weight: 600; /* font-semibold */
-    position: relative;
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 1; /* По умолчанию текст виден */
-    transform: translateY(0);
-    color: black; /* Черный цвет текста */
-    font-size: 14px;
-}
-
-
-
-
 
 .recommendation {
     color: gray; /* Серый цвет текста */
@@ -2940,25 +2589,29 @@ form {
     color: rgb(0, 0, 0); /* Серый цвет текста */
     font-size: 13px; /* Размер шрифта */
     font-weight: bold;
-    margin-left: 10px;
     font-weight: 500;
-    margin-left: 85px;
+    margin-left: 142px;
 }
 .deliveryprice2 {
     color: rgb(0, 0, 0); /* Серый цвет текста */
     font-size: 13px; /* Размер шрифта */
     font-weight: bold;
-    margin-left: 10px;
     font-weight: 500;
-    margin-left: 130px;
+    margin-left: 85px;
 }
 .deliveryprice3 {
     color: rgb(0, 0, 0); /* Серый цвет текста */
     font-size: 13px; /* Размер шрифта */
     font-weight: bold;
-    margin-left: 10px;
     font-weight: 500;
-    margin-left: 189px;
+    margin-left: 152px;
+}
+.deliveryprice4 {
+    color: rgb(0, 0, 0); /* Серый цвет текста */
+    font-size: 13px; /* Размер шрифта */
+    font-weight: bold;
+    font-weight: 500;
+    margin-left: 73px;
 }
 
 
@@ -2996,6 +2649,11 @@ form {
     background-color: #cdcdcd; /* Цвет полоски */
     margin-top: 30px;
 }
+.strippp {
+    width: 100%;
+    height: 1px; /* Высота полоски */
+    background-color: #cdcdcd; /* Цвет полоски */
+}
 .stripniz {
     width: 100%;
     height: 1px; /* Высота полоски */
@@ -3004,13 +2662,6 @@ form {
     margin-bottom: 50px;
 }
 
-.del {
-    align-items: flex-start;
-    display: flex;
-    padding-top: 20px;
-    flex-flow: row wrap;
-    margin-bottom: -10px;
-}
 .svg-container {
     height: 25px;
     margin-top: -1px;

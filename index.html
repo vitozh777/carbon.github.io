@@ -8,7 +8,6 @@
         <meta name="robots" content="noindex, nofollow">
         <title>Автоматическое воспроизведение видео без контролов</title>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
 
     </head>
     <body>
@@ -29,39 +28,67 @@
             </div>
         </div>
 
+
+
+
+        <div class="navigation">
+            <!-- Кнопка "Назад" -->
+            <div class="back-button hidden" id="back-button1">
+                <span class="strelka"></span>
+                <span class="nazad">Назад</span>
+            </div>
+            <div class="back-button hidden" id="back-button2">
+                <span class="strelka"></span>
+                <span class="nazad">Назад</span>
+            </div>
+
+            <div class="contacts-header" onclick="toggleContacts()">
+                <span>Контакты</span>
+                <div id="arrow" class="arrow-4">
+                    <span class="arrow-4-left"></span>
+                    <span class="arrow-4-right"></span>
+                </div>
+                <div id="contacts-buttons" class="contacts-buttons hidden">
+                    <a href="https://t.me/carbonexpert" target="_blank" class="contact-btn">
+                        <img src="expert.JPG" alt="Поддержка" class="contact-icon">Поддержка
+                    </a>
+                    <a href="https://t.me/carbonexpert" target="_blank" class="contact-btn">
+                        <img src="tglogo.JPG" alt="Telegram" class="contact-icon">Telegram-канал
+                    </a>
+                    <a href="https://www.instagram.com/ru.carbon" target="_blank" class="contact-btn">
+                        <img src="instlogo.JPG" alt="Instagram" class="contact-icon">Instagram
+                    </a>
+                    <a href="https://vk.com/carbonru" target="_blank" class="contact-btn">
+                        <img src="vklogo.JPG" alt="Instagram" class="contact-icon">Вконтакте
+                    </a>
+                    <a href="https://www.tiktok.com/@carbonru?_t=8qtz99mbBIM&_r=1" target="_blank" class="contact-btn">
+                        <img src="ttlogo.JPG" alt="TikTok" class="contact-icon">TikTok
+                    </a>
+                </div>
+            </div>
+            <button id="cart-button" class="cart-button">
+                <div id="cart-icon" style="width: 30px; height: 30px;"></div>
+                <div id="cart-counter" class="cart-counter hidden"></div>
+            </button>
+            
+            
+        </div>
+
         
 
         
         <div class="contain" id="home">
-            <div class="navigation">
-                <div class="tgoper" id="tgoper">
-                    <img src="expert.png" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogo">
-                        <span id="kanal2">help</span>
-                    </a>
-                </div>
-                <div class="tgkanal" id="tgkanal">
-                    <img src="tglogo.PNG" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogos">
-                        <span id="kanal">@carbonru</span>
-                        <span id="kanal2">наш Telegram-канал</span>
-                    </a>
-                </div>
-                <div class="tginst" id="tginst">
-                    <img src="instlogo.png" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogo">
-                        <span id="kanal">@ru.carbon</span>
-                        <span id="kanal2">наш Instagram</span>
-                    </a>
-                </div>
+
+            <div class="videohome">
+                <video muted playsinline width="100%" height="auto" id="myVideo3" preload="none">
+                    <source src="animation2.MOV" type="video/mp4">
+                    Ваш браузер не поддерживает тег video.
+                </video>
             </div>
-            <video muted playsinline width="110%" height="auto" id="myVideo3" preload="none">
-                <source src="animation2.MOV" type="video/mp4">
-                Ваш браузер не поддерживает тег video.
-            </video>
+            
             <button class="butair" id="puffplanet"><span>Airpods</span></button>
             
-            <video muted playsinline width="110%" height="auto" id="myVideo" preload="none">
+            <video muted playsinline width="100%" height="auto" id="myVideo" preload="none">
                 <source src="animation.MOV" type="video/mp4">
                 Ваш браузер не поддерживает тег video.
             </video>
@@ -72,29 +99,126 @@
 
 
 
-        <div class="contplanet" id="pufferplanet">
-            <div class="navigation">
-                <div class="tgoper1" id="tgoper1">
-                    <img src="expert.png" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogo">
-                        <span id="kanal2">help</span>
-                    </a>
+        
+
+
+
+
+        <div class="cart hidden" id="mycart">
+            <div class="cart-header">
+                <span class="cart-title">Моя корзина</span>
+                <span class="close-button" id="close-cart"></span>
+            </div>
+            <button id="apply-discount" disabled>
+                <span class="apply-title">Применить скидку</span>
+            </button>
+
+            <div class="strip"></div>
+
+            <div class="sticker-gift">
+                <span class="sticker-title">Стикерпак (8 наклеек UV DTF)</span>
+                <span id="sticker-price">20₽</span>
+                <label class="containerrr">
+                    <input type="checkbox" id="toggle-sticker" class="checkbox" checked onchange="toggleSticker()" disabled>
+                    <span class="switch">
+                        <span class="slider"></span>
+                    </span>
+                </label>
+            </div>
+            <!-- Поле для отображения суммы, которая не хватает до 3000 рублей -->
+            <div class="sticker-hint" id="sticker-hint"></div>
+
+            <div class="strip"></div>
+            
+            <div class="cart-items" id="cart-items"></div> <!-- Контейнер для товаров -->
+
+
+
+
+            <!-- Блок выбора метода доставки -->
+            <div class="cart-delivery">
+                <div class="del">
+                    <div class="svg-container">
+                        <svg xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-container">
+                        <p style="font-weight: 600;">Доставка:</p>
+                        <p>Наличие уточняйте у оператора</p>
+                    </div>
                 </div>
-                <div class="tgkanal1" id="tgkanal1">
-                    <img src="tglogo.PNG" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogos">
-                        <span id="kanal">@carbonru</span>
-                        <span id="kanal2">наш Telegram-канал</span>
-                    </a>
-                </div>
-                <div class="tginst1" id="tginst1">
-                    <img src="instlogo.png" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogo">
-                        <span id="kanal">@ru.carbon</span>
-                        <span id="kanal2">наш Instagram</span>
-                    </a>
+                <div class="delivery-options" id="airdelivery-group-1">
+                    <button id="air5post-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(280)" disabled>
+                        <img src="5post.PNG" alt="5Post Icon" class="icon">
+                        <span class="aircheckmark1">5Post</span>
+                        <span class="recommendation">(4-6 дней)</span>
+                        <span class="deliveryprice1">280₽</span>
+                        <div class="circle">
+                            <div class="inner-circle"></div>
+                        </div>
+                    </button>
+                
+                    <button id="airpochta-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(380)" disabled>
+                        <img src="pochta.PNG" alt="Pochta Icon" class="icon">
+                        <span class="aircheckmark1">Почта России</span>
+                        <span class="recommendation">(3-5 дней)</span>
+                        <span class="deliveryprice2">380₽</span>
+                        <div class="circle">
+                            <div class="inner-circle"></div>
+                        </div>
+                    </button>
+                
+                    <button id="aircdek-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(560)" disabled>
+                        <img src="cdek.PNG" alt="CDEK Icon" class="icon">
+                        <span class="aircheckmark1">CDEK</span>
+                        <span class="recommendation">(3-4 дня)</span>
+                        <span class="deliveryprice3">560₽</span>
+                        <div class="circle">
+                            <div class="inner-circle"></div>
+                        </div>
+                    </button>
+
+                    <button id="aircdek-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(1200)" disabled>
+                        <img src="cdek.PNG" alt="CDEK Icon" class="icon">
+                        <span class="aircheckmark1">CDEK (экспресс)</span>
+                        <span class="recommendation">(1-2 дня)</span>
+                        <span class="deliveryprice4">1200₽</span>
+                        <div class="circle">
+                            <div class="inner-circle"></div>
+                        </div>
+                    </button>
                 </div>
             </div>
+        
+            <div class="cart-footer">
+                <div class="totalzena">
+                    <span class="obzena">Общая цена:</span>
+                    <span id="old-price" class="old-price hidden"></span> <!-- Старая цена -->
+                    <span id="new-price" class="new-price"></span> <!-- Новая цена -->
+                </div>
+            </div>
+        </div>
+
+        <div class="blur-overlay hidden" id="blur-overlay"></div>
+
+        <div class="promo-popup hidden" id="promo-popup">
+            <div class="promo-content">
+                <div id="discount-icon" class="discount-icon"></div>
+                <input class="input" type="text" id="promo-code" placeholder="Введите промокод" disabled />
+                <button id="apply-promo-btn" disabled>Применить скидку</button>
+            </div>
+        </div>
+        
+
+
+
+
+
+
+
+
+        <div class="contplanet" id="pufferplanet">
             <div class="inner">
                 <div class="item" id="TPC">
                     <img src="airobsid.JPG" alt="" class="img">
@@ -106,43 +230,43 @@
                     <img src="airsaphir.jpg" alt="" class="img">
                     <div class="price">2299₽</div>
                     <div class="namecase">FORGED GLOSSY-SAPHIR</div>
-                    <button class="купить" id="купить4">купить</button>
+                    <button class="купить" id="купить2">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="airrubin.jpg" alt="" class="img">
                     <div class="price">2299₽</div>
                     <div class="namecase">FORGED GLOSSY-RUBIN</div>
-                    <button class="купить" id="купить5">купить</button>
+                    <button class="купить" id="купить3">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="airemerald.jpg" alt="" class="img">
                     <div class="price">2299₽</div>
                     <div class="namecase">FORGED GLOSSY-EMERALD</div>
-                    <button class="купить" id="купить6">купить</button>
+                    <button class="купить" id="купить4">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="airgold.jpg" alt="" class="img">
                     <div class="price">2299₽</div>
                     <div class="namecase">FORGED GLOSSY-GOLD</div>
-                    <button class="купить" id="купить7">купить</button>
+                    <button class="купить" id="купить5">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="airopal.jpg" alt="" class="img">
                     <div class="price">2299₽</div>
                     <div class="namecase">FORGED GLOSSY-OPAL</div>
-                    <button class="купить" id="купить8">купить</button>
+                    <button class="купить" id="купить6">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="aironyx.JPG" alt="" class="img">
                     <div class="price">2299₽</div>
                     <div class="namecase">FORGED MATTE-ONYX</div>
-                    <button class="купить" id="купить2">купить</button>
+                    <button class="купить" id="купить7">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="airclassic.JPG" alt="" class="img">
                     <div class="price">2299₽</div>
                     <div class="namecase">WOVEN GLOSSY-CLASSIC</div>
-                    <button class="купить" id="купить3">купить</button>
+                    <button class="купить" id="купить8">купить</button>
                 </div>
             </div>
         </div>
@@ -185,65 +309,23 @@
                       <div class="price1">2299₽</div>
                     </div>
                 </div>
-                <button id="sizeButtonAir1" type="sizeButton" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindowAir1" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model4">AirPods Pro/Pro(2)</div>
-                    <div class="model4">AirPods 3</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
+                <div class="vbrazmera">
+                     <!-- Новое скрытое окно для выбора модели iPhone -->
+                     <div id="iphoneModelsWindowAir1" style="display: none;">
+                        <!-- Здесь элементы для model1 -->
+                        <div class="model4">AirPods Pro/Pro(2)</div>
+                        <div class="model4">AirPods 3</div>
+                        <!-- Добавьте остальные модели iPhone по аналогии -->
+                    </div>
+                    <button id="sizeButtonAir1" type="sizeButton" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
                 </div>
             </div>
-            <button class="pufforder" id="pufforder1">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
+            <button class="pufforder" id="pufforder1">добавить в корзину</button>
 
             
-            <div class="delivery-options" id="airdelivery-group-1">
-                <button id="air5post-1" class="airdelivery-btn1 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark1">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="airpochta-1" class="airdelivery-btn1" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark1">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-1" class="airdelivery-btn1" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark1">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
 
 
 
@@ -283,7 +365,7 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="aironyx.JPG" alt="" class="img2">
+                            <img src="airsaphir.jpg" alt="" class="img2">
                         </div>
                         <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
                     </div>
@@ -292,69 +374,27 @@
                 <div class="y">1 ФОТО</div>
                 <div class="namecontAir">
                     <div class="left-column">
-                      <div class="namecase2">FORGED MATTE-ONYX</div>
+                      <div class="namecase2">FORGED GLOSSY-SAPHIR</div>
                       <div class="price2">2299₽</div>
                     </div>
                 </div>
-                <button id="sizeButtonAir2" type="sizeButton" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindowAir2" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model4">AirPods Pro/Pro(2)</div>
-                    <div class="model4">AirPods 3</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
+                <div class="vbrazmera">
+                    <!-- Новое скрытое окно для выбора модели iPhone -->
+                    <div id="iphoneModelsWindowAir2" style="display: none;">
+                       <!-- Здесь элементы для model1 -->
+                       <div class="model4">AirPods Pro/Pro(2)</div>
+                       <div class="model4">AirPods 3</div>
+                       <!-- Добавьте остальные модели iPhone по аналогии -->
+                   </div>
+                   <button id="sizeButtonAir2" type="sizeButton" class="size-button">
+                       <div class="size-text">Выберите размер</div>
+                       <span class="arrow">&#x276F;</span>
+                   </button>
+               </div>
             </div>
-            <button class="pufforder" id="pufforder2">КУПИТЬ</button>
+            <button class="pufforder" id="pufforder2">добавить в корзину</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-
-            <div class="delivery-options" id="airdelivery-group-2">
-                <button id="air5post-2" class="airdelivery-btn2 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark2">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-2" class="airdelivery-btn2" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark2">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-2" class="airdelivery-btn2" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark2">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
 
             <div class="strip"></div>
             <div class="del">
@@ -387,7 +427,7 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="airclassic.JPG" alt="" class="img2">
+                            <img src="airrubin.jpg" alt="" class="img2">
                         </div>
                         <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
                     </div>
@@ -396,68 +436,27 @@
                 <div class="y">1 ФОТО</div>
                 <div class="namecontAir">
                     <div class="left-column">
-                      <div class="namecase2">WOVEN GLOSSY-CLASSIC</div>
+                      <div class="namecase2">FORGED GLOSSY-RUBIN</div>
                       <div class="price3">2299₽</div>
                     </div>
                 </div>
-                <button id="sizeButtonAir3" type="sizeButton" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindowAir3" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model4">AirPods Pro/Pro(2)</div>
-                    <div class="model4">AirPods 3</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
+                <div class="vbrazmera">
+                    <!-- Новое скрытое окно для выбора модели iPhone -->
+                    <div id="iphoneModelsWindowAir3" style="display: none;">
+                       <!-- Здесь элементы для model1 -->
+                       <div class="model4">AirPods Pro/Pro(2)</div>
+                       <div class="model4">AirPods 3</div>
+                       <!-- Добавьте остальные модели iPhone по аналогии -->
+                   </div>
+                   <button id="sizeButtonAir3" type="sizeButton" class="size-button">
+                       <div class="size-text">Выберите размер</div>
+                       <span class="arrow">&#x276F;</span>
+                   </button>
+               </div>
             </div>
-            <button class="pufforder" id="pufforder3">КУПИТЬ</button>
+            <button class="pufforder" id="pufforder3">добавить в корзину</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="airdelivery-group-3">
-                <button id="air5post-3" class="airdelivery-btn3 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark3">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-3" class="airdelivery-btn3" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark3">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-3" class="airdelivery-btn3" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark3">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
 
             <div class="strip"></div>
             <div class="del">
@@ -489,7 +488,7 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="airsaphir.jpg" alt="" class="img2">
+                            <img src="airemerald.jpg" alt="" class="img2">
                         </div>
                         <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
                     </div>
@@ -498,67 +497,26 @@
                 <div class="y">1 ФОТО</div>
                 <div class="namecontAir">
                     <div class="left-column">
-                      <div class="namecase2">FORGED GLOSSY-SAPHIR</div>
+                      <div class="namecase2">FORGED GLOSSY-EMERALD</div>
                       <div class="price3">2299₽</div>
                     </div>
                 </div>
-                <button id="sizeButtonAir4" type="sizeButton" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindowAir4" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model4">AirPods Pro/Pro(2)</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
+                <div class="vbrazmera">
+                    <!-- Новое скрытое окно для выбора модели iPhone -->
+                    <div id="iphoneModelsWindowAir4" style="display: none;">
+                       <!-- Здесь элементы для model1 -->
+                       <div class="model4">AirPods Pro/Pro(2)</div>
+                       <!-- Добавьте остальные модели iPhone по аналогии -->
+                   </div>
+                   <button id="sizeButtonAir4" type="sizeButton" class="size-button">
+                       <div class="size-text">Выберите размер</div>
+                       <span class="arrow">&#x276F;</span>
+                   </button>
+               </div>
             </div>
-            <button class="pufforder" id="pufforder4">КУПИТЬ</button>
+            <button class="pufforder" id="pufforder4">добавить в корзину</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="airdelivery-group-4">
-                <button id="air5post-4" class="airdelivery-btn4 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark4">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-4" class="airdelivery-btn4" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark4">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-4" class="airdelivery-btn4" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark4">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -589,7 +547,7 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="airrubin.jpg" alt="" class="img2">
+                            <img src="airgold.jpg" alt="" class="img2">
                         </div>
                         <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
                     </div>
@@ -598,67 +556,26 @@
                 <div class="y">1 ФОТО</div>
                 <div class="namecontAir">
                     <div class="left-column">
-                      <div class="namecase2">FORGED GLOSSY-RUBIN</div>
+                      <div class="namecase2">FORGED GLOSSY-GOLD</div>
                       <div class="price3">2299₽</div>
                     </div>
                 </div>
-                <button id="sizeButtonAir5" type="sizeButton" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindowAir5" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model4">AirPods Pro/Pro(2)</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
+                <div class="vbrazmera">
+                    <!-- Новое скрытое окно для выбора модели iPhone -->
+                    <div id="iphoneModelsWindowAir5" style="display: none;">
+                       <!-- Здесь элементы для model1 -->
+                       <div class="model4">AirPods Pro/Pro(2)</div>
+                       <!-- Добавьте остальные модели iPhone по аналогии -->
+                   </div>
+                   <button id="sizeButtonAir5" type="sizeButton" class="size-button">
+                       <div class="size-text">Выберите размер</div>
+                       <span class="arrow">&#x276F;</span>
+                   </button>
+               </div>
             </div>
-            <button class="pufforder" id="pufforder5">КУПИТЬ</button>
+            <button class="pufforder" id="pufforder5">добавить в корзину</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="airdelivery-group-5">
-                <button id="air5post-5" class="airdelivery-btn5 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark5">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-5" class="airdelivery-btn5" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark5">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-5" class="airdelivery-btn5" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark5">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -689,7 +606,7 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="airemerald.jpg" alt="" class="img2">
+                            <img src="airopal.jpg" alt="" class="img2">
                         </div>
                         <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
                     </div>
@@ -698,67 +615,26 @@
                 <div class="y">1 ФОТО</div>
                 <div class="namecontAir">
                     <div class="left-column">
-                      <div class="namecase2">FORGED GLOSSY-EMERALD</div>
+                      <div class="namecase2">FORGED GLOSSY-OPAL</div>
                       <div class="price3">2299₽</div>
                     </div>
                 </div>
-                <button id="sizeButtonAir6" type="sizeButton" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindowAir6" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model4">AirPods Pro/Pro(2)</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
+                <div class="vbrazmera">
+                    <!-- Новое скрытое окно для выбора модели iPhone -->
+                    <div id="iphoneModelsWindowAir6" style="display: none;">
+                       <!-- Здесь элементы для model1 -->
+                       <div class="model4">AirPods Pro/Pro(2)</div>
+                       <!-- Добавьте остальные модели iPhone по аналогии -->
+                   </div>
+                   <button id="sizeButtonAir6" type="sizeButton" class="size-button">
+                       <div class="size-text">Выберите размер</div>
+                       <span class="arrow">&#x276F;</span>
+                   </button>
+               </div>
             </div>
-            <button class="pufforder" id="pufforder6">КУПИТЬ</button>
+            <button class="pufforder" id="pufforder6">добавить в корзину</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="airdelivery-group-6">
-                <button id="air5post-6" class="airdelivery-btn6 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark6">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-6" class="airdelivery-btn6" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark6">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-6" class="airdelivery-btn6" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark6">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -789,7 +665,7 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="airgold.jpg" alt="" class="img2">
+                            <img src="aironyx.JPG" alt="" class="img2">
                         </div>
                         <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
                     </div>
@@ -798,67 +674,26 @@
                 <div class="y">1 ФОТО</div>
                 <div class="namecontAir">
                     <div class="left-column">
-                      <div class="namecase2">FORGED GLOSSY-GOLD</div>
+                      <div class="namecase2">FORGED MATTE-ONYX</div>
                       <div class="price3">2299₽</div>
                     </div>
                 </div>
-                <button id="sizeButtonAir7" type="sizeButton" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindowAir7" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model4">AirPods Pro/Pro(2)</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
+                <div class="vbrazmera">
+                    <!-- Новое скрытое окно для выбора модели iPhone -->
+                    <div id="iphoneModelsWindowAir7" style="display: none;">
+                       <!-- Здесь элементы для model1 -->
+                       <div class="model4">AirPods Pro/Pro(2)</div>
+                       <!-- Добавьте остальные модели iPhone по аналогии -->
+                   </div>
+                   <button id="sizeButtonAir7" type="sizeButton" class="size-button">
+                       <div class="size-text">Выберите размер</div>
+                       <span class="arrow">&#x276F;</span>
+                   </button>
+               </div>
             </div>
-            <button class="pufforder" id="pufforder7">КУПИТЬ</button>
+            <button class="pufforder" id="pufforder7">добавить в корзину</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="airdelivery-group-7">
-                <button id="air5post-7" class="airdelivery-btn7 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark7">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-7" class="airdelivery-btn7" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark7">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-7" class="airdelivery-btn7" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark7">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -889,7 +724,7 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="airopal.jpg" alt="" class="img2">
+                            <img src="airclassic.JPG" alt="" class="img2">
                         </div>
                         <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
                     </div>
@@ -898,67 +733,26 @@
                 <div class="y">1 ФОТО</div>
                 <div class="namecontAir">
                     <div class="left-column">
-                      <div class="namecase2">FORGED GLOSSY-OPAL</div>
+                      <div class="namecase2">WOVEN GLOSSY-CLASSIC</div>
                       <div class="price3">2299₽</div>
                     </div>
                 </div>
-                <button id="sizeButtonAir8" type="sizeButton" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindowAir8" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model4">AirPods Pro/Pro(2)</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
+                <div class="vbrazmera">
+                    <!-- Новое скрытое окно для выбора модели iPhone -->
+                    <div id="iphoneModelsWindowAir8" style="display: none;">
+                       <!-- Здесь элементы для model1 -->
+                       <div class="model4">AirPods Pro/Pro(2)</div>
+                       <!-- Добавьте остальные модели iPhone по аналогии -->
+                   </div>
+                   <button id="sizeButtonAir8" type="sizeButton" class="size-button">
+                       <div class="size-text">Выберите размер</div>
+                       <span class="arrow">&#x276F;</span>
+                   </button>
+               </div>
             </div>
-            <button class="pufforder" id="pufforder8">КУПИТЬ</button>
+            <button class="pufforder" id="pufforder8">добавить в корзину</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="airdelivery-group-8">
-                <button id="air5post-8" class="airdelivery-btn8 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark8">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-8" class="airdelivery-btn8" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark8">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-8" class="airdelivery-btn8" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark8">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -1009,42 +803,20 @@
 
 
         <div class="container" id="thepuffercase">
-            <div class="navigationcase">
-                <div class="tgoper2" id="tgoper2">
-                    <img src="expert.png" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogo">
-                        <span id="kanal2">help</span>
-                    </a>
-                </div>
-                <div class="tgkanal2" id="tgkanal2">
-                    <img src="tglogo.PNG" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogos">
-                        <span id="kanalcase">@carbonru</span>
-                        <span id="kanal2">наш Telegram-канал</span>
-                    </a>
-                </div>
-                <div class="tginst2" id="tginst2">
-                    <img src="instlogo.png" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogo">
-                        <span id="kanalcase">@ru.carbon</span>
-                        <span id="kanal2">наш Instagram</span>
-                    </a>
-                </div>
-            </div>
 
-            <video class="video2" id="myVideo2" width="100%" muted playsinline>
-                <source src="CARBANIM.MP4" type="video/quicktime">
-                Ваш браузер не поддерживает тег video.
-            </video>
-
-
-            
+  
             <div class="inner">
                 <div class="item" id="TPC">
                     <img src="FGB.JPG" alt="" class="img">
                     <div class="price">3699₽</div>
                     <div class="namecase">FORGED GLOSSY-OBSIDIAN</div>
                     <button class="btn" id="btn1">купить</button>
+                </div>
+                <div class="item" id="TPC">
+                    <img src="FGAMETH.JPG" alt="" class="img">
+                    <div class="price">3699₽</div>
+                    <div class="namecase">FORGED GLOSSY-AMETHYST</div>
+                    <button class="btn" id="btn6">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="SAPHIR.JPG" alt="" class="img">
@@ -1059,10 +831,28 @@
                     <button class="btn" id="btn3">купить</button>
                 </div>
                 <div class="item" id="TPC">
+                    <img src="fgCLASSIC.JPG" alt="" class="img">
+                    <div class="price">3699₽</div>
+                    <div class="namecase">FORGED GLOSSY-CLASSIC</div>
+                    <button class="btn" id="btn16">купить</button>
+                </div>
+                <div class="item" id="TPC">
+                    <img src="fMATCLASSIC.JPG" alt="" class="img">
+                    <div class="price">3699₽</div>
+                    <div class="namecase">FORGED MATTE-CLASSIC</div>
+                    <button class="btn" id="btn17">купить</button>
+                </div>
+                <div class="item" id="TPC">
                     <img src="EMERALD.JPG" alt="" class="img">
                     <div class="price">3699₽</div>
                     <div class="namecase">FORGED GLOSSY-EMERALD</div>
                     <button class="btn" id="btn4">купить</button>
+                </div>
+                <div class="item" id="TPC">
+                    <img src="FMobsidian.JPG" alt="" class="img">
+                    <div class="price">3699₽</div>
+                    <div class="namecase">FORGED MATTE-OBSIDIAN</div>
+                    <button class="btn" id="btn18">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="GOLD.JPG" alt="" class="img">
@@ -1071,15 +861,9 @@
                     <button class="btn" id="btn5">купить</button>
                 </div>
                 <div class="item" id="TPC">
-                    <img src="OPAL.JPG" alt="" class="img">
-                    <div class="price">3699₽</div>
-                    <div class="namecase">FORGED GLOSSY-OPAL</div>
-                    <button class="btn" id="btn6">купить</button>
-                </div>
-                <div class="item" id="TPC">
                     <img src="classic1.PNG" alt="" class="img">
                     <div class="price">3299₽</div>
-                    <div class="namecase">WOVEN GLOSSY-CLASSIC</div>
+                    <div class="namecase">WOVEN GLOSSY-CLASSIC (Z)</div>
                     <button class="btn" id="btn7">купить</button>
                 </div>
                 <div class="item" id="TPC">
@@ -1172,68 +956,25 @@
                       <div id="lottie-icon" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order1">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-1">
-                <button id="5post-1" class="delivery-btn1 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark1">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow" style="display: none;">
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
                     </div>
-                </button>
+                    <button id="sizeButton" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order1">добавить в корзину</button>
+
             
-                <button id="pochta-1" class="delivery-btn1" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark1">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-1" class="delivery-btn1" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark1">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             
 
             <div class="strip"></div>
@@ -1263,6 +1004,77 @@
 
         </form>
 
+        <form id="form6" class="hidden">
+            <div class="product-details">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="FGAMETH.JPG" alt="" class="img2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="FGB2.JPG" alt="" class="img2">
+                        </div>
+                        <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
+                    </div>
+
+                </div>
+                <div class="y">2 ФОТО</div>
+                <div class="namecont">
+                    <div class="left-column">
+                      <div class="namecase2">FORGED GLOSSY-AMETHYST</div>
+                      <div class="price2">3699₽</div>
+                    </div>
+                    <div class="right-column">
+                      <div id="lottie-icon2" style="width: 120px; height: 120px;"></div>
+                    </div>
+                </div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow6" style="display: none;">
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                    </div>
+                    <button id="sizeButton6" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order6">добавить в корзину</button>
+
+            
+            <div class="strip"></div>
+            <div class="del">
+                <div class="svg-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
+                    </svg>
+                </div>
+                <div class="text-container">
+                    <p style="font-weight: 600;">Особенности:</p>
+                    <p>100% арамидное волокно</p>
+                    <p>Кованый карбон</p>
+                    <p>Глянцевая поверхность</p>
+                    <p>Защита камеры</p>
+                    <p>Толщина - 0,6 мм (обычный чехол - 1,5-3 мм)</p>
+                    <p>Вес - 18 г (обычный чехол - 30-50 г)</p>
+                    <p>Чехол совместим с MagSafe</p>
+                </div>
+            </div>
+            <div class="stripniz"></div>
+
+
+
+
+
+        </form>
+
+
+        
+
         <form id="form2" class="hidden">
             <div class="product-details">
                 <div class="swiper-container">
@@ -1287,68 +1099,24 @@
                       <div id="lottie-icon2" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton2" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow2" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order2">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-2">
-                <button id="5post-2" class="delivery-btn2 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark2">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow2" style="display: none;">
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
                     </div>
-                </button>
+                    <button id="sizeButton2" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order2">добавить в корзину</button>
+
             
-                <button id="pochta-2" class="delivery-btn2" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark2">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-2" class="delivery-btn2" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark2">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -1399,68 +1167,24 @@
                       <div id="lottie-icon3" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton3" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow3" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order3">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-3">
-                <button id="5post-3" class="delivery-btn3 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark3">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow3" style="display: none;">
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
                     </div>
-                </button>
+                    <button id="sizeButton3" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order3">добавить в корзину</button>
+
             
-                <button id="pochta-3" class="delivery-btn3" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark3">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-3" class="delivery-btn3" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark3">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -1512,68 +1236,24 @@
                       <div id="lottie-icon4" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton4" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow4" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order4">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-4">
-                <button id="5post-4" class="delivery-btn4 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark4">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow4" style="display: none;">
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
                     </div>
-                </button>
+                    <button id="sizeButton4" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order4">добавить в корзину</button>
+
             
-                <button id="pochta-4" class="delivery-btn4" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark4">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-4" class="delivery-btn4" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark4">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -1599,6 +1279,223 @@
 
 
         </form>
+
+
+        <form id="form16" class="hidden">
+            <div class="product-details">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="fgCLASSIC.JPG" alt="" class="img2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="FGB2.JPG" alt="" class="img2">
+                        </div>
+                        <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
+                    </div>
+
+                </div>
+                <div class="y">2 ФОТО</div>
+                <div class="namecont">
+                    <div class="left-column">
+                      <div class="namecase2">FORGED GLOSSY-CLASSIC</div>
+                      <div class="price2">3699₽</div>
+                    </div>
+                    <div class="right-column">
+                      <div id="lottie-icon2" style="width: 120px; height: 120px;"></div>
+                    </div>
+                </div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow16" style="display: none;">
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                    </div>
+                    <button id="sizeButton16" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order16">добавить в корзину</button>
+
+            
+            <div class="strip"></div>
+            <div class="del">
+                <div class="svg-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
+                    </svg>
+                </div>
+                <div class="text-container">
+                    <p style="font-weight: 600;">Особенности:</p>
+                    <p>100% арамидное волокно</p>
+                    <p>Кованый карбон</p>
+                    <p>Глянцевая поверхность</p>
+                    <p>Защита камеры</p>
+                    <p>Толщина - 0,6 мм (обычный чехол - 1,5-3 мм)</p>
+                    <p>Вес - 18 г (обычный чехол - 30-50 г)</p>
+                    <p>Чехол совместим с MagSafe</p>
+                </div>
+            </div>
+            <div class="stripniz"></div>
+
+
+
+
+
+        </form>
+
+
+
+
+        <form id="form17" class="hidden">
+            <div class="product-details">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="fMATCLASSIC.JPG" alt="" class="img2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="FM2.JPG" alt="" class="img2">
+                        </div>
+                        <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
+                    </div>
+
+                </div>
+                <div class="y">2 ФОТО</div>
+                <div class="namecont">
+                    <div class="left-column">
+                      <div class="namecase2">FORGED MATTE-CLASSIC</div>
+                      <div class="price2">3699₽</div>
+                    </div>
+                    <div class="right-column">
+                      <div id="lottie-icon2" style="width: 120px; height: 120px;"></div>
+                    </div>
+                </div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow17" style="display: none;">
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                    </div>
+                    <button id="sizeButton17" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order17">добавить в корзину</button>
+
+            
+            <div class="strip"></div>
+            <div class="del">
+                <div class="svg-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
+                    </svg>
+                </div>
+                <div class="text-container">
+                    <p style="font-weight: 600;">Особенности:</p>
+                    <p>100% арамидное волокно</p>
+                    <p>Кованый карбон</p>
+                    <p>Глянцевая поверхность</p>
+                    <p>Защита камеры</p>
+                    <p>Толщина - 0,6 мм (обычный чехол - 1,5-3 мм)</p>
+                    <p>Вес - 18 г (обычный чехол - 30-50 г)</p>
+                    <p>Чехол совместим с MagSafe</p>
+                </div>
+            </div>
+            <div class="stripniz"></div>
+
+
+
+
+
+        </form>
+
+
+
+
+        <form id="form18" class="hidden">
+            <div class="product-details">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="FMobsidian.JPG" alt="" class="img2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="FM2.JPG" alt="" class="img2">
+                        </div>
+                        <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
+                    </div>
+
+                </div>
+                <div class="y">2 ФОТО</div>
+                <div class="namecont">
+                    <div class="left-column">
+                      <div class="namecase2">FORGED MATTE-OBSIDIAN</div>
+                      <div class="price5">3699₽</div>
+                    </div>
+                    <div class="right-column">
+                      <div id="lottie-icon18" style="width: 120px; height: 120px;"></div>
+                    </div>
+                </div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow18" style="display: none;">
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                    </div>
+                    <button id="sizeButton18" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order18">добавить в корзину</button>
+
+            
+            <div class="strip"></div>
+            <div class="del">
+                <div class="svg-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
+                    </svg>
+                </div>
+                <div class="text-container">
+                    <p style="font-weight: 600;">Особенности:</p>
+                    <p>100% арамидное волокно</p>
+                    <p>Кованый карбон</p>
+                    <p>Глянцевая поверхность</p>
+                    <p>Защита камеры</p>
+                    <p>Толщина - 0,6 мм (обычный чехол - 1,5-3 мм)</p>
+                    <p>Вес - 18 г (обычный чехол - 30-50 г)</p>
+                    <p>Чехол совместим с MagSafe</p>
+                </div>
+            </div>
+            <div class="stripniz"></div>
+
+
+
+
+
+
+        </form>
+
+
+        
+
+
 
         <form id="form5" class="hidden">
             <div class="product-details">
@@ -1624,68 +1521,24 @@
                       <div id="lottie-icon5" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton5" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow5" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order5">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-5">
-                <button id="5post-5" class="delivery-btn5 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark5">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow5" style="display: none;">
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
                     </div>
-                </button>
+                    <button id="sizeButton5" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order5">добавить в корзину</button>
+
             
-                <button id="pochta-5" class="delivery-btn5" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark5">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-5" class="delivery-btn5" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark5">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -1713,118 +1566,6 @@
 
         </form>
 
-        <form id="form6" class="hidden">
-            <div class="product-details">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="OPAL.JPG" alt="" class="img2">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="FGB2.JPG" alt="" class="img2">
-                        </div>
-                        <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
-                    </div>
-
-                </div>
-                <div class="y">2 ФОТО</div>
-                <div class="namecont">
-                    <div class="left-column">
-                      <div class="namecase2">FORGED GLOSSY-OPAL</div>
-                      <div class="price6">3699₽</div>
-                    </div>
-                    <div class="right-column">
-                      <div id="lottie-icon6" style="width: 120px; height: 120px;"></div>
-                    </div>
-                </div>
-                <button id="sizeButton6" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow6" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order6">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-6">
-                <button id="5post-6" class="delivery-btn6 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark6">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="pochta-6" class="delivery-btn6" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark6">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-6" class="delivery-btn6" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark6">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Особенности:</p>
-                    <p>100% арамидное волокно</p>
-                    <p>Кованый карбон</p>
-                    <p>Глянцевая поверхность</p>
-                    <p>Защита камеры</p>
-                    <p>Толщина - 0,6 мм (обычный чехол - 1,5-3 мм)</p>
-                    <p>Вес - 18 г (обычный чехол - 30-50 г)</p>
-                    <p>Чехол совместим с MagSafe</p>
-                </div>
-            </div>
-            <div class="stripniz"></div>
-
-
-
-
-
-
-        </form>
 
 
         <form id="form7" class="hidden">
@@ -1841,81 +1582,36 @@
                 <div class="y">1 ФОТО</div>
                 <div class="namecont">
                     <div class="left-column">
-                      <div class="namecase2">WOVEN GLOSSY-CLASSIC</div>
+                      <div class="namecase2">WOVEN GLOSSY-CLASSIC (Z)</div>
                       <div class="price7">3299₽</div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon7" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton7" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow7" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 15</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 14</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <div class="model1">iPhone 13</div>
-                    <div class="model1">iPhone 12 Pro Max</div>
-                    <div class="model1">iPhone 12 Pro</div>
-                    <div class="model1">iPhone 12</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order7">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-7">
-                <button id="5post-7" class="delivery-btn7 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark7">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow7" style="display: none;">
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 15</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 14</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                        <div class="model1">iPhone 13</div>
+                        <div class="model1">iPhone 12 Pro Max</div>
+                        <div class="model1">iPhone 12/12 Pro</div>
                     </div>
-                </button>
+                    <button id="sizeButton7" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order7">добавить в корзину</button>
+
             
-                <button id="pochta-7" class="delivery-btn7" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark7">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-7" class="delivery-btn7" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark7">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -1965,74 +1661,29 @@
                       <div id="lottie-icon8" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton8" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow8" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 15</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 14</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <div class="model1">iPhone 13</div>
-                    <div class="model1">iPhone 12 Pro Max</div>
-                    <div class="model1">iPhone 12 Pro</div>
-                    <div class="model1">iPhone 12</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order8">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-8">
-                <button id="5post-8" class="delivery-btn8 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark8">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow8" style="display: none;">
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 15</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 14</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                        <div class="model1">iPhone 13</div>
+                        <div class="model1">iPhone 12 Pro Max</div>
+                        <div class="model1">iPhone 12/12 Pro</div>
                     </div>
-                </button>
+                    <button id="sizeButton8" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order8">добавить в корзину</button>
+
             
-                <button id="pochta-8" class="delivery-btn8" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark8">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-8" class="delivery-btn8" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark8">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2086,79 +1737,35 @@
                       <div id="lottie-icon9" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton9" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow9" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 16 Pro Max</div>
-                    <div class="model1">iPhone 16 Pro</div>
-                    <div class="model1">iPhone 16</div>
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 15</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 14</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <div class="model1">iPhone 13</div>
-                    <div class="model1">iPhone 12 Pro Max</div>
-                    <div class="model1">iPhone 12/12 Pro</div>
-                    <div class="model1">iPhone 11 Pro Max</div>
-                    <div class="model1">iPhone 11 Pro</div>
-                    <div class="model1">iPhone 11</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order9">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-9">
-                <button id="5post-9" class="delivery-btn9 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark9">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow9" style="display: none;">
+                        <div class="model1">iPhone 16 Pro Max</div>
+                        <div class="model1">iPhone 16 Pro</div>
+                        <div class="model1">iPhone 16</div>
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 15</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 14</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                        <div class="model1">iPhone 13</div>
+                        <div class="model1">iPhone 12 Pro Max</div>
+                        <div class="model1">iPhone 12/12 Pro</div>
+                        <div class="model1">iPhone 11 Pro Max</div>
+                        <div class="model1">iPhone 11 Pro</div>
+                        <div class="model1">iPhone 11</div>
                     </div>
-                </button>
+                    <button id="sizeButton9" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order9">добавить в корзину</button>
+
             
-                <button id="pochta-9" class="delivery-btn9" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark9">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-9" class="delivery-btn9" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark9">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2172,10 +1779,10 @@
                     <p>Основа из TPU (термополиуретан)</p>
                     <p>Кованый карбон</p>
                     <p>Глянцевая поверхность</p>
-                    <p>Толщина - 1,2 мм (обычный чехол - 1,5-3 мм) (обычный чехол - 1,5-3 мм)</p>
-                    <p>Вес - 24 г (обычный чехол - 30-50 г) (обычный чехол - 30-50 г)</p>
+                    <p>Толщина - 1,2 мм (обычный чехол - 1,5-3 мм)</p>
+                    <p>Вес - 24 г (обычный чехол - 30-50 г)</p>
                     <p>Противоскользящие элементы</p>
-                    <p>Чехол совместим с MagSafe</p>
+                    <p>Чехол совместим с MagSafe (встроенный магнит)</p>
                 </div>
             </div>
             <div class="stripniz"></div>
@@ -2215,79 +1822,35 @@
                       <div id="lottie-icon10" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton10" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow10" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 16 Pro Max</div>
-                    <div class="model1">iPhone 16 Pro</div>
-                    <div class="model1">iPhone 16</div>
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 15</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 14</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <div class="model1">iPhone 13</div>
-                    <div class="model1">iPhone 12 Pro Max</div>
-                    <div class="model1">iPhone 12/12 Pro</div>
-                    <div class="model1">iPhone 11 Pro Max</div>
-                    <div class="model1">iPhone 11 Pro</div>
-                    <div class="model1">iPhone 11</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order10">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-10">
-                <button id="5post-10" class="delivery-btn10 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark10">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow10" style="display: none;">
+                        <div class="model1">iPhone 16 Pro Max</div>
+                        <div class="model1">iPhone 16 Pro</div>
+                        <div class="model1">iPhone 16</div>
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 15</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 14</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                        <div class="model1">iPhone 13</div>
+                        <div class="model1">iPhone 12 Pro Max</div>
+                        <div class="model1">iPhone 12/12 Pro</div>
+                        <div class="model1">iPhone 11 Pro Max</div>
+                        <div class="model1">iPhone 11 Pro</div>
+                        <div class="model1">iPhone 11</div>
                     </div>
-                </button>
+                    <button id="sizeButton10" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order10">добавить в корзину</button>
+
             
-                <button id="pochta-10" class="delivery-btn10" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark10">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-10" class="delivery-btn10" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark10">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2304,7 +1867,7 @@
                     <p>Толщина - 1,2 мм (обычный чехол - 1,5-3 мм)</p>
                     <p>Вес - 24 г (обычный чехол - 30-50 г)</p>
                     <p>Противоскользящие элементы</p>
-                    <p>Чехол совместим с MagSafe</p>
+                    <p>Чехол совместим с MagSafe (встроенный магнит)</p>
                 </div>
             </div>
             <div class="stripniz"></div>
@@ -2344,79 +1907,35 @@
                       <div id="lottie-icon11" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton11" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow11" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 16 Pro Max</div>
-                    <div class="model1">iPhone 16 Pro</div>
-                    <div class="model1">iPhone 16</div>
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 15</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 14</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <div class="model1">iPhone 13</div>
-                    <div class="model1">iPhone 12 Pro Max</div>
-                    <div class="model1">iPhone 12/12 Pro</div>
-                    <div class="model1">iPhone 11 Pro Max</div>
-                    <div class="model1">iPhone 11 Pro</div>
-                    <div class="model1">iPhone 11</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order11">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-11">
-                <button id="5post-11" class="delivery-btn11 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark11">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow11" style="display: none;">
+                        <div class="model1">iPhone 16 Pro Max</div>
+                        <div class="model1">iPhone 16 Pro</div>
+                        <div class="model1">iPhone 16</div>
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 15</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 14</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                        <div class="model1">iPhone 13</div>
+                        <div class="model1">iPhone 12 Pro Max</div>
+                        <div class="model1">iPhone 12/12 Pro</div>
+                        <div class="model1">iPhone 11 Pro Max</div>
+                        <div class="model1">iPhone 11 Pro</div>
+                        <div class="model1">iPhone 11</div>
                     </div>
-                </button>
+                    <button id="sizeButton11" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order11">добавить в корзину</button>
+
             
-                <button id="pochta-11" class="delivery-btn11" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark11">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-11" class="delivery-btn11" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark11">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2433,7 +1952,7 @@
                     <p>Толщина - 1,2 мм (обычный чехол - 1,5-3 мм)</p>
                     <p>Вес - 24 г (обычный чехол - 30-50 г)</p>
                     <p>Противоскользящие элементы</p>
-                    <p>Чехол совместим с MagSafe</p>
+                    <p>Чехол совместим с MagSafe (встроенный магнит)</p>
                 </div>
             </div>
             <div class="stripniz"></div>
@@ -2472,79 +1991,35 @@
                       <div id="lottie-icon12" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton12" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow12" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 16 Pro Max</div>
-                    <div class="model1">iPhone 16 Pro</div>
-                    <div class="model1">iPhone 16</div>
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 15</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 14</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <div class="model1">iPhone 13</div>
-                    <div class="model1">iPhone 12 Pro Max</div>
-                    <div class="model1">iPhone 12/12 Pro</div>
-                    <div class="model1">iPhone 11 Pro Max</div>
-                    <div class="model1">iPhone 11 Pro</div>
-                    <div class="model1">iPhone 11</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order12">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-12">
-                <button id="5post-12" class="delivery-btn12 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark12">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow12" style="display: none;">
+                        <div class="model1">iPhone 16 Pro Max</div>
+                        <div class="model1">iPhone 16 Pro</div>
+                        <div class="model1">iPhone 16</div>
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 15</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 14</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                        <div class="model1">iPhone 13</div>
+                        <div class="model1">iPhone 12 Pro Max</div>
+                        <div class="model1">iPhone 12/12 Pro</div>
+                        <div class="model1">iPhone 11 Pro Max</div>
+                        <div class="model1">iPhone 11 Pro</div>
+                        <div class="model1">iPhone 11</div>
                     </div>
-                </button>
+                    <button id="sizeButton12" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order12">добавить в корзину</button>
+
             
-                <button id="pochta-12" class="delivery-btn12" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark12">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-12" class="delivery-btn12" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark12">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2561,7 +2036,7 @@
                     <p>Толщина - 1,2 мм (обычный чехол - 1,5-3 мм)</p>
                     <p>Вес - 24 г (обычный чехол - 30-50 г)</p>
                     <p>Противоскользящие элементы</p>
-                    <p>Чехол совместим с MagSafe</p>
+                    <p>Чехол совместим с MagSafe (встроенный магнит)</p>
                 </div>
             </div>
             <div class="stripniz"></div>
@@ -2600,79 +2075,35 @@
                       <div id="lottie-icon13" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton13" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow13" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 16 Pro Max</div>
-                    <div class="model1">iPhone 16 Pro</div>
-                    <div class="model1">iPhone 16</div>
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 15</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 14</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <div class="model1">iPhone 13</div>
-                    <div class="model1">iPhone 12 Pro Max</div>
-                    <div class="model1">iPhone 12/12 Pro</div>
-                    <div class="model1">iPhone 11 Pro Max</div>
-                    <div class="model1">iPhone 11 Pro</div>
-                    <div class="model1">iPhone 11</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order13">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-13">
-                <button id="5post-13" class="delivery-btn13 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark13">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow13" style="display: none;">
+                        <div class="model1">iPhone 16 Pro Max</div>
+                        <div class="model1">iPhone 16 Pro</div>
+                        <div class="model1">iPhone 16</div>
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 15</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 14</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                        <div class="model1">iPhone 13</div>
+                        <div class="model1">iPhone 12 Pro Max</div>
+                        <div class="model1">iPhone 12/12 Pro</div>
+                        <div class="model1">iPhone 11 Pro Max</div>
+                        <div class="model1">iPhone 11 Pro</div>
+                        <div class="model1">iPhone 11</div>
                     </div>
-                </button>
+                    <button id="sizeButton13" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order13">добавить в корзину</button>
+
             
-                <button id="pochta-13" class="delivery-btn13" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark13">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-13" class="delivery-btn13" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark13">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2689,7 +2120,7 @@
                     <p>Толщина - 1,2 мм (обычный чехол - 1,5-3 мм)</p>
                     <p>Вес - 24 г (обычный чехол - 30-50 г)</p>
                     <p>Противоскользящие элементы</p>
-                    <p>Чехол совместим с MagSafe</p>
+                    <p>Чехол совместим с MagSafe (встроенный магнит)</p>
                 </div>
             </div>
             <div class="stripniz"></div>
@@ -2728,79 +2159,35 @@
                       <div id="lottie-icon14" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton14" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow14" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 16 Pro Max</div>
-                    <div class="model1">iPhone 16 Pro</div>
-                    <div class="model1">iPhone 16</div>
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 15</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 14</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <div class="model1">iPhone 13</div>
-                    <div class="model1">iPhone 12 Pro Max</div>
-                    <div class="model1">iPhone 12/12 Pro</div>
-                    <div class="model1">iPhone 11 Pro Max</div>
-                    <div class="model1">iPhone 11 Pro</div>
-                    <div class="model1">iPhone 11</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order14">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-14">
-                <button id="5post-14" class="delivery-btn14 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark14">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow14" style="display: none;">
+                        <div class="model1">iPhone 16 Pro Max</div>
+                        <div class="model1">iPhone 16 Pro</div>
+                        <div class="model1">iPhone 16</div>
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 15</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 14</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                        <div class="model1">iPhone 13</div>
+                        <div class="model1">iPhone 12 Pro Max</div>
+                        <div class="model1">iPhone 12/12 Pro</div>
+                        <div class="model1">iPhone 11 Pro Max</div>
+                        <div class="model1">iPhone 11 Pro</div>
+                        <div class="model1">iPhone 11</div>
                     </div>
-                </button>
+                    <button id="sizeButton14" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order14">добавить в корзину</button>
+
             
-                <button id="pochta-14" class="delivery-btn14" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark14">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-14" class="delivery-btn14" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark14">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2817,7 +2204,7 @@
                     <p>Толщина - 1,2 мм (обычный чехол - 1,5-3 мм)</p>
                     <p>Вес - 24 г (обычный чехол - 30-50 г)</p>
                     <p>Противоскользящие элементы</p>
-                    <p>Чехол совместим с MagSafe</p>
+                    <p>Чехол совместим с MagSafe (встроенный магнит)</p>
                 </div>
             </div>
             <div class="stripniz"></div>
@@ -2856,82 +2243,35 @@
                       <div id="lottie-icon15" style="width: 120px; height: 120px;"></div>
                     </div>
                 </div>
-                <button id="sizeButton15" type="button" class="size-button">
-                    <div class="size-text">Выберите размер</div>
-                    <span class="arrow">&#x276F;</span>
-                </button>
-    
-                 <!-- Новое скрытое окно для выбора модели iPhone -->
-                <div id="iphoneModelsWindow15" style="display: none;">
-                    <!-- Здесь элементы для model1 -->
-                    <div class="model1">iPhone 16 Pro Max</div>
-                    <div class="model1">iPhone 16 Pro</div>
-                    <div class="model1">iPhone 16</div>
-                    <div class="model1">iPhone 16 Pro Max</div>
-                    <div class="model1">iPhone 16 Pro</div>
-                    <div class="model1">iPhone 16</div>
-                    <div class="model1">iPhone 15 Pro Max</div>
-                    <div class="model1">iPhone 15 Pro</div>
-                    <div class="model1">iPhone 15</div>
-                    <div class="model1">iPhone 14 Pro Max</div>
-                    <div class="model1">iPhone 14 Pro</div>
-                    <div class="model1">iPhone 14</div>
-                    <div class="model1">iPhone 13 Pro Max</div>
-                    <div class="model1">iPhone 13 Pro</div>
-                    <div class="model1">iPhone 13</div>
-                    <div class="model1">iPhone 12 Pro Max</div>
-                    <div class="model1">iPhone 12/12 Pro</div>
-                    <div class="model1">iPhone 11 Pro Max</div>
-                    <div class="model1">iPhone 11 Pro</div>
-                    <div class="model1">iPhone 11</div>
-                    <!-- Добавьте остальные модели iPhone по аналогии -->
-                </div>
-            </div>
-            <button class="order" id="order15">КУПИТЬ</button>
-
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-15">
-                <button id="5post-15" class="delivery-btn15 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark15">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
+                <div class="vbrazmera">
+                    <div id="iphoneModelsWindow15" style="display: none;">
+                        <div class="model1">iPhone 16 Pro Max</div>
+                        <div class="model1">iPhone 16 Pro</div>
+                        <div class="model1">iPhone 16</div>
+                        <div class="model1">iPhone 15 Pro Max</div>
+                        <div class="model1">iPhone 15 Pro</div>
+                        <div class="model1">iPhone 15</div>
+                        <div class="model1">iPhone 14 Pro Max</div>
+                        <div class="model1">iPhone 14 Pro</div>
+                        <div class="model1">iPhone 14</div>
+                        <div class="model1">iPhone 13 Pro Max</div>
+                        <div class="model1">iPhone 13 Pro</div>
+                        <div class="model1">iPhone 13</div>
+                        <div class="model1">iPhone 12 Pro Max</div>
+                        <div class="model1">iPhone 12/12 Pro</div>
+                        <div class="model1">iPhone 11 Pro Max</div>
+                        <div class="model1">iPhone 11 Pro</div>
+                        <div class="model1">iPhone 11</div>
                     </div>
-                </button>
+                    <button id="sizeButton15" type="button" class="size-button">
+                        <div class="size-text">Выберите размер</div>
+                        <span class="arrow">&#x276F;</span>
+                    </button>
+               </div>
+            </div>
+            <button class="order" id="order15">добавить в корзину</button>
+
             
-                <button id="pochta-15" class="delivery-btn15" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark15">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-15" class="delivery-btn15" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark15">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2948,7 +2288,7 @@
                     <p>Толщина - 1,2 мм (обычный чехол - 1,5-3 мм)</p>
                     <p>Вес - 24 г (обычный чехол - 30-50 г)</p>
                     <p>Противоскользящие элементы</p>
-                    <p>Чехол совместим с MagSafe</p>
+                    <p>Чехол совместим с MagSafe (встроенный магнит)</p>
                 </div>
             </div>
             <div class="stripniz"></div>
@@ -2990,6 +2330,7 @@
 
         <script src="https://telegram.org/js/telegram-web-app.js"></script>
         <script src="carbon.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
         
         <!-- Подключение стилей Swiper.js -->
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
