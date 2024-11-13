@@ -385,7 +385,7 @@ document.addEventListener("click", function(event) {
 // Обрабатываем применение скидки
 document.getElementById("apply-promo-btn").addEventListener("click", () => {
     const promoCode = document.getElementById("promo-code").value.toLowerCase(); // Промокод переводим в нижний регистр для совместимости
-    const validPromoCodes = ["must10", "carbon10", "puffplan", "lexus10"]; // Список валидных промокодов
+    const validPromoCodes = ["must10", "димон", "carbon10", "puffplan", "lexus10"]; // Список валидных промокодов
 
     if (validPromoCodes.includes(promoCode) && !promoApplied) {
         promoApplied = true; // Устанавливаем флаг, что скидка применена
@@ -960,7 +960,7 @@ tg.MainButton.onClick(async () => {
         const totalPrice = document.getElementById("new-price").textContent;
         const deliveryMethod = getDeliveryMethodName();
         const inputPromoCode = document.getElementById("promo-code").value.trim().toLowerCase();
-        let appliedPromoCode = promoApplied && ["must10", "carbon10", "puffplan", "lexus10"].includes(inputPromoCode) ? inputPromoCode : null;
+        let appliedPromoCode = promoApplied && ["must10", "димон", "carbon10", "puffplan", "lexus10"].includes(inputPromoCode) ? inputPromoCode : null;
 
         // Лог для отладки
         console.log('MainButton Clicked! Промокод:', appliedPromoCode, 'Метод доставки:', deliveryMethod, 'Итоговая цена:', totalPrice);
