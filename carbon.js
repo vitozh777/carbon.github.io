@@ -960,7 +960,7 @@ tg.MainButton.onClick(async () => {
         const totalPrice = document.getElementById("new-price").textContent;
         const deliveryMethod = getDeliveryMethodName();
         const inputPromoCode = document.getElementById("promo-code").value.trim().toLowerCase();
-        let appliedPromoCode = promoApplied && ["must10", "ДИМОН", "CARBON10", "puffplan", "LEXUS10"].includes(inputPromoCode) ? inputPromoCode : null;
+        let appliedPromoCode = promoApplied && ["must10", "димон", "carbon10", "puffplan", "lexus10"].includes(inputPromoCode) ? inputPromoCode : null;
 
         // Лог для отладки
         console.log('MainButton Clicked! Промокод:', appliedPromoCode, 'Метод доставки:', deliveryMethod, 'Итоговая цена:', totalPrice);
