@@ -385,7 +385,7 @@ document.addEventListener("click", function(event) {
 // Обрабатываем применение скидки
 document.getElementById("apply-promo-btn").addEventListener("click", () => {
     const promoCode = document.getElementById("promo-code").value.toLowerCase(); // Промокод переводим в нижний регистр для совместимости
-    const validPromoCodes = ["must10", "ДИМОН", "CARBON10", "puffplan", "LEXUS10"]; // Список валидных промокодов
+    const validPromoCodes = ["must10", "димон", "carbon10", "puffplan", "lexus10"]; // Список валидных промокодов
 
     if (validPromoCodes.includes(promoCode) && !promoApplied) {
         promoApplied = true; // Устанавливаем флаг, что скидка применена
