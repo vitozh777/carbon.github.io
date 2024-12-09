@@ -1292,20 +1292,20 @@ body {
     justify-content: center; /* Выравнивание по горизонтали */
     align-items: center;
     background: #ffffff;
-    padding: 10px;
 }
 
 .imgpost {
     width: 100%;
     height: auto;
-    margin-top: -30px;
+    margin-top: -10px;
 }
 
 .inner {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px 20px;
-    margin: 50px 10px;
+    margin: 10px 10px;
+    padding: 10px;
 }
 
 .img {
