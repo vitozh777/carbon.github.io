@@ -1,10 +1,15 @@
+
+
+
+
+
+
+
 let tg = window.Telegram.WebApp;
 let model1 = document.querySelectorAll(".model1");
 let model2 = document.querySelectorAll(".model2");
 let model3 = document.querySelectorAll(".model3");
 let model4 = document.querySelectorAll(".model4");
-let modelcompl = document.querySelectorAll(".modelcompl");
-let modelcomplair = document.querySelectorAll(".modelcomplair");
 let priceElement = document.querySelector(".price");
 let form1 = document.getElementById("form1");
 let form2 = document.getElementById("form2");
@@ -555,19 +560,7 @@ const modelInfo1 = {
 };
 
 
-const modelInfo2 = {
-    "iPhone 15 Pro Max": "3299₽",
-    "iPhone 15 Pro": "3299₽",
-    "iPhone 15": "3299₽",
-    "iPhone 14 Pro Max": "3299₽",
-    "iPhone 14 Pro": "3299₽",
-    "iPhone 14": "3299₽",
-    "iPhone 13 Pro Max": "3299₽",
-    "iPhone 13 Pro": "3299₽",
-    "iPhone 13": "3299₽",
-    "iPhone 12 Pro Max": "3299₽",
-    "iPhone 12/12 Pro": "3299₽",
-};
+
 
 
 const modelInfo3 = {
@@ -598,36 +591,7 @@ const modelInfo4 = {
 };
 
 
-const modelcomplInfo5 = {
-    "iPhone 15 Pro Max": "1890₽",
-    "iPhone 15 Pro": "1710₽",
-    "iPhone 15 Plus": "1890₽",
-    "iPhone 15": "1710₽",
-    "iPhone 14 Pro Max": "1890₽",
-    "iPhone 14 Pro": "1710₽",
-    "iPhone 14 Plus": "1890₽",
-    "iPhone 14": "1710₽",
-    "iPhone 13 Pro Max": "1890₽",
-    "iPhone 13 Pro": "1710₽",
-    "iPhone 13": "1710₽",
-    "iPhone 13 mini": "1710₽",
-    "iPhone 12 Pro Max": "1890₽",
-    "iPhone 12/12 Pro": "1710₽",
-    "iPhone 12 mini": "1710₽",
-    "iPhone 11 Pro Max": "1890₽",
-    "iPhone 11 Pro": "1710₽",
-    "iPhone 11": "1710₽",
-    "iPhone Xs Max": "1710₽",
-    "iPhone Xr": "1530₽",
-    "iPhone X/Xs": "1530₽",
-    "iPhone 8 Plus/7 Plus": "1530₽",
-    "iPhone 6/7/8/SE20": "1530₽",
-};
-const modelcomplairInfo6 = {
-    "AirPods 1/2": "899₽",
-    "AirPods Pro/Pro(2)": "899₽",
-    "AirPods 3": "899₽",
-};
+
 
 
 
