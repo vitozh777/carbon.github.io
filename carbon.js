@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 let tg = window.Telegram.WebApp;
 let model1 = document.querySelectorAll(".model1");
 let model2 = document.querySelectorAll(".model2");
@@ -150,6 +143,37 @@ var animation = lottie.loadAnimation({
     path: 'cart.json'
 });
 
+var animation = lottie.loadAnimation({
+    container: document.getElementById('chr-sale-icon'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'chr-sale.json'
+});
+
+var animation = lottie.loadAnimation({
+    container: document.getElementById('del-icon'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'del.json'
+});
+
+// Инициализация анимации для всех candy-icon
+document.addEventListener('DOMContentLoaded', () => {
+    const candyIcons = document.querySelectorAll('.candy-icon');
+    candyIcons.forEach(icon => {
+        lottie.loadAnimation({
+            container: icon, // Контейнер текущей иконки
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'candy.json', // Убедитесь, что путь к файлу правильный
+        });
+    });
+});
+
+
 
 let cartItems = [];
 
@@ -174,6 +198,9 @@ function updateCartDisplay() {
         const cartItem = document.createElement("div");
         cartItem.classList.add("cart-item");
 
+        // Рассчитываем цену со скидкой
+        const discountedPrice = Math.round(item.price * 0.85);
+
         cartItem.innerHTML = `
             <div class="item-img">
                 <img src="${item.imageUrl}" alt="${item.name}" class="item-image"> <!-- Фото товара -->
@@ -181,7 +208,10 @@ function updateCartDisplay() {
             <div class="item-info">
                 <div class="item-name">${item.name}</div> <!-- Модель товара -->
                 <div class="item-model">${item.model}</div> <!-- Размер товара -->
-                <div class="item-price">${item.price}₽</div> <!-- Цена товара -->
+                <div class="item-cont-price">
+                    <div class="item-price">${item.price}₽</div> <!-- Цена товара -->
+                    <div class="item-skidprice">${discountedPrice}₽</div> <!-- Цена со скидкой -->
+                </div>
             </div>
             <div class="item-quantity">
                 <button onclick="updateQuantity(${item.id}, '${item.model}', -1)">-</button>
@@ -195,6 +225,7 @@ function updateCartDisplay() {
 
     updateTotalPrice();  
 }
+
 
 
 document.getElementById("close-cart").addEventListener("click", function() {
@@ -267,12 +298,9 @@ function updateCartCounter() {
 function updateTotalPrice() {
     // Считаем общую цену товаров
     let totalItemsPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
-    // Применяем скидку 10%, если промокод введён
-    let discountedItemsPrice = totalItemsPrice;
-    if (promoApplied) {
-        discountedItemsPrice *= 0.9; // Применяем скидку 10%
-    }
+
+    // Применяем скидку 15% для всех покупателей
+    let discountedItemsPrice = totalItemsPrice * 0.85; // Скидка 15%
 
     // Определяем общую цену без учёта скидки (с доставкой)
     const totalWithoutDiscount = totalItemsPrice + deliveryPrice;
@@ -294,16 +322,11 @@ function updateTotalPrice() {
     const oldPriceElement = document.getElementById("old-price");
     const newPriceElement = document.getElementById("new-price");
 
-    if (promoApplied) {
-        oldPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + 20)}₽`; // Старая цена
-        newPriceElement.textContent = `${totalPrice}₽`; // Новая цена со скидкой
-        oldPriceElement.classList.remove("hidden"); // Показываем старую цену
-        newPriceElement.classList.add("discount-applied"); // Меняем цвет новой цены на красный
-    } else {
-        newPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + (stickerPrice > 0 ? stickerPrice : 0))}₽`; // Без скидки, цена серого цвета
-        oldPriceElement.classList.add("hidden"); // Скрываем старую цену
-        newPriceElement.classList.remove("discount-applied"); // Убираем красный цвет
-    }
+    // Отображаем старую и новую цену с учётом скидки
+    oldPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + (stickerPrice > 0 ? stickerPrice : 0))}₽`; // Старая цена
+    newPriceElement.textContent = `${totalPrice}₽`; // Новая цена со скидкой
+    oldPriceElement.classList.remove("hidden"); // Показываем старую цену
+    newPriceElement.classList.add("discount-applied"); // Меняем цвет новой цены на красный
 
     // Обновляем цену за наклейки
     document.getElementById("sticker-price").textContent = stickerPrice >= 0 ? `${stickerPrice}₽` : "0₽";
@@ -311,6 +334,28 @@ function updateTotalPrice() {
     // Обновляем подсказку по наклейкам
     updateStickerHint(totalWithoutDiscount);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Делаем кнопку "Применить скидку" неактивной
+    const applyDiscountButton = document.getElementById("apply-discount");
+    if (applyDiscountButton) {
+        applyDiscountButton.disabled = true; // Устанавливаем атрибут disabled
+        applyDiscountButton.style.cursor = "not-allowed"; // Меняем курсор на "запрещён"
+        applyDiscountButton.style.opacity = "0.5"; // Меняем прозрачность для визуального эффекта
+    }
+
+    // Если всплывающее окно промокода всё ещё используется, скрываем его
+    const promoPopup = document.getElementById("promo-popup");
+    if (promoPopup) {
+        promoPopup.classList.add("hidden");
+    }
+
+    const blurOverlay = document.getElementById("blur-overlay");
+    if (blurOverlay) {
+        blurOverlay.classList.add("hidden");
+    }
+});
+
 
 // Выбор метода доставки
 function selectDeliveryMethod(price) {
@@ -332,7 +377,6 @@ function getDeliveryMethodName() {
 // Разблокировка кнопок корзины
 function enableCartControls() {
     document.getElementById("toggle-sticker").disabled = false;
-    document.getElementById("apply-discount").disabled = false;
     document.getElementById("promo-code").disabled = false;
     document.getElementById("apply-promo-btn").disabled = false;
 
@@ -562,7 +606,6 @@ const modelInfo1 = {
 
 
 
-
 const modelInfo3 = {
     "iPhone 16 Pro Max": "2099₽",
     "iPhone 16 Pro": "2099₽",
@@ -589,7 +632,6 @@ const modelInfo4 = {
     "AirPods Pro/Pro(2)": "2299₽",
     "AirPods 3": "2299₽",
 };
-
 
 
 
@@ -690,8 +732,6 @@ const iphoneModelsWindow3 = document.getElementById("iphoneModelsWindow3");
 const iphoneModelsWindow4 = document.getElementById("iphoneModelsWindow4");
 const iphoneModelsWindow5 = document.getElementById("iphoneModelsWindow5");
 const iphoneModelsWindow6 = document.getElementById("iphoneModelsWindow6");
-const iphoneModelsWindow7 = document.getElementById("iphoneModelsWindow7");
-const iphoneModelsWindow8 = document.getElementById("iphoneModelsWindow8");
 const iphoneModelsWindow9 = document.getElementById("iphoneModelsWindow9");
 const iphoneModelsWindow10 = document.getElementById("iphoneModelsWindow10");
 const iphoneModelsWindow11 = document.getElementById("iphoneModelsWindow11");
@@ -3054,7 +3094,6 @@ order18.addEventListener("click", (event) => {
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
-
 
 
 

@@ -43,6 +43,7 @@
             </div>
 
             <div class="contacts-header" onclick="toggleContacts()">
+                <div id="chr-sale-icon" style="width: 60px; height: 60px;margin-left: 10px;margin-top: 16px;position: fixed; z-index: 10000;"></div>
                 <span>Контакты</span>
                 <div id="arrow" class="arrow-4">
                     <span class="arrow-4-left"></span>
@@ -110,7 +111,7 @@
                 <span class="close-button" id="close-cart"></span>
             </div>
             <button id="apply-discount" disabled>
-                <span class="apply-title">Применить скидку</span>
+                <span class="apply-title">Скидка 15% уже применена</span>
             </button>
 
             <div class="strip"></div>
@@ -138,11 +139,7 @@
             <!-- Блок выбора метода доставки -->
             <div class="cart-delivery">
                 <div class="del">
-                    <div class="svg-container">
-                        <svg xmlns="http://www.w3.org/2000/svg">
-                            <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                        </svg>
-                    </div>
+                    <div id="del-icon" style="width: 30px; height: 30px; margin-right: 5px; margin-top: -4px;"></div>
                     <div class="text-container">
                         <p style="font-weight: 600;">Доставка:</p>
                         <p>Наличие уточняйте у оператора</p>
@@ -222,49 +219,73 @@
             <div class="inner">
                 <div class="item" id="TPC">
                     <img src="airobsid.JPG" alt="" class="img">
-                    <div class="price">2299₽</div>
+                    <div class="price-container">
+                        <div class="price">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-OBSIDIAN</div>
                     <button class="купить" id="купить1">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="airsaphir.jpg" alt="" class="img">
-                    <div class="price">2299₽</div>
+                    <div class="price-container">
+                        <div class="price">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-SAPHIR</div>
                     <button class="купить" id="купить2">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="airrubin.jpg" alt="" class="img">
-                    <div class="price">2299₽</div>
+                    <div class="price-container">
+                        <div class="price">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-RUBIN</div>
                     <button class="купить" id="купить3">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="airemerald.jpg" alt="" class="img">
-                    <div class="price">2299₽</div>
+                    <div class="price-container">
+                        <div class="price">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-EMERALD</div>
                     <button class="купить" id="купить4">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="airgold.jpg" alt="" class="img">
-                    <div class="price">2299₽</div>
+                    <div class="price-container">
+                        <div class="price">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-GOLD</div>
                     <button class="купить" id="купить5">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="airopal.jpg" alt="" class="img">
-                    <div class="price">2299₽</div>
+                    <div class="price-container">
+                        <div class="price">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-OPAL</div>
                     <button class="купить" id="купить6">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="aironyx.JPG" alt="" class="img">
-                    <div class="price">2299₽</div>
+                    <div class="price-container">
+                        <div class="price">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                    </div>
                     <div class="namecase">FORGED MATTE-ONYX</div>
                     <button class="купить" id="купить7">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="airclassic.JPG" alt="" class="img">
-                    <div class="price">2299₽</div>
+                    <div class="price-container">
+                        <div class="price">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                    </div>
                     <div class="namecase">WOVEN GLOSSY-CLASSIC</div>
                     <button class="купить" id="купить8">купить</button>
                 </div>
@@ -305,8 +326,11 @@
                 <div class="y">1 ФОТО</div>
                 <div class="namecontAir">
                     <div class="left-column">
-                      <div class="namecase2">FORGED GLOSSY-OBSIDIAN</div>
-                      <div class="price1">2299₽</div>
+                        <div class="namecase2">FORGED GLOSSY-OBSIDIAN</div>
+                        <div class="price-container1">
+                            <div class="price1">2299₽</div>
+                            <div class="skidprice">1954₽</div>
+                        </div>
                     </div>
                 </div>
                 <div class="vbrazmera">
@@ -331,11 +355,7 @@
 
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -375,7 +395,10 @@
                 <div class="namecontAir">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-SAPHIR</div>
-                      <div class="price2">2299₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                      </div>
                     </div>
                 </div>
                 <div class="vbrazmera">
@@ -398,11 +421,7 @@
 
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -437,7 +456,10 @@
                 <div class="namecontAir">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-RUBIN</div>
-                      <div class="price3">2299₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                      </div>
                     </div>
                 </div>
                 <div class="vbrazmera">
@@ -460,11 +482,7 @@
 
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -498,7 +516,10 @@
                 <div class="namecontAir">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-EMERALD</div>
-                      <div class="price3">2299₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                      </div>
                     </div>
                 </div>
                 <div class="vbrazmera">
@@ -519,11 +540,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -557,7 +574,10 @@
                 <div class="namecontAir">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-GOLD</div>
-                      <div class="price3">2299₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                      </div>
                     </div>
                 </div>
                 <div class="vbrazmera">
@@ -578,11 +598,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -616,7 +632,10 @@
                 <div class="namecontAir">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-OPAL</div>
-                      <div class="price3">2299₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                      </div>
                     </div>
                 </div>
                 <div class="vbrazmera">
@@ -637,11 +656,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -675,7 +690,10 @@
                 <div class="namecontAir">
                     <div class="left-column">
                       <div class="namecase2">FORGED MATTE-ONYX</div>
-                      <div class="price3">2299₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                      </div>
                     </div>
                 </div>
                 <div class="vbrazmera">
@@ -696,11 +714,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -734,7 +748,10 @@
                 <div class="namecontAir">
                     <div class="left-column">
                       <div class="namecase2">WOVEN GLOSSY-CLASSIC</div>
-                      <div class="price3">2299₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2299₽</div>
+                        <div class="skidprice">1954₽</div>
+                      </div>
                     </div>
                 </div>
                 <div class="vbrazmera">
@@ -755,11 +772,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -803,103 +816,152 @@
 
 
         <div class="container" id="thepuffercase">
-
+            
             <img src="snowcarbon.PNG" alt="" class="imgpost">
 
+  
             <div class="inner">
                 <div class="item" id="TPC">
                     <img src="FGB.JPG" alt="" class="img">
-                    <div class="price">3699₽</div>
+                    <div class="price-container">
+                        <div class="price">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-OBSIDIAN</div>
                     <button class="btn" id="btn1">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="FGAMETH.JPG" alt="" class="img">
-                    <div class="price">3699₽</div>
+                    <div class="price-container">
+                        <div class="price">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-AMETHYST</div>
                     <button class="btn" id="btn6">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="SAPHIR.JPG" alt="" class="img">
-                    <div class="price">3699₽</div>
+                    <div class="price-container">
+                        <div class="price">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-SAPHIR</div>
                     <button class="btn" id="btn2">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="RUBIN.JPG" alt="" class="img">
-                    <div class="price">3699₽</div>
+                    <div class="price-container">
+                        <div class="price">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-RUBIN</div>
                     <button class="btn" id="btn3">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="fgCLASSIC.JPG" alt="" class="img">
-                    <div class="price">3699₽</div>
+                    <div class="price-container">
+                        <div class="price">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-CLASSIC</div>
                     <button class="btn" id="btn16">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="fMATCLASSIC.JPG" alt="" class="img">
-                    <div class="price">3699₽</div>
+                    <div class="price-container">
+                        <div class="price">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                    </div>
                     <div class="namecase">FORGED MATTE-CLASSIC</div>
                     <button class="btn" id="btn17">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="EMERALD.JPG" alt="" class="img">
-                    <div class="price">3699₽</div>
+                    <div class="price-container">
+                        <div class="price">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-EMERALD</div>
                     <button class="btn" id="btn4">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="FMobsidian.JPG" alt="" class="img">
-                    <div class="price">3699₽</div>
+                    <div class="price-container">
+                        <div class="price">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                    </div>
                     <div class="namecase">FORGED MATTE-OBSIDIAN</div>
                     <button class="btn" id="btn18">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="GOLD.JPG" alt="" class="img">
-                    <div class="price">3699₽</div>
+                    <div class="price-container">
+                        <div class="price">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                    </div>
                     <div class="namecase">FORGED GLOSSY-GOLD</div>
                     <button class="btn" id="btn5">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="QUARTZ.JPG" alt="" class="img">
-                    <div class="price">2099₽</div>
+                    <div class="price-container">
+                        <div class="price">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                    </div>
                     <div class="namecase">FORGED HYBRID-QUARTZ</div>
                     <button class="btn" id="btn9">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="SILBER.JPG" alt="" class="img">
-                    <div class="price">2099₽</div>
+                    <div class="price-container">
+                        <div class="price">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                    </div>
                     <div class="namecase">FORGED HYBRID-SILBER</div>
                     <button class="btn" id="btn10">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="SAPHIRhybrid.JPG" alt="" class="img">
-                    <div class="price">2099₽</div>
+                    <div class="price-container">
+                        <div class="price">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                    </div>
                     <div class="namecase">FORGED HYBRID-SAPHIR</div>
                     <button class="btn" id="btn11">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="AMETHYST.JPG" alt="" class="img">
-                    <div class="price">2099₽</div>
+                    <div class="price-container">
+                        <div class="price">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                    </div>
                     <div class="namecase">FORGED HYBRID-AMETHYST</div>
                     <button class="btn" id="btn12">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="RUBINhybrid.JPG" alt="" class="img">
-                    <div class="price">2099₽</div>
+                    <div class="price-container">
+                        <div class="price">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                    </div>
                     <div class="namecase">FORGED HYBRID-RUBIN</div>
                     <button class="btn" id="btn13">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="EMERALDhybrid.JPG" alt="" class="img">
-                    <div class="price">2099₽</div>
+                    <div class="price-container">
+                        <div class="price">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                    </div>
                     <div class="namecase">FORGED HYBRID-EMERALD</div>
                     <button class="btn" id="btn14">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="GOLDhybrid.JPG" alt="" class="img">
-                    <div class="price">2099₽</div>
+                    <div class="price-container">
+                        <div class="price">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                    </div>
                     <div class="namecase">FORGED HYBRID-GOLD</div>
                     <button class="btn" id="btn15">купить</button>
                 </div>
@@ -939,7 +1001,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-OBSIDIAN</div>
-                      <div class="price1">3699₽</div>
+                      <div class="price-container1">
+                        <div class="price1">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon" style="width: 120px; height: 120px;"></div>
@@ -968,11 +1033,7 @@
 
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -1011,7 +1072,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-AMETHYST</div>
-                      <div class="price2">3699₽</div>
+                      <div class="price-container1">
+                        <div class="price1">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon6" style="width: 120px; height: 120px;"></div>
@@ -1037,11 +1101,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -1082,7 +1142,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-SAPHIR</div>
-                      <div class="price2">3699₽</div>
+                      <div class="price-container1">
+                        <div class="price1">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon2" style="width: 120px; height: 120px;"></div>
@@ -1108,11 +1171,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -1150,7 +1209,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-RUBIN</div>
-                      <div class="price3">3699₽</div>
+                      <div class="price-container1">
+                        <div class="price1">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon3" style="width: 120px; height: 120px;"></div>
@@ -1176,11 +1238,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -1219,7 +1277,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-EMERALD</div>
-                      <div class="price4">3699₽</div>
+                      <div class="price-container1">
+                        <div class="price1">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon4" style="width: 120px; height: 120px;"></div>
@@ -1245,11 +1306,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -1288,7 +1345,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-CLASSIC</div>
-                      <div class="price2">3699₽</div>
+                      <div class="price-container1">
+                        <div class="price1">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon16" style="width: 120px; height: 120px;"></div>
@@ -1314,11 +1374,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -1359,7 +1415,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED MATTE-CLASSIC</div>
-                      <div class="price2">3699₽</div>
+                      <div class="price-container1">
+                        <div class="price1">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon17" style="width: 120px; height: 120px;"></div>
@@ -1385,11 +1444,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -1430,7 +1485,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED MATTE-OBSIDIAN</div>
-                      <div class="price5">3699₽</div>
+                      <div class="price-container1">
+                        <div class="price1">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon18" style="width: 120px; height: 120px;"></div>
@@ -1456,11 +1514,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -1504,7 +1558,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-GOLD</div>
-                      <div class="price5">3699₽</div>
+                      <div class="price-container1">
+                        <div class="price1">3699₽</div>
+                        <div class="skidprice">3144₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon5" style="width: 120px; height: 120px;"></div>
@@ -1530,11 +1587,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>100% арамидное волокно</p>
@@ -1555,9 +1608,6 @@
 
         </form>
 
-
-
-        
 
 
         
@@ -1583,7 +1633,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED HYBRID-QUARTZ</div>
-                      <div class="price9">2099₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon9" style="width: 120px; height: 120px;"></div>
@@ -1620,11 +1673,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>40% арамидное волокно</p>
@@ -1668,7 +1717,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED HYBRID-SILBER</div>
-                      <div class="price9">2099₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon10" style="width: 120px; height: 120px;"></div>
@@ -1705,11 +1757,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>40% арамидное волокно</p>
@@ -1753,7 +1801,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED HYBRID-SAPHIR</div>
-                      <div class="price9">2099₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon11" style="width: 120px; height: 120px;"></div>
@@ -1790,11 +1841,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>40% арамидное волокно</p>
@@ -1837,7 +1884,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED HYBRID-AMETHYST</div>
-                      <div class="price9">2099₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon12" style="width: 120px; height: 120px;"></div>
@@ -1874,11 +1924,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>40% арамидное волокно</p>
@@ -1921,7 +1967,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED HYBRID-RUBIN</div>
-                      <div class="price9">2099₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon13" style="width: 120px; height: 120px;"></div>
@@ -1958,11 +2007,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>40% арамидное волокно</p>
@@ -2005,7 +2050,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED HYBRID-EMERALD</div>
-                      <div class="price9">2099₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon14" style="width: 120px; height: 120px;"></div>
@@ -2042,11 +2090,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>40% арамидное волокно</p>
@@ -2089,7 +2133,10 @@
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED HYBRID-GOLD</div>
-                      <div class="price9">2099₽</div>
+                      <div class="price-container1">
+                        <div class="price1">2099₽</div>
+                        <div class="skidprice">1784₽</div>
+                      </div>
                     </div>
                     <div class="right-column">
                       <div id="lottie-icon15" style="width: 120px; height: 120px;"></div>
@@ -2126,11 +2173,7 @@
             
             <div class="strip"></div>
             <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2.5l2.09 6.44h6.78l-5.5 4.01L17.97 20 12 15.77 6.03 20l2.59-7.05-5.5-4.01h6.78L12 2.5z" fill="none" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </div>
+                <div class="candy-icon" style="width: 45px; height: 45px; margin-top:-12px; margin-right: -5px;"></div>
                 <div class="text-container">
                     <p style="font-weight: 600;">Особенности:</p>
                     <p>40% арамидное волокно</p>
