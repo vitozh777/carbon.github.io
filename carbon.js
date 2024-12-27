@@ -592,6 +592,8 @@ pufferplanetButton.addEventListener("click", () => {
 
 
 const modelInfo1 = {
+    "iPhone 16 Pro Max": "3699₽",
+    "iPhone 16 Pro": "3699₽",
     "iPhone 15 Pro Max": "3699₽",
     "iPhone 15 Pro": "3699₽",
     "iPhone 15": "3699₽",
