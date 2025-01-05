@@ -338,13 +338,13 @@ body {
     justify-content: center;
     margin-top: 15px;
     margin-bottom: -10px;
-    background-color: #c60b28;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
     border-radius: 10px;
     cursor: pointer;
     width: 90%;
     height: 40px;
-    border: 1px solid #c60b28;
+    border: 1px solid rgb(0, 0, 0);
 }
 
 .apply-title {
@@ -481,26 +481,11 @@ body {
     font-weight: 500;
 }
 
-.cart-item .item-cont-price {
-    margin-top: 2px;
-    display: flex; /* Горизонтальное выравнивание */
-    align-items: baseline; /* Выравнивание по базовой линии текста */
-    gap: 8px; /* Отступ между ценами */
-}
-
 .cart-item .item-price {
     margin-top: 2px;
     color: #000000; /* Черный цвет для цены */
     font-size: 13px;
     font-weight: bold;
-    text-decoration: line-through;
-}
-
-.cart-item .item-skidprice {
-    color: rgb(255, 54, 54);
-    font-size: 13px;
-    font-weight: bold;
-    margin-top: 2px;
 }
 
 .cart-item .item-quantity {
@@ -851,8 +836,8 @@ body {
     height: 50px;
     font-size: 18px;
     border-radius: 10px;
-    background: #c60b28;
-    border: 1px solid #c60b28;
+    background: #222;
+    border: 1px solid #212121;
     box-shadow:
     6px 6px 12px #ababab,
     -6px -6px 12px #ffffff;
@@ -863,7 +848,7 @@ body {
 
 .button:active {
     color: #666;
-    box-shadow: inset 4px 4px 12px #c60b28, inset -4px -4px 12px #c60b28;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
 
 
@@ -875,8 +860,8 @@ body {
     height: 50px;
     font-size: 18px;
     border-radius: 10px;
-    background: #c60b28;
-    border: 1px solid #c60b28;
+    background: #222;
+    border: 1px solid #212121;
     box-shadow:
     6px 6px 12px #ababab,
     -6px -6px 12px #ffffff;
@@ -888,7 +873,7 @@ body {
 
 .butair:active {
     color: #666;
-    box-shadow: inset 4px 4px 12px #c60b28, inset -4px -4px 12px #c60b28;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
 
 
@@ -956,8 +941,8 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
     color: #ffffff;
-    background: #c60b28;
-    border: 1px solid #c60b28;
+    background: #222;
+    border: 1px solid #212121;
     box-shadow:
     6px 6px 12px #ababab,
     -6px -6px 12px #ffffff;
@@ -965,7 +950,7 @@ body {
 
 .купить:active {
     color: #666;
-    box-shadow: inset 4px 4px 12px #c60b28, inset -4px -4px 12px #c60b28;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
 .купить:active .button_text {
     transform: translateY(0.5px);
@@ -1064,8 +1049,8 @@ body {
     padding: 10px 10px;
     margin-top: 10px;
     color: #ffffff;
-    background: #c60b28;
-    border: 1px solid #c60b28;
+    background: #222;
+    border: 1px solid #212121;
     box-shadow:
     6px 6px 12px #ababab,
     -6px -6px 12px #ffffff;
@@ -1073,7 +1058,7 @@ body {
 
 .pufforder:active {
     color: #666;
-    box-shadow: inset 4px 4px 12px #c60b28, inset -4px -4px 12px #c60b28;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
 .pufforder:active .button_text {
     transform: translateY(0.5px);
@@ -1307,20 +1292,20 @@ body {
     justify-content: center; /* Выравнивание по горизонтали */
     align-items: center;
     background: #ffffff;
-    padding: 10px;
 }
 
 .imgpost {
     width: 100%;
     height: auto;
-    margin-top: -30px;
+    margin-top: -10px;
 }
 
 .inner {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px 20px;
-    margin: 50px 10px;
+    margin: 10px 10px;
+    padding: 10px;
 }
 
 .img {
@@ -1349,8 +1334,8 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
     color: #ffffff;
-    background: #c60b28;
-    border: 1px solid #c60b28;
+    background: #222;
+    border: 1px solid #212121;
     box-shadow:
     6px 6px 12px #ababab,
     -6px -6px 12px #ffffff;
@@ -1358,7 +1343,7 @@ body {
 
 .btn:active {
     color: #666;
-    box-shadow: inset 4px 4px 12px #c60b28, inset -4px -4px 12px #c60b28;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
 .btn:active .button_text {
     transform: translateY(0.5px);
@@ -1371,45 +1356,22 @@ body {
 
 
 
-.price-container {
-    display: flex; /* Горизонтальное выравнивание */
-    justify-content: center; /* Центрируем содержимое */
-    align-items: baseline; /* Выравнивание по базовой линии текста */
-    gap: 8px; /* Отступ между ценами */
-    margin-top: 5px;
-    margin-bottom: 3px;
-}
-
 .price {
     color: black;
     font-size: 14px;
     font-weight: bold;
-    text-decoration: line-through; /* Зачёркивание старой цены */
-}
-
-.price-container1 {
-    display: flex; /* Горизонтальное выравнивание */
-    justify-content: center; /* Центрируем содержимое */
-    align-items: baseline; /* Выравнивание по базовой линии текста */
-    gap: 8px; /* Отступ между ценами */
-    margin-top: 5px;
-    margin-bottom: 3px;
-    margin-right: auto;
-}
-
-.price1 {
-    color: rgb(110, 110, 110);
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: line-through; /* Зачёркивание старой цены */
+    margin-top: 5px; /* Отступ сверху */
+    margin-bottom: 3px; /* Отступ снизу */
+    text-align: center;
 }
 
 .skidprice {
-    color: rgb(255, 54, 54);
+    color:rgb(255, 54, 54);
     font-size: 14px;
     font-weight: bold;
+    margin-top: 9px; /* Отступ сверху */
+    margin-bottom: 0; /* Отступ снизу */
 }
-
 
 .pricecompl {
     color: black;
@@ -1473,7 +1435,12 @@ form {
     font-weight: bold;
 }
 
+.price1 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
 
+}
 
 .price2 {
     color: rgb(110, 110, 110);
@@ -1856,8 +1823,8 @@ form {
     border-radius: 20px;
     border: none;
     outline: none;
-    background: #c60b28;
-    border: 1px solid #c60b28;
+    background: #222;
+    border: 1px solid #212121;
     box-shadow:
     6px 6px 12px #ababab,
     -6px -6px 12px #ffffff;
@@ -1870,7 +1837,7 @@ form {
 
 .order:active {
     color: #666;
-    box-shadow: inset 4px 4px 12px #c60b28, inset -4px -4px 12px #c60b28;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
 .order:active .button_text {
     transform: translateY(0.5px);
