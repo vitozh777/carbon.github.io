@@ -20,6 +20,8 @@ let form15 = document.getElementById("form15");
 let form16 = document.getElementById("form16");
 let form17 = document.getElementById("form17");
 let form18 = document.getElementById("form18");
+let form19 = document.getElementById("form19");
+let form20 = document.getElementById("form20");
 let btn1 = document.getElementById("btn1");
 let btn2 = document.getElementById("btn2");
 let btn3 = document.getElementById("btn3");
@@ -36,6 +38,8 @@ let btn15 = document.getElementById("btn15");
 let btn16 = document.getElementById("btn16");
 let btn17 = document.getElementById("btn17");
 let btn18 = document.getElementById("btn18");
+let btn19 = document.getElementById("btn19");
+let btn20 = document.getElementById("btn20");
 let homeContent = document.getElementById("thepuffercase");
 let order1 = document.getElementById("order1");
 let order2 = document.getElementById("order2");
@@ -53,6 +57,8 @@ let order15 = document.getElementById("order15");
 let order16 = document.getElementById("order16");
 let order17 = document.getElementById("order17");
 let order18 = document.getElementById("order18");
+let order19 = document.getElementById("order19");
+let order20 = document.getElementById("order20");
 let selectedModel = "";
 let selectedRazmer = "";
 let selectedPrice = "";
@@ -554,6 +560,13 @@ const modelInfo1 = {
     "iPhone 13": "3699₽",
 };
 
+const modelInfo2 = {
+    "iPhone 16 Pro Max": "4599₽",
+    "iPhone 16 Pro": "4599₽",
+    "iPhone 15 Pro Max": "4599₽",
+    "iPhone 15 Pro": "4599₽",
+};
+
 
 
 
@@ -672,6 +685,8 @@ const sizeButton15 = document.getElementById("sizeButton15");
 const sizeButton16 = document.getElementById("sizeButton16");
 const sizeButton17 = document.getElementById("sizeButton17");
 const sizeButton18 = document.getElementById("sizeButton18");
+const sizeButton19 = document.getElementById("sizeButton19");
+const sizeButton20 = document.getElementById("sizeButton20");
 const iphoneModelsWindowAir1 = document.getElementById("iphoneModelsWindowAir1");
 const iphoneModelsWindowAir2 = document.getElementById("iphoneModelsWindowAir2");
 const iphoneModelsWindowAir3 = document.getElementById("iphoneModelsWindowAir3");
@@ -698,6 +713,8 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
 const iphoneModelsWindow16 = document.getElementById("iphoneModelsWindow16");
 const iphoneModelsWindow17 = document.getElementById("iphoneModelsWindow17");
 const iphoneModelsWindow18 = document.getElementById("iphoneModelsWindow18");
+const iphoneModelsWindow19 = document.getElementById("iphoneModelsWindow19");
+const iphoneModelsWindow20 = document.getElementById("iphoneModelsWindow20");
 
 
 
@@ -4005,6 +4022,277 @@ order15.addEventListener("click", (event) => {
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
+//товар19zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+btn19.addEventListener("click", () => {
+    document.getElementById("thepuffercase").style.display = "none"
+    document.getElementById("form19").style.display = "block"
+
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton19.textContent = "Выберите размер";
+
+
+    // Делаем кнопку "order4" неактивной
+    order19.orderinactive = true;
+    order19.classList.add("orderinactive");
+    
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
+
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form19").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow19.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton19.textContent = "Выберите размер";
+    };
+});
+
+
+
+// Обработчик события для кнопки "SIZE"
+sizeButton19.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindow19.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model1").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindow19.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButton19.textContent = `Размер: ${selectedModel}`;
+    });
+});
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon19'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
+});
+
+model1.forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo2[selectedModel];
+
+        // Удаляем границу у всех кнопок
+        model1.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        model.classList.add("selected");
+
+
+        order19.orderinactive = false;
+        order19.classList.remove("orderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementForm19.textContent = selectedPrice;
+        
+        selectedModel = model.textContent;
+    });
+});
+
+
+
+
+// Добавьте обработчик события click для кнопки "Add"
+order19.disabled = false;
+order19.addEventListener("click", (event) => {
+    if (!order19.disabled) {
+        event.preventDefault();
+
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo2[selectedModel].replace(/[^\d]/g, ''));
+
+        // Добавляем товар в корзину
+        addToCart({
+            id: 29, // Уникальный ID товара
+            name: "FORGED SOLID GLOSSY-OBSIDIAN",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "FSG.JPG",
+        });
+        updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
+    }
+});
+//zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+
+//товар20zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+btn20.addEventListener("click", () => {
+    document.getElementById("thepuffercase").style.display = "none"
+    document.getElementById("form20").style.display = "block"
+
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton20.textContent = "Выберите размер";
+
+
+    // Делаем кнопку "order4" неактивной
+    order20.orderinactive = true;
+    order20.classList.add("orderinactive");
+    
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
+
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form20").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow20.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton20.textContent = "Выберите размер";
+    };
+});
+
+
+
+// Обработчик события для кнопки "SIZE"
+sizeButton20.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindow20.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model1").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindow20.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButton20.textContent = `Размер: ${selectedModel}`;
+    });
+});
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon20'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
+});
+
+model1.forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo2[selectedModel];
+
+        // Удаляем границу у всех кнопок
+        model1.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        model.classList.add("selected");
+
+
+        order20.orderinactive = false;
+        order20.classList.remove("orderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementForm20.textContent = selectedPrice;
+        
+        selectedModel = model.textContent;
+    });
+});
+
+
+
+
+// Добавьте обработчик события click для кнопки "Add"
+order20.disabled = false;
+order20.addEventListener("click", (event) => {
+    if (!order20.disabled) {
+        event.preventDefault();
+
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo2[selectedModel].replace(/[^\d]/g, ''));
+
+        // Добавляем товар в корзину
+        addToCart({
+            id: 30, // Уникальный ID товара
+            name: "FORGED SOLID MATTE-OBSIDIAN",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "FSM.JPG",
+        });
+        updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
+    }
+});
+//zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 
 

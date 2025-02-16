@@ -2372,6 +2372,70 @@ form {
     background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
 }
 
+#iphoneModelsWindow19 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    width: 50%; /* Ширина окна */
+    max-height: 400px; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-bottom: 220px;
+    margin-left: 25%;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow19::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow19::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow19::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
+
+#iphoneModelsWindow20 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    width: 50%; /* Ширина окна */
+    max-height: 400px; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-bottom: 220px;
+    margin-left: 25%;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow20::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow20::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow20::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
+
 
 #iphoneModelsWindowAir2 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
