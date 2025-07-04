@@ -841,8 +841,8 @@ body {
     box-shadow:
     6px 6px 12px #ababab,
     -6px -6px 12px #ffffff;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-top: 0px;
+    margin-bottom: 18px;
     color: #ffffff;
 }
 
@@ -1349,6 +1349,33 @@ body {
     transform: translateY(0.5px);
 }
 
+.btnscoro { 
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold; /* Делаем текст жирным */
+    width: 100%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #4e4e4e;
+    background: #222;
+    border: 1px solid #212121;
+    box-shadow:
+    6px 6px 12px #ababab,
+    -6px -6px 12px #ffffff;
+}
+.btnscoro:active {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
+}
+.btnscoro:active .button_text {
+    transform: translateY(0.5px);
+}
 
 
 
@@ -1415,6 +1442,10 @@ form {
     width: 80%;
     margin-top: 25px;
     
+}
+.img5 {
+    width: 100%;
+    margin-top: 50pt;
 }
 
 /* Стили для точек навигации */
@@ -1849,6 +1880,43 @@ form {
     transform: translateY(2px);
     opacity: 0.5;
 }
+
+.orderozon { 
+    justify-content: center;
+    font-weight: bold;
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: linear-gradient(10deg, #0042bd, #ff007b); /* градиент Ozon */
+    box-shadow:
+        6px 6px 12px rgba(0, 0, 0, 0.2),
+        -6px -6px 12px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    padding: 10px 10px;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.orderozon:active {
+    color: #cccccc;
+    box-shadow: inset 4px 4px 12px rgba(0, 0, 0, 0.4), inset -4px -4px 12px rgba(255, 255, 255, 0.05);
+}
+
+.orderozon:active .button_text {
+    transform: translateY(0.5px);
+}
+
+.orderozoninactive {
+    color: #666;
+    background: #f0f0f0;
+    box-shadow: 3px 3px 12px #e1e1e1, -1px -1px 12px #e9e9e9;
+    transform: translateY(2px);
+    opacity: 0.5;
+}
+
 
 
 
@@ -2660,28 +2728,28 @@ form {
     font-size: 13px; /* Размер шрифта */
     font-weight: bold;
     font-weight: 500;
-    margin-left: 142px;
+    margin-left: 115px;
 }
 .deliveryprice2 {
     color: rgb(0, 0, 0); /* Серый цвет текста */
     font-size: 13px; /* Размер шрифта */
     font-weight: bold;
     font-weight: 500;
-    margin-left: 85px;
+    margin-left: 81px;
 }
 .deliveryprice3 {
     color: rgb(0, 0, 0); /* Серый цвет текста */
     font-size: 13px; /* Размер шрифта */
     font-weight: bold;
     font-weight: 500;
-    margin-left: 152px;
+    margin-left: 125px;
 }
 .deliveryprice4 {
     color: rgb(0, 0, 0); /* Серый цвет текста */
     font-size: 13px; /* Размер шрифта */
     font-weight: bold;
     font-weight: 500;
-    margin-left: 73px;
+    margin-left: 60px;
 }
 
 

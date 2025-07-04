@@ -40,6 +40,7 @@ let btn17 = document.getElementById("btn17");
 let btn18 = document.getElementById("btn18");
 let btn19 = document.getElementById("btn19");
 let btn20 = document.getElementById("btn20");
+let btn21 = document.getElementById("btn21");
 let homeContent = document.getElementById("thepuffercase");
 let order1 = document.getElementById("order1");
 let order2 = document.getElementById("order2");
@@ -59,6 +60,7 @@ let order17 = document.getElementById("order17");
 let order18 = document.getElementById("order18");
 let order19 = document.getElementById("order19");
 let order20 = document.getElementById("order20");
+let orderozon1 = document.getElementById("orderozon1");
 let selectedModel = "";
 let selectedRazmer = "";
 let selectedPrice = "";
@@ -121,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Таймаут на случай зависания загрузки
     setTimeout(() => {
         if (!isVideoPlayed) hideLoadingScreen();
-    }, 4000);
+    }, 0);
 });
 
 
@@ -277,13 +279,13 @@ function updateTotalPrice() {
     const totalWithoutDiscount = totalItemsPrice + deliveryPrice;
 
     // Логика для набора наклеек
-    let stickerPrice = 20; // Цена набора наклеек по умолчанию — 20₽
+    let stickerPrice = 100; // Цена набора наклеек по умолчанию — 100₽
 
     // Если общая сумма товаров + доставка >= 3000, набор становится бесплатным
     if (totalWithoutDiscount >= 3000) {
         stickerPrice = 0; // Набор бесплатный
     } else if (!stickerIncluded) {
-        stickerPrice = -20; // Если набор выключен, цена 20₽ сохраняется, но вычитается из общей суммы
+        stickerPrice = -100; // Если набор выключен, цена 100₽ сохраняется, но вычитается из общей суммы
     }
 
     // Итоговая цена товаров + доставка + наклейки
@@ -294,7 +296,7 @@ function updateTotalPrice() {
     const newPriceElement = document.getElementById("new-price");
 
     if (promoApplied) {
-        oldPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + 20)}₽`; // Старая цена
+        oldPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + 100)}₽`; // Старая цена
         newPriceElement.textContent = `${totalPrice}₽`; // Новая цена со скидкой
         oldPriceElement.classList.remove("hidden"); // Показываем старую цену
         newPriceElement.classList.add("discount-applied"); // Меняем цвет новой цены на красный
@@ -319,10 +321,10 @@ function selectDeliveryMethod(price) {
 
 function getDeliveryMethodName() {
     const deliveryMethods = {
-        280: '5Post',
-        380: 'Почта России',
-        460: 'CDEK',
-        1200: 'CDEK (экспресс)'
+        0: '5Post',
+        0: 'Яндекс Go',
+        0: 'CDEK',
+        1000: 'CDEK (экспресс)'
     };
 
     return deliveryMethods[deliveryPrice] || 'Неизвестный метод доставки';
@@ -340,7 +342,7 @@ function enableCartControls() {
 }
 
 
-let deliveryPrice = 280; // Цена доставки по умолчанию (5Post)
+let deliveryPrice = 0; // Цена доставки по умолчанию (5Post)
 let promoApplied = false;
 let stickerIncluded = true;
 
@@ -546,18 +548,28 @@ pufferplanetButton.addEventListener("click", () => {
 
 
 
+const ozonLinks1 = {
+    "iPhone 16 Pro Max": "https://ozon.ru/t/632M186",
+    "iPhone 16 Pro": "https://ozon.ru/t/VJ7cDuA",
+    "iPhone 15 Pro Max": "https://ozon.ru/t/qy0Jmjr",
+    "iPhone 15 Pro": "https://ozon.ru/t/MuFau0t",
+    "iPhone 14 Pro Max": "https://ozon.ru/t/lQznGQN",
+    "iPhone 14 Pro": "https://ozon.ru/t/hwUeEgU",
+    "iPhone 13 Pro Max": "https://ozon.ru/t/8UcZ4Lg",
+    "iPhone 13 Pro": "https://ozon.ru/t/97OCEou",
+};
+
+
+
 const modelInfo1 = {
     "iPhone 16 Pro Max": "3699₽",
     "iPhone 16 Pro": "3699₽",
     "iPhone 15 Pro Max": "3699₽",
     "iPhone 15 Pro": "3699₽",
-    "iPhone 15": "3699₽",
     "iPhone 14 Pro Max": "3699₽",
     "iPhone 14 Pro": "3699₽",
-    "iPhone 14": "3699₽",
     "iPhone 13 Pro Max": "3699₽",
     "iPhone 13 Pro": "3699₽",
-    "iPhone 13": "3699₽",
 };
 
 const modelInfo2 = {
@@ -895,14 +907,14 @@ async function sendTelegramMessage(botToken, chatId, text, replyMarkup = null) {
 // Функция для отправки инструкции
 async function sendInstructionMessage() {
     const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-    const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE"; // Желательно переместить в переменные окружения
+    const botToken = "7941197919:AAEj5DmatlZnceB6uAQF1aQSZK1rwRkd3dU"; // Желательно переместить в переменные окружения
     const chatId = tg.initDataUnsafe.user.id;
     await sendTelegramMessage(botToken, chatId, instructionMessage);
 }
 
 // Функция для отправки сообщения с заказом
 async function sendOrderMessage(orderData, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode) {
-    const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE";
+    const botToken = "7941197919:AAEj5DmatlZnceB6uAQF1aQSZK1rwRkd3dU";
     const chatId = tg.initDataUnsafe.user.id;
 
     // Формируем текст заказа
@@ -1845,6 +1857,9 @@ btn1.addEventListener("click", () => {
     order1.orderinactive = true;
     order1.classList.add("orderinactive");
 
+    orderozon1.orderinactive = true;
+    orderozon1.classList.add("orderozoninactive");
+
     // Показываем кнопку "Назад"
     backButton1.style.display = "none";
     backButton2.style.display = "block";
@@ -1936,6 +1951,9 @@ model1.forEach(model => {
         order1.orderinactive = false;
         order1.classList.remove("orderinactive");
 
+        orderozon1.orderinactive = false;
+        orderozon1.classList.remove("orderozoninactive");
+
         priceElement.textContent = selectedPrice;
         priceElementForm1.textContent = selectedPrice;
         
@@ -1974,6 +1992,22 @@ order1.addEventListener("click", (event) => {
         showCartMessage();
     }
 });
+
+document.getElementById("orderozon1").addEventListener("click", () => {
+    const selectedModelElement = document.querySelector(".model1.selected");
+    if (selectedModelElement) {
+        const selectedModel = selectedModelElement.textContent;
+        const ozonLink = ozonLinks1[selectedModel];
+        if (ozonLink) {
+            window.open(ozonLink, "_blank"); // Открывает в новой вкладке
+        } else {
+            alert("Ссылка на Ozon для этой модели не найдена.");
+        }
+    } else {
+        alert("Сначала выберите модель iPhone.");
+    }
+});
+
 
 
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//

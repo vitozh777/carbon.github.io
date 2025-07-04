@@ -80,20 +80,21 @@
         <div class="contain" id="home">
 
             <div class="videohome">
+                
                 <video muted playsinline width="100%" height="auto" id="myVideo3" preload="none">
-                    <source src="animation2.MOV" type="video/mp4">
+                    <source src="animation.MOV" type="video/mp4">
                     Ваш браузер не поддерживает тег video.
                 </video>
             </div>
             
-            <button class="butair" id="puffplanet"><span>Airpods</span></button>
+            <button class="button" id="casepuff"><span>iPhone</span></button>
             
             <video muted playsinline width="100%" height="auto" id="myVideo" preload="none">
-                <source src="animation.MOV" type="video/mp4">
+                <source src="animation2.MOV" type="video/mp4">
                 Ваш браузер не поддерживает тег video.
             </video>
 
-            <button class="button" id="casepuff"><span>iPhone</span></button>
+            <button class="butair" id="puffplanet"><span>Airpods</span></button>
             
         </div>
 
@@ -116,8 +117,8 @@
             <div class="strip"></div>
 
             <div class="sticker-gift">
-                <span class="sticker-title">Стикерпак (8 наклеек UV DTF)</span>
-                <span id="sticker-price">20₽</span>
+                <span class="sticker-title">Стикерпак (24 объемных наклеек)</span>
+                <span id="sticker-price">100₽</span>
                 <label class="containerrr">
                     <input type="checkbox" id="toggle-sticker" class="checkbox" checked onchange="toggleSticker()" disabled>
                     <span class="switch">
@@ -149,41 +150,41 @@
                     </div>
                 </div>
                 <div class="delivery-options" id="airdelivery-group-1">
-                    <button id="air5post-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(280)" disabled>
+                    <button id="air5post-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(0)" disabled>
                         <img src="5post.PNG" alt="5Post Icon" class="icon">
                         <span class="aircheckmark1">5Post</span>
-                        <span class="recommendation">(5-6 дней)</span>
-                        <span class="deliveryprice1">280₽</span>
+                        <span class="recommendation">(4-5 дней)</span>
+                        <span class="deliveryprice1">бесплатно</span>
                         <div class="circle">
                             <div class="inner-circle"></div>
                         </div>
                     </button>
                 
-                    <button id="airpochta-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(380)" disabled>
-                        <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                        <span class="aircheckmark1">Почта России</span>
-                        <span class="recommendation">(4-6 дней)</span>
-                        <span class="deliveryprice2">380₽</span>
+                    <button id="airpochta-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(0)" disabled>
+                        <img src="yandex.PNG" alt="Pochta Icon" class="icon">
+                        <span class="aircheckmark1">Яндекс Go</span>
+                        <span class="recommendation">(3-5 дней)</span>
+                        <span class="deliveryprice2">бесплатно</span>
                         <div class="circle">
                             <div class="inner-circle"></div>
                         </div>
                     </button>
                 
-                    <button id="aircdek-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(460)" disabled>
+                    <button id="aircdek-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(0)" disabled>
                         <img src="cdek.PNG" alt="CDEK Icon" class="icon">
                         <span class="aircheckmark1">CDEK</span>
-                        <span class="recommendation">(3-4 дня)</span>
-                        <span class="deliveryprice3">460₽</span>
+                        <span class="recommendation">(2-3 дня)</span>
+                        <span class="deliveryprice3">бесплатно</span>
                         <div class="circle">
                             <div class="inner-circle"></div>
                         </div>
                     </button>
 
-                    <button id="aircdek-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(1200)" disabled>
+                    <button id="aircdek-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(1000)" disabled>
                         <img src="cdek.PNG" alt="CDEK Icon" class="icon">
                         <span class="aircheckmark1">CDEK (экспресс)</span>
                         <span class="recommendation">(1-2 дня)</span>
-                        <span class="deliveryprice4">1200₽</span>
+                        <span class="deliveryprice4">1000₽</span>
                         <div class="circle">
                             <div class="inner-circle"></div>
                         </div>
@@ -887,6 +888,12 @@
                     <button class="btn" id="btn5">купить</button>
                 </div>
                 <div class="item" id="TPC">
+                    <img src="FFG.JPG" alt="" class="img">
+                    <div class="price">5199₽</div>
+                    <div class="namecase">FORGED FULL GLOSSY-OBSIDIAN</div>
+                    <button class="btnscoro" id="btn16">купить</button>
+                </div>
+                <div class="item" id="TPC">
                     <img src="QUARTZ.JPG" alt="" class="img">
                     <div class="price">2099₽</div>
                     <div class="namecase">FORGED HYBRID-QUARTZ</div>
@@ -956,11 +963,14 @@
                         <div class="swiper-slide">
                             <img src="FGB2.JPG" alt="" class="img2">
                         </div>
+                        <div class="swiper-slide">
+                            <img src="FGB3.JPG" alt="" class="img5">
+                        </div>
                         <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
                     </div>
 
                 </div>
-                <div class="y">2 ФОТО</div>
+                <div class="y">3 ФОТО</div>
                 <div class="namecont">
                     <div class="left-column">
                       <div class="namecase2">FORGED GLOSSY-OBSIDIAN</div>
@@ -989,6 +999,8 @@
                </div>
             </div>
             <button class="order" id="order1">добавить в корзину</button>
+
+            <button class="orderozon" id="orderozon1">открыть на Ozon</button>
 
             
             
