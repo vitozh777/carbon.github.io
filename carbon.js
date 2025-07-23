@@ -61,6 +61,16 @@ let order18 = document.getElementById("order18");
 let order19 = document.getElementById("order19");
 let order20 = document.getElementById("order20");
 let orderozon1 = document.getElementById("orderozon1");
+let orderozon2 = document.getElementById("orderozon2");
+let orderozon3 = document.getElementById("orderozon3");
+let orderozon4 = document.getElementById("orderozon4");
+let orderozon5 = document.getElementById("orderozon5");
+let orderozon6 = document.getElementById("orderozon6");
+let orderozon16 = document.getElementById("orderozon16");
+let orderozon17 = document.getElementById("orderozon17");
+let orderozon18 = document.getElementById("orderozon18");
+let orderozon19 = document.getElementById("orderozon19");
+let orderozon20 = document.getElementById("orderozon20");
 let selectedModel = "";
 let selectedRazmer = "";
 let selectedPrice = "";
@@ -546,6 +556,137 @@ pufferplanetButton.addEventListener("click", () => {
 
 
 
+const filterButton = document.getElementById('filterButton');
+const filterPicker = document.getElementById('filterPicker');
+const filterWheel = document.getElementById('pickerWheel');
+const pickerOptions = filterWheel.querySelectorAll('.ios-picker-option');
+const allItems = document.querySelectorAll('#thepuffercase .item');
+
+let lastSelectedValue = "";
+
+// Звук щелчка
+const clickSound = new Audio('click.mp3');
+clickSound.volume = 0.3;
+
+// Показать/скрыть колесо + повернуть стрелку
+filterButton.addEventListener('click', () => {
+    filterPicker.classList.toggle('hidden');
+    filterButton.classList.toggle('active');
+    scrollToCurrentSelection();
+});
+
+// Центрировать на выбранную
+function scrollToCurrentSelection() {
+    const selected = filterWheel.querySelector('.selected');
+    if (selected) {
+        const offset = selected.offsetTop - (filterWheel.clientHeight / 2) + (selected.clientHeight / 2);
+        filterWheel.scrollTo({ top: offset, behavior: 'smooth' });
+    }
+}
+
+// Найти элемент по центру
+function getCenteredOption() {
+    const centerY = filterWheel.scrollTop + filterWheel.offsetHeight / 2;
+    let closestOption = null;
+    let closestDistance = Infinity;
+
+    pickerOptions.forEach(option => {
+        const optionCenter = option.offsetTop + option.offsetHeight / 2;
+        const distance = Math.abs(centerY - optionCenter);
+        if (distance < closestDistance) {
+            closestDistance = distance;
+            closestOption = option;
+        }
+    });
+
+    return closestOption;
+}
+
+// Слушатель прокрутки
+filterWheel.addEventListener('scroll', () => {
+    clearTimeout(filterWheel._scrollTimeout);
+    filterWheel._scrollTimeout = setTimeout(() => {
+        const centered = getCenteredOption();
+
+        if (centered && centered.dataset.value !== lastSelectedValue) {
+            lastSelectedValue = centered.dataset.value;
+
+            pickerOptions.forEach(opt => opt.classList.remove('selected'));
+            centered.classList.add('selected');
+
+            applyFilter(lastSelectedValue);
+
+            clickSound.currentTime = 0;
+            clickSound.play();
+        }
+    }, 50);
+});
+
+// Применить фильтр
+function applyFilter(value) {
+    allItems.forEach(item => {
+        const id = item.id;
+        if (
+            value === 'ALL' ||
+            (value === 'FORGED' && id.startsWith('FORGED') && !id.startsWith('FORGEDSOLID') && !id.startsWith('FORGEDFULL')) ||
+            (value === 'FORGEDSOLID' && id.startsWith('FORGEDSOLID')) ||
+            (value === 'FORGEDFULL' && id === 'FORGEDFULL1') ||
+            (value === 'HYBRID' && id.startsWith('HYBRID'))
+        ) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+// Инициализация
+window.addEventListener('load', () => {
+    const allOption = filterWheel.querySelector('[data-value="ALL"]');
+    if (allOption) {
+        allOption.classList.add('selected');
+        lastSelectedValue = 'ALL';
+        applyFilter('ALL');
+        setTimeout(() => {
+            filterWheel.scrollTo({
+                top: allOption.offsetTop - filterWheel.offsetHeight / 2 + allOption.offsetHeight / 2,
+                behavior: 'smooth'
+            });
+        }, 100);
+    }
+});
+
+// Скрытие filterPicker при клике вне кнопки или picker-а
+document.addEventListener('click', function (e) {
+    const isClickInsideButton = filterButton.contains(e.target);
+    const isClickInsidePicker = filterPicker.contains(e.target);
+
+    if (!isClickInsideButton && !isClickInsidePicker) {
+        filterPicker.classList.add('hidden');
+        filterButton.classList.remove('active');
+    }
+});
+// Скрытие filterPicker при прокрутке страницы
+window.addEventListener('scroll', () => {
+    if (!filterPicker.classList.contains('hidden')) {
+        filterPicker.classList.add('hidden');
+        filterButton.classList.remove('active');
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const ozonLinks1 = {
@@ -558,6 +699,100 @@ const ozonLinks1 = {
     "iPhone 13 Pro Max": "https://ozon.ru/t/8UcZ4Lg",
     "iPhone 13 Pro": "https://ozon.ru/t/97OCEou",
 };
+const ozonLinks6 = {
+    "iPhone 16 Pro Max": "https://ozon.ru/t/7oqRBtN",
+    "iPhone 16 Pro": "https://ozon.ru/t/GNthLvK",
+    "iPhone 15 Pro Max": "https://ozon.ru/t/zDAp771",
+    "iPhone 15 Pro": "https://ozon.ru/t/Q1Dr8Wn",
+    "iPhone 14 Pro Max": "https://ozon.ru/t/6324gyL",
+    "iPhone 14 Pro": "https://ozon.ru/t/EvnQa2c",
+    "iPhone 13 Pro Max": "https://ozon.ru/t/I06WKXy",
+    "iPhone 13 Pro": "https://ozon.ru/t/7oqRUNA",
+};
+const ozonLinks19 = {
+    "iPhone 16 Pro Max": "https://ozon.ru/t/vIkowfF",
+    "iPhone 16 Pro": "https://ozon.ru/t/ZgQsl54",
+    "iPhone 15 Pro Max": "https://ozon.ru/t/7oq3jHx",
+    "iPhone 15 Pro": "https://ozon.ru/t/amWXZ7n",
+};
+const ozonLinks20 = {
+    "iPhone 16 Pro Max": "https://ozon.ru/t/ga1xNRc",
+    "iPhone 16 Pro": "https://ozon.ru/t/8UcpmtC",
+    "iPhone 15 Pro Max": "https://ozon.ru/t/j9HkLOg",
+    "iPhone 15 Pro": "https://ozon.ru/t/sxRfQPC",
+};
+const ozonLinks2 = {
+    "iPhone 16 Pro Max": "https://ozon.ru/t/pTiSBe5",
+    "iPhone 16 Pro": "https://ozon.ru/t/lQzPum1",
+    "iPhone 15 Pro Max": "https://ozon.ru/t/7oq36si",
+    "iPhone 15 Pro": "https://ozon.ru/t/vIkoil1",
+    "iPhone 14 Pro Max": "https://ozon.ru/t/7oq3jAQ",
+    "iPhone 14 Pro": "https://ozon.ru/t/7oq3jKz",
+    "iPhone 13 Pro Max": "https://ozon.ru/t/ytYzZtj",
+    "iPhone 13 Pro": "https://ozon.ru/t/5zNgZPx",
+};
+const ozonLinks3 = {
+    "iPhone 16 Pro Max": "https://ozon.ru/t/8UcaL3e",
+    "iPhone 16 Pro": "https://ozon.ru/t/oGylQqS",
+    "iPhone 15 Pro Max": "https://ozon.ru/t/BFrfXOB",
+    "iPhone 15 Pro": "https://ozon.ru/t/cBKiNia",
+    "iPhone 14 Pro Max": "https://ozon.ru/t/vIkoWd7",
+    "iPhone 14 Pro": "https://ozon.ru/t/Evn7Gc0",
+    "iPhone 13 Pro Max": "https://ozon.ru/t/7oq3lKz",
+    "iPhone 13 Pro": "https://ozon.ru/t/unSUkrk",
+};
+const ozonLinks4 = {
+    "iPhone 16 Pro Max": "https://ozon.ru/t/j9HKixE",
+    "iPhone 16 Pro": "https://ozon.ru/t/ytYOtqa",
+    "iPhone 15 Pro Max": "https://ozon.ru/t/zDAazdg",
+    "iPhone 15 Pro": "https://ozon.ru/t/1WLliJF",
+    "iPhone 14 Pro Max": "https://ozon.ru/t/97Or7Ae",
+    "iPhone 14 Pro": "https://ozon.ru/t/GNtQiAa",
+    "iPhone 13 Pro Max": "https://ozon.ru/t/j9HKQVF",
+    "iPhone 13 Pro": "https://ozon.ru/t/iEuhNxJ",
+};
+const ozonLinks5 = {
+    "iPhone 16 Pro Max": "https://ozon.ru/t/teZqP1S",
+    "iPhone 16 Pro": "https://ozon.ru/t/GNt7BQG",
+    "iPhone 15 Pro Max": "https://ozon.ru/t/sxRNXra",
+    "iPhone 15 Pro": "https://ozon.ru/t/wiMdizq",
+    "iPhone 14 Pro Max": "https://ozon.ru/t/1WLlG5r",
+    "iPhone 14 Pro": "https://ozon.ru/t/1WLlEL2",
+    "iPhone 13 Pro Max": "https://ozon.ru/t/7oq3kRe",
+    "iPhone 13 Pro": "https://ozon.ru/t/L4x8azK",
+};
+const ozonLinks16 = {
+    "iPhone 16 Pro Max": "https://ozon.ru/t/iEkiQXq",
+    "iPhone 16 Pro": "https://ozon.ru/t/unJLwyZ",
+    "iPhone 15 Pro Max": "https://ozon.ru/t/4CpyE8M",
+    "iPhone 15 Pro": "https://ozon.ru/t/BF9AC2L",
+    "iPhone 14 Pro Max": "https://ozon.ru/t/unJLBAL",
+    "iPhone 14 Pro": "https://ozon.ru/t/nk24G4s",
+    "iPhone 13 Pro Max": "https://ozon.ru/t/pTvgQen",
+    "iPhone 13 Pro": "https://ozon.ru/t/j9qRSmM",
+};
+const ozonLinks17 = {
+    "iPhone 16 Pro Max": "https://ozon.ru/t/gafghlp",
+    "iPhone 16 Pro": "https://ozon.ru/t/CKTCHtj",
+    "iPhone 15 Pro Max": "https://ozon.ru/t/sxhsCCl",
+    "iPhone 15 Pro": "https://ozon.ru/t/Ev6EOPp",
+    "iPhone 14 Pro Max": "https://ozon.ru/t/oGeokxA",
+    "iPhone 14 Pro": "https://ozon.ru/t/winwC0D",
+    "iPhone 13 Pro Max": "https://ozon.ru/t/cBjcdJo",
+    "iPhone 13 Pro": "https://ozon.ru/t/teat2Tf",
+};
+const ozonLinks18 = {
+    "iPhone 16 Pro Max": "https://ozon.ru/t/oGeo6fQ",
+    "iPhone 16 Pro": "https://ozon.ru/t/vI3vdQs",
+    "iPhone 15 Pro Max": "https://ozon.ru/t/HO0HX3M",
+    "iPhone 15 Pro": "https://ozon.ru/t/L4bLpQ0",
+    "iPhone 14 Pro Max": "https://ozon.ru/t/pTvp7o1",
+    "iPhone 14 Pro": "https://ozon.ru/t/qyZqSul",
+    "iPhone 13 Pro Max": "https://ozon.ru/t/7ot72Ch",
+    "iPhone 13 Pro": "https://ozon.ru/t/m8Bm0ec",
+};
+
+
 
 
 
@@ -584,31 +819,31 @@ const modelInfo2 = {
 
 
 const modelInfo3 = {
-    "iPhone 16 Pro Max": "2099₽",
-    "iPhone 16 Pro": "2099₽",
-    "iPhone 16": "2099₽",
-    "iPhone 15 Pro Max": "2099₽",
-    "iPhone 15 Pro": "2099₽",
-    "iPhone 15": "2099₽",
-    "iPhone 14 Pro Max": "2099₽",
-    "iPhone 14 Pro": "2099₽",
-    "iPhone 14": "2099₽",
-    "iPhone 13 Pro Max": "2099₽",
-    "iPhone 13 Pro": "2099₽",
-    "iPhone 13": "2099₽",
-    "iPhone 12 Pro Max": "2099₽",
-    "iPhone 12/12 Pro": "2099₽",
-    "iPhone 11 Pro Max": "2099₽",
-    "iPhone 11 Pro": "2099₽",
-    "iPhone 11": "2099₽",
+    "iPhone 16 Pro Max": "2399₽",
+    "iPhone 16 Pro": "2399₽",
+    "iPhone 16": "2399₽",
+    "iPhone 15 Pro Max": "2399₽",
+    "iPhone 15 Pro": "2399₽",
+    "iPhone 15": "2399₽",
+    "iPhone 14 Pro Max": "2399₽",
+    "iPhone 14 Pro": "2399₽",
+    "iPhone 14": "2399₽",
+    "iPhone 13 Pro Max": "2399₽",
+    "iPhone 13 Pro": "2399₽",
+    "iPhone 13": "2399₽",
+    "iPhone 12 Pro Max": "2399₽",
+    "iPhone 12/12 Pro": "2399₽",
+    "iPhone 11 Pro Max": "2399₽",
+    "iPhone 11 Pro": "2399₽",
+    "iPhone 11": "2399₽",
 };
 
 
 const modelInfo4 = {
-    "AirPods 1/2": "2299₽",
-    "AirPods Pro/Pro(2)": "2299₽",
-    "AirPods 3": "2299₽",
-    "AirPods 4": "2299₽",
+    "AirPods Pro": "2499₽",
+    "AirPods Pro 2": "2499₽",
+    "AirPods 3": "2499₽",
+    "AirPods 4": "2499₽",
 };
 
 
@@ -661,6 +896,7 @@ const купить5 = document.getElementById("купить5");
 const купить6 = document.getElementById("купить6");
 const купить7 = document.getElementById("купить7");
 const купить8 = document.getElementById("купить8");
+const купить9 = document.getElementById("купить9");
 const pufforder1 = document.getElementById("pufforder1");
 const pufforder2 = document.getElementById("pufforder2");
 const pufforder3 = document.getElementById("pufforder3");
@@ -669,6 +905,7 @@ const pufforder5 = document.getElementById("pufforder5");
 const pufforder6 = document.getElementById("pufforder6");
 const pufforder7 = document.getElementById("pufforder7");
 const pufforder8 = document.getElementById("pufforder8");
+const pufforder9 = document.getElementById("pufforder9");
 
 // Получаем элементы кнопки "SIZE" и окна выбора моделей iPhone
 const sizeButtonAir1 = document.getElementById("sizeButtonAir1");
@@ -679,6 +916,7 @@ const sizeButtonAir5 = document.getElementById("sizeButtonAir5");
 const sizeButtonAir6 = document.getElementById("sizeButtonAir6");
 const sizeButtonAir7 = document.getElementById("sizeButtonAir7");
 const sizeButtonAir8 = document.getElementById("sizeButtonAir8");
+const sizeButtonAir9 = document.getElementById("sizeButtonAir9");
 const sizeButton = document.getElementById("sizeButton");
 const sizeButton2 = document.getElementById("sizeButton2");
 const sizeButton3 = document.getElementById("sizeButton3");
@@ -707,6 +945,7 @@ const iphoneModelsWindowAir5 = document.getElementById("iphoneModelsWindowAir5")
 const iphoneModelsWindowAir6 = document.getElementById("iphoneModelsWindowAir6");
 const iphoneModelsWindowAir7 = document.getElementById("iphoneModelsWindowAir7");
 const iphoneModelsWindowAir8 = document.getElementById("iphoneModelsWindowAir8");
+const iphoneModelsWindowAir9 = document.getElementById("iphoneModelsWindowAir9");
 const iphoneModelsWindow = document.getElementById("iphoneModelsWindow");
 const iphoneModelsWindow2 = document.getElementById("iphoneModelsWindow2");
 const iphoneModelsWindow3 = document.getElementById("iphoneModelsWindow3");
@@ -1564,7 +1803,7 @@ pufforder6.addEventListener("click", function (event) {
 
     addToCart({
         id: 6,
-        name: "FORGED GLOSSY-OPAL",
+        name: "FORGED GLOSSY-AMETHYST",
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
@@ -1686,7 +1925,7 @@ pufforder7.addEventListener("click", function (event) {
 
     addToCart({
         id: 7,
-        name: "FORGED MATTE-ONYX",
+        name: "FORGED MATTE-OBSIDIAN",
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
@@ -1808,7 +2047,7 @@ pufforder8.addEventListener("click", function (event) {
 
     addToCart({
         id: 8,
-        name: "WOVEN GLOSSY-CLASSIC",
+        name: "FORGED GLOSSY-CLASSIC",
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
@@ -1822,6 +2061,146 @@ pufforder8.addEventListener("click", function (event) {
     // Показываем сообщение "Добавлено в корзину"
     showCartMessage();
 });
+
+купить9.addEventListener("click", () => {
+    document.getElementById("pufferplanet").style.display = "none"
+    document.getElementById("formplanet9").style.display = "block"
+
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model4").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButtonAir9.textContent = "Выберите размер";
+
+    // Делаем кнопку "pufforder5" неактивной
+    pufforder9.pufforderinactive = true;
+    pufforder9.classList.add("pufforderinactive");
+    
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
+
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("formplanet9").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindowAir9.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model4").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButtonAir9.textContent = "Выберите размер";
+    };
+});
+
+// Обработчик события для кнопки "SIZE"
+sizeButtonAir9.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindowAir9.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model4").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindowAir9.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButtonAir9.textContent = `Размер: ${selectedModel}`;
+    });
+});
+
+model4.forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo4[selectedModel];
+
+        // Удаляем границу у всех кнопок
+        model4.forEach(btn => {
+            btn.classList.remove("selected");
+            btn.style.border = "none";
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        model.classList.add("selected");
+                    
+        // Обновляем стиль выбранной кнопки
+        model.style.border = "1px solid black";
+
+        pufforder9.pufforderinactive = false;
+        pufforder9.classList.remove("pufforderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementFormplan9.textContent = selectedPrice;
+                    
+        selectedModel = model.textContent;
+    });
+});
+
+
+// Добавьте обработчик события click для кнопки "Add"
+pufforder9.disabled = false;
+pufforder9.addEventListener("click", function (event) {
+    event.preventDefault(); // Предотвращаем обновление страницы
+
+    const selectedModel = document.querySelector(".model4.selected").textContent;
+    const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
+
+    addToCart({
+        id: 9,
+        name: "FORGED MATTE-CLASSIC",
+        model: selectedModel,
+        price: selectedPrice,
+        quantity: 1,
+        imageUrl: "air9.JPG",
+    });
+
+    updateCartDisplay();
+    // Обновляем отображение количества товаров
+    updateCartCounter();
+        
+    // Показываем сообщение "Добавлено в корзину"
+    showCartMessage();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2004,7 +2383,7 @@ document.getElementById("orderozon1").addEventListener("click", () => {
             alert("Ссылка на Ozon для этой модели не найдена.");
         }
     } else {
-        alert("Сначала выберите модель iPhone.");
+        alert("Сначала выберите модель iPhone");
     }
 });
 
@@ -2030,6 +2409,9 @@ btn2.addEventListener("click", () => {
     // Делаем кнопку "order2" неактивной
     order2.orderinactive = true;
     order2.classList.add("orderinactive");
+
+    orderozon2.orderinactive = true;
+    orderozon2.classList.add("orderozoninactive");
     
     // Показываем кнопку "Назад"
     backButton1.style.display = "none";
@@ -2110,6 +2492,9 @@ model1.forEach(model => {
         order2.orderinactive = false;
         order2.classList.remove("orderinactive");
 
+        orderozon2.orderinactive = false;
+        orderozon2.classList.remove("orderozoninactive");
+
         priceElement.textContent = selectedPrice;
         priceElementForm2.textContent = selectedPrice;
         
@@ -2147,6 +2532,21 @@ order2.addEventListener("click", (event) => {
         showCartMessage();
     }
 });
+
+document.getElementById("orderozon2").addEventListener("click", () => {
+    const selectedModelElement = document.querySelector(".model1.selected");
+    if (selectedModelElement) {
+        const selectedModel = selectedModelElement.textContent;
+        const ozonLink = ozonLinks2[selectedModel];
+        if (ozonLink) {
+            window.open(ozonLink, "_blank"); // Открывает в новой вкладке
+        } else {
+            alert("Ссылка на Ozon для этой модели не найдена.");
+        }
+    } else {
+        alert("Сначала выберите модель iPhone");
+    }
+});
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 //товар3zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2167,6 +2567,9 @@ btn3.addEventListener("click", () => {
     // Делаем кнопку "order3" неактивной
     order3.orderinactive = true;
     order3.classList.add("orderinactive");
+
+    orderozon3.orderinactive = true;
+    orderozon3.classList.add("orderozoninactive");
     
     // Показываем кнопку "Назад"
     backButton1.style.display = "none";
@@ -2246,6 +2649,9 @@ model1.forEach(model => {
         order3.orderinactive = false;
         order3.classList.remove("orderinactive");
 
+        orderozon3.orderinactive = false;
+        orderozon3.classList.remove("orderozoninactive");
+
         priceElement.textContent = selectedPrice;
         priceElementForm3.textContent = selectedPrice;
         
@@ -2283,6 +2689,21 @@ order3.addEventListener("click", (event) => {
         showCartMessage();
     }
 });
+
+document.getElementById("orderozon3").addEventListener("click", () => {
+    const selectedModelElement = document.querySelector(".model1.selected");
+    if (selectedModelElement) {
+        const selectedModel = selectedModelElement.textContent;
+        const ozonLink = ozonLinks3[selectedModel];
+        if (ozonLink) {
+            window.open(ozonLink, "_blank"); // Открывает в новой вкладке
+        } else {
+            alert("Ссылка на Ozon для этой модели не найдена.");
+        }
+    } else {
+        alert("Сначала выберите модель iPhone");
+    }
+});
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 //товар4zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2303,6 +2724,9 @@ btn4.addEventListener("click", () => {
     // Делаем кнопку "order4" неактивной
     order4.orderinactive = true;
     order4.classList.add("orderinactive");
+
+    orderozon4.orderinactive = true;
+    orderozon4.classList.add("orderozoninactive");
     
     // Показываем кнопку "Назад"
     backButton1.style.display = "none";
@@ -2382,6 +2806,9 @@ model1.forEach(model => {
         order4.orderinactive = false;
         order4.classList.remove("orderinactive");
 
+        orderozon4.orderinactive = false;
+        orderozon4.classList.remove("orderozoninactive");
+
         priceElement.textContent = selectedPrice;
         priceElementForm4.textContent = selectedPrice;
         
@@ -2419,6 +2846,21 @@ order4.addEventListener("click", (event) => {
         showCartMessage();
     }
 });
+
+document.getElementById("orderozon4").addEventListener("click", () => {
+    const selectedModelElement = document.querySelector(".model1.selected");
+    if (selectedModelElement) {
+        const selectedModel = selectedModelElement.textContent;
+        const ozonLink = ozonLinks4[selectedModel];
+        if (ozonLink) {
+            window.open(ozonLink, "_blank"); // Открывает в новой вкладке
+        } else {
+            alert("Ссылка на Ozon для этой модели не найдена.");
+        }
+    } else {
+        alert("Сначала выберите модель iPhone");
+    }
+});
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 //товар5zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2439,6 +2881,9 @@ btn5.addEventListener("click", () => {
     // Делаем кнопку "order5" неактивной
     order5.orderinactive = true;
     order5.classList.add("orderinactive");
+
+    orderozon5.orderinactive = true;
+    orderozon5.classList.add("orderozoninactive");
     
     // Показываем кнопку "Назад"
     backButton1.style.display = "none";
@@ -2518,6 +2963,9 @@ model1.forEach(model => {
         order5.orderinactive = false;
         order5.classList.remove("orderinactive");
 
+        orderozon5.orderinactive = false;
+        orderozon5.classList.remove("orderozoninactive");
+
         priceElement.textContent = selectedPrice;
         priceElementForm5.textContent = selectedPrice;
         
@@ -2555,6 +3003,21 @@ order5.addEventListener("click", (event) => {
         showCartMessage();
     }
 });
+
+document.getElementById("orderozon5").addEventListener("click", () => {
+    const selectedModelElement = document.querySelector(".model1.selected");
+    if (selectedModelElement) {
+        const selectedModel = selectedModelElement.textContent;
+        const ozonLink = ozonLinks5[selectedModel];
+        if (ozonLink) {
+            window.open(ozonLink, "_blank"); // Открывает в новой вкладке
+        } else {
+            alert("Ссылка на Ozon для этой модели не найдена.");
+        }
+    } else {
+        alert("Сначала выберите модель iPhone");
+    }
+});
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 //товар6zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2575,6 +3038,9 @@ btn6.addEventListener("click", () => {
     // Делаем кнопку "order6" неактивной
     order6.orderinactive = true;
     order6.classList.add("orderinactive");
+
+    orderozon6.orderinactive = true;
+    orderozon6.classList.add("orderozoninactive");
     
     // Показываем кнопку "Назад"
     backButton1.style.display = "none";
@@ -2654,6 +3120,9 @@ model1.forEach(model => {
         order6.orderinactive = false;
         order6.classList.remove("orderinactive");
 
+        orderozon6.orderinactive = false;
+        orderozon6.classList.remove("orderozoninactive");
+
         priceElement.textContent = selectedPrice;
         priceElementForm6.textContent = selectedPrice;
         
@@ -2691,6 +3160,21 @@ order6.addEventListener("click", (event) => {
         showCartMessage();
     }
 });
+
+document.getElementById("orderozon6").addEventListener("click", () => {
+    const selectedModelElement = document.querySelector(".model1.selected");
+    if (selectedModelElement) {
+        const selectedModel = selectedModelElement.textContent;
+        const ozonLink = ozonLinks6[selectedModel];
+        if (ozonLink) {
+            window.open(ozonLink, "_blank"); // Открывает в новой вкладке
+        } else {
+            alert("Ссылка на Ozon для этой модели не найдена.");
+        }
+    } else {
+        alert("Сначала выберите модель iPhone");
+    }
+});
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 //товар16zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2708,9 +3192,12 @@ btn16.addEventListener("click", () => {
     sizeButton16.textContent = "Выберите размер";
 
 
-    // Делаем кнопку "order6" неактивной
+    // Делаем кнопку "order4" неактивной
     order16.orderinactive = true;
     order16.classList.add("orderinactive");
+
+    orderozon16.orderinactive = true;
+    orderozon16.classList.add("orderozoninactive");
     
     // Показываем кнопку "Назад"
     backButton1.style.display = "none";
@@ -2790,6 +3277,9 @@ model1.forEach(model => {
         order16.orderinactive = false;
         order16.classList.remove("orderinactive");
 
+        orderozon16.orderinactive = false;
+        orderozon16.classList.remove("orderozoninactive");
+
         priceElement.textContent = selectedPrice;
         priceElementForm16.textContent = selectedPrice;
         
@@ -2827,6 +3317,21 @@ order16.addEventListener("click", (event) => {
         showCartMessage();
     }
 });
+
+document.getElementById("orderozon16").addEventListener("click", () => {
+    const selectedModelElement = document.querySelector("#form16 .model1.selected");
+    if (selectedModelElement) {
+        const selectedModel = selectedModelElement.textContent;
+        const ozonLink = ozonLinks16[selectedModel];
+        if (ozonLink) {
+            window.open(ozonLink, "_blank");
+        } else {
+            alert("Ссылка на Ozon для этой модели не найдена.");
+        }
+    } else {
+        alert("Сначала выберите модель iPhone");
+    }
+});
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 //товар17zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2847,6 +3352,9 @@ btn17.addEventListener("click", () => {
     // Делаем кнопку "order6" неактивной
     order17.orderinactive = true;
     order17.classList.add("orderinactive");
+
+    orderozon17.orderinactive = true;
+    orderozon17.classList.add("orderozoninactive");
     
     // Показываем кнопку "Назад"
     backButton1.style.display = "none";
@@ -2900,7 +3408,7 @@ document.querySelectorAll(".model1").forEach(model => {
     });
 });
 var animation = lottie.loadAnimation({
-    container: document.getElementById('lottie-icon17'), // контейнер для анимации
+    container: document.getElementById('lottie-icon6'), // контейнер для анимации
     renderer: 'svg', // тип рендера (svg, canvas, html)
     loop: true, // зацикливание анимации
     autoplay: true, // автоматическое воспроизведение
@@ -2925,6 +3433,9 @@ model1.forEach(model => {
 
         order17.orderinactive = false;
         order17.classList.remove("orderinactive");
+
+        orderozon17.orderinactive = false;
+        orderozon17.classList.remove("orderozoninactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm17.textContent = selectedPrice;
@@ -2963,6 +3474,22 @@ order17.addEventListener("click", (event) => {
         showCartMessage();
     }
 });
+
+document.getElementById("orderozon17").addEventListener("click", () => {
+    const selectedModelElement = document.querySelector(".model1.selected");
+    if (selectedModelElement) {
+        const selectedModel = selectedModelElement.textContent;
+        const ozonLink = ozonLinks17[selectedModel];
+        if (ozonLink) {
+            window.open(ozonLink, "_blank"); // Открывает в новой вкладке
+        } else {
+            alert("Ссылка на Ozon для этой модели не найдена.");
+        }
+    } else {
+        alert("Сначала выберите модель iPhone");
+    }
+});
+
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 //товар18zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2983,6 +3510,9 @@ btn18.addEventListener("click", () => {
     // Делаем кнопку "order2" неактивной
     order18.orderinactive = true;
     order18.classList.add("orderinactive");
+
+    orderozon18.orderinactive = true;
+    orderozon18.classList.add("orderozoninactive");
     
     // Показываем кнопку "Назад"
     backButton1.style.display = "none";
@@ -3063,6 +3593,9 @@ model1.forEach(model => {
         order18.orderinactive = false;
         order18.classList.remove("orderinactive");
 
+        orderozon18.orderinactive = false;
+        orderozon18.classList.remove("orderozoninactive");
+
         priceElement.textContent = selectedPrice;
         priceElementForm18.textContent = selectedPrice;
         
@@ -3098,6 +3631,21 @@ order18.addEventListener("click", (event) => {
         
         // Показываем сообщение "Добавлено в корзину"
         showCartMessage();
+    }
+});
+
+document.getElementById("orderozon18").addEventListener("click", () => {
+    const selectedModelElement = document.querySelector(".model1.selected");
+    if (selectedModelElement) {
+        const selectedModel = selectedModelElement.textContent;
+        const ozonLink = ozonLinks18[selectedModel];
+        if (ozonLink) {
+            window.open(ozonLink, "_blank"); // Открывает в новой вкладке
+        } else {
+            alert("Ссылка на Ozon для этой модели не найдена.");
+        }
+    } else {
+        alert("Сначала выберите модель iPhone");
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -4074,6 +4622,9 @@ btn19.addEventListener("click", () => {
     // Делаем кнопку "order4" неактивной
     order19.orderinactive = true;
     order19.classList.add("orderinactive");
+
+    orderozon19.orderinactive = true;
+    orderozon19.classList.add("orderozoninactive");
     
     // Показываем кнопку "Назад"
     backButton1.style.display = "none";
@@ -4153,6 +4704,9 @@ model1.forEach(model => {
         order19.orderinactive = false;
         order19.classList.remove("orderinactive");
 
+        orderozon19.orderinactive = false;
+        orderozon19.classList.remove("orderozoninactive");
+
         priceElement.textContent = selectedPrice;
         priceElementForm19.textContent = selectedPrice;
         
@@ -4190,6 +4744,21 @@ order19.addEventListener("click", (event) => {
         showCartMessage();
     }
 });
+
+document.getElementById("orderozon19").addEventListener("click", () => {
+    const selectedModelElement = document.querySelector(".model1.selected");
+    if (selectedModelElement) {
+        const selectedModel = selectedModelElement.textContent;
+        const ozonLink = ozonLinks19[selectedModel];
+        if (ozonLink) {
+            window.open(ozonLink, "_blank"); // Открывает в новой вкладке
+        } else {
+            alert("Ссылка на Ozon для этой модели не найдена.");
+        }
+    } else {
+        alert("Сначала выберите модель iPhone");
+    }
+});
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 //товар20zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -4210,6 +4779,9 @@ btn20.addEventListener("click", () => {
     // Делаем кнопку "order4" неактивной
     order20.orderinactive = true;
     order20.classList.add("orderinactive");
+
+    orderozon20.orderinactive = true;
+    orderozon20.classList.add("orderozoninactive");
     
     // Показываем кнопку "Назад"
     backButton1.style.display = "none";
@@ -4289,6 +4861,9 @@ model1.forEach(model => {
         order20.orderinactive = false;
         order20.classList.remove("orderinactive");
 
+        orderozon20.orderinactive = false;
+        orderozon20.classList.remove("orderozoninactive");
+
         priceElement.textContent = selectedPrice;
         priceElementForm20.textContent = selectedPrice;
         
@@ -4324,6 +4899,21 @@ order20.addEventListener("click", (event) => {
         
         // Показываем сообщение "Добавлено в корзину"
         showCartMessage();
+    }
+});
+
+document.getElementById("orderozon20").addEventListener("click", () => {
+    const selectedModelElement = document.querySelector(".model1.selected");
+    if (selectedModelElement) {
+        const selectedModel = selectedModelElement.textContent;
+        const ozonLink = ozonLinks20[selectedModel];
+        if (ozonLink) {
+            window.open(ozonLink, "_blank"); // Открывает в новой вкладке
+        } else {
+            alert("Ссылка на Ozon для этой модели не найдена.");
+        }
+    } else {
+        alert("Сначала выберите модель iPhone");
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
