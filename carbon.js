@@ -333,7 +333,7 @@ function getDeliveryMethodName() {
     const deliveryMethods = {
         0: '5Post',
         0: 'Яндекс Go',
-        0: 'CDEK',
+        300: 'CDEK',
         1000: 'CDEK (экспресс)'
     };
 
@@ -4918,6 +4918,43 @@ document.getElementById("orderozon20").addEventListener("click", () => {
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
+
+// Делает всю карточку кликабельной и доступной с клавиатуры (Enter/Space)
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('#thepuffercase .item, #pufferplanet .item');
+  
+    cards.forEach(card => {
+      // Внутри карточки ищем «правильную» кнопку, которую уже обрабатывает твой код
+      const actionBtn = card.querySelector('button.btn, button.купить');
+  
+      // Если кнопки нет (например, «скоро» или заглушка) — просто пропускаем
+      if (!actionBtn) return;
+  
+      // Вешаем клик на всю карточку
+      card.addEventListener('click', (e) => {
+        // Если клик именно по кнопке, не дублируем (чтобы не было двойного срабатывания)
+        if (e.target.closest('button')) return;
+        actionBtn.click();
+      });
+  
+      // Делаем карточку доступной с клавиатуры
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+  
+      const nameEl = card.querySelector('.namecase');
+      if (nameEl && nameEl.textContent.trim()) {
+        card.setAttribute('aria-label', nameEl.textContent.trim());
+      }
+  
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          actionBtn.click();
+        }
+      });
+    });
+  });
+  
 
 
 
