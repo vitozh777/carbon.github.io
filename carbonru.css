@@ -175,11 +175,6 @@ main{
   font-weight:600;
 }
 
-/* Видео всегда видно; картинку больше не используем */
-.hero-video{ display:block; width:100%; height:48svh; max-height:540px; object-fit:cover; }
-.hero-video.ended{ display:block !important; }
-/* если раньше были стили .hero-fallback — их можно удалить */
-
 /* === Bottom Sheet: плавное всплытие снизу === */
 :root{
   --sheet-open-dur: 340ms;
