@@ -23,13 +23,13 @@
   .topbar{
     position:sticky; top:0; z-index:50;
     display:grid; grid-template-columns: 1fr auto 1fr; align-items:center;
-    padding: calc(8px + var(--safe-top)) 12px 8px;
+    padding: calc(4px + var(--safe-top)) 10px 4px;
     background:#fff;
     border-bottom:1px solid rgba(0,0,0,.06);
   }
   .link-button{
     justify-self:start;
-    background:none; border:none; padding:8px 4px; margin-left:4px;
+    background:none; border:none; padding:1px 1px; margin-left:4px;
     font-weight:600; color:#007aff; font-size:16px; cursor:pointer;
   }
   .logo{
@@ -61,7 +61,7 @@
   justify-content:center;
   text-decoration:none;
   color:#fff;
-  width:50%;
+  width:60%;
   height:50px;
   font-size:18px;
   border-radius:10px;
@@ -138,16 +138,6 @@ html, body{
 }
 body{ height:100svh; }          /* учитываем динамические панели Safari */
 
-/* фиксируем высоту шапки и считаем высоту main от экрана */
-.topbar{
-  height:calc(56px + var(--safe-top));
-  padding: calc(var(--safe-top)) 12px 0;  /* верх — только safe-area */
-  align-items:center;
-}
-main{
-  height:calc(100svh - (56px + var(--safe-top)));
-  overflow:hidden;              /* контент внутри тоже без скролла */
-}
 
 /* Иконки в списке контактов */
 .links a{
