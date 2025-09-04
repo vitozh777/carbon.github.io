@@ -3,13 +3,29 @@ const contactsBtn = document.getElementById('contactsBtn');
 const sheet = document.getElementById('contactsSheet');
 
 function openSheet(){
+  // если вдруг идёт закрытие — прерываем его
+  sheet.classList.remove('closing');
   sheet.classList.add('open');
   sheet.setAttribute('aria-hidden', 'false');
 }
+
 function closeSheet(){
-  sheet.classList.remove('open');
-  sheet.setAttribute('aria-hidden', 'true');
+  // запускаем анимацию закрытия
+  if (!sheet.classList.contains('open')) return; // уже закрыто
+  sheet.classList.add('closing');      // держим overlay видимым
+  sheet.classList.remove('open');      // триггерим transform вниз
+
+  // ждём завершения трансформа на body
+  const bodyEl = sheet.querySelector('.sheet-body');
+  const onDone = (e) => {
+    if (e.target !== bodyEl || e.propertyName !== 'transform') return;
+    bodyEl.removeEventListener('transitionend', onDone);
+    sheet.classList.remove('closing');          // теперь можно скрыть
+    sheet.setAttribute('aria-hidden', 'true');
+  };
+  bodyEl.addEventListener('transitionend', onDone);
 }
+
 
 contactsBtn.addEventListener('click', openSheet);
 sheet.addEventListener('click', (e)=>{
@@ -30,3 +46,16 @@ document.getElementById('btn-samsung').addEventListener('click', (e)=>{
 document.getElementById('btn-accessories').addEventListener('click', (e)=>{
   // e.preventDefault();
 });
+
+const heroVideo = document.getElementById('heroVideo');
+if (heroVideo) {
+  heroVideo.addEventListener('ended', () => {
+    // Останавливаем на последнем кадре, чтобы не прыгал к началу/постеру
+    try {
+      heroVideo.pause();
+      const t = Math.max(0, (heroVideo.duration || heroVideo.currentTime) - 0.05);
+      heroVideo.currentTime = t;
+    } catch (_) {}
+    // НИКАКИХ классов и скрытия не добавляем
+  });
+}

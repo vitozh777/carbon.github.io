@@ -21,13 +21,14 @@
   <main>
     <!-- Анимация во всю ширину -->
     <section class="hero">
-      <!-- Замените sources на свой mp4/webm; постер опционально -->
-      <video class="hero-video" autoplay muted loop playsinline
+      <video class="hero-video" id="heroVideo"
+             autoplay muted playsinline webkit-playsinline preload="auto"
              poster="assets/cases-anim.jpg">
         <source src="animation1.mov" type="video/mp4" />
         <source src="assets/cases-anim.webm" type="video/webm" />
       </video>
     </section>
+    
 
     <!-- Кнопки категорий -->
     <section class="cta-area">
@@ -51,13 +52,28 @@
       <div class="sheet-handle" aria-hidden="true"></div>
       <h2>Контакты</h2>
       <nav class="links">
-        <!-- замените # на ваши ссылки -->
-        <a href="#" target="_blank" rel="noopener">Instagram</a>
-        <a href="#" target="_blank" rel="noopener">TikTok</a>
-        <a href="#" target="_blank" rel="noopener">Telegram канал</a>
-        <a href="#" target="_blank" rel="noopener">Авито</a>
-        <a href="https://t.me/username" target="_blank" rel="noopener">Поддержка в TG</a>
+        <a href="#" target="_blank" rel="noopener">
+          <img class="icon" src="instlogo.JPG" alt="" />
+          <span>Instagram</span>
+        </a>
+        <a href="#" target="_blank" rel="noopener">
+          <img class="icon" src="ttlogo.JPG" alt="" />
+          <span>TikTok</span>
+        </a>
+        <a href="#" target="_blank" rel="noopener">
+          <img class="icon" src="tglogo.JPG" alt="" />
+          <span>Telegram канал</span>
+        </a>
+        <a href="#" target="_blank" rel="noopener">
+          <img class="icon" src="assets/icons/avito.png" alt="" />
+          <span>Авито</span>
+        </a>
+        <a href="https://t.me/username" target="_blank" rel="noopener">
+          <img class="icon" src="expert.JPG" alt="" />
+          <span>Поддержка в TG</span>
+        </a>
       </nav>
+      
       <button class="sheet-close" data-close>Закрыть</button>
     </div>
   </div>

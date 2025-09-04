@@ -36,7 +36,7 @@
     justify-self:center; display:inline-grid; place-items:center; text-decoration:none;
   }
   .logo img{
-    width:48px; height:48px; border-radius:50%;
+    width:36px; height:36px; border-radius:50%;
     box-shadow: 0 2px 12px rgba(0,0,0,.08);
     object-fit: cover; background:#fff;
   }
@@ -84,7 +84,7 @@
   /* ========== БАННЕР С ИЗОБРАЖЕНИЕМ ========== */
   .banner{ padding-top: 8px; }
   .banner-img{
-    width:100%; height:38svh; max-height:460px; display:block; object-fit:cover;
+    width:100%; height:auto; max-height:460px; display:block; object-fit:cover;
     
     
     box-shadow: 0 8px 24px rgba(0,0,0,.08);
@@ -130,3 +130,99 @@
     .cta-button{ font-size:17px; padding:15px 18px; }
   }
   
+  /* === НЕТ СКРОЛЛА НА ГЛАВНОЙ === */
+html, body{
+  height:100%;
+  overflow:hidden;              /* запрет прокрутки */
+  overscroll-behavior:none;     /* убираем iOS/Chrome bounce */
+}
+body{ height:100svh; }          /* учитываем динамические панели Safari */
+
+/* фиксируем высоту шапки и считаем высоту main от экрана */
+.topbar{
+  height:calc(56px + var(--safe-top));
+  padding: calc(var(--safe-top)) 12px 0;  /* верх — только safe-area */
+  align-items:center;
+}
+main{
+  height:calc(100svh - (56px + var(--safe-top)));
+  overflow:hidden;              /* контент внутри тоже без скролла */
+}
+
+/* подгоняем высоты блоков, чтобы всё влезало на один экран */
+.hero-video{
+  height: clamp(28svh, 40svh, 44svh);     /* анимация */
+}
+.banner-img{
+  height: clamp(18svh, 26svh, 32svh);     /* баннер аксессуаров */
+}
+.cta-area{ gap:10px; padding:12px 14px 0; } /* чуть компактнее кнопки */
+
+/* Иконки в списке контактов */
+.links a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 14px;            /* уже есть, дублировать не страшно для переопределения */
+}
+.links a .icon{
+  width:24px; height:24px;
+  flex:0 0 24px;
+  display:block;
+
+}
+.links a span{
+  font-weight:600;
+}
+
+/* Видео всегда видно; картинку больше не используем */
+.hero-video{ display:block; width:100%; height:48svh; max-height:540px; object-fit:cover; }
+.hero-video.ended{ display:block !important; }
+/* если раньше были стили .hero-fallback — их можно удалить */
+
+/* === Bottom Sheet: плавное всплытие снизу === */
+:root{
+  --sheet-open-dur: 340ms;
+  --sheet-close-dur: 260ms;
+  --sheet-ease-out: cubic-bezier(.2,.8,.2,1); /* пружинит как iOS */
+  --sheet-ease-in: cubic-bezier(.4,0,.2,1);
+}
+
+/* Управляем показом через классы .open / .closing */
+.sheet{ position:fixed; inset:0; display:none; }
+.sheet.open{ display:block; }
+.sheet.closing{ display:block; }            /* держим видимой на время закрытия */
+
+.sheet-backdrop{
+  position:absolute; inset:0;
+  background:rgba(0,0,0,.32);
+  opacity:0; transition: opacity var(--sheet-open-dur) var(--sheet-ease-out);
+}
+.sheet.open .sheet-backdrop{ opacity:1; }
+.sheet.closing .sheet-backdrop{
+  opacity:0; transition-duration: var(--sheet-close-dur);
+  transition-timing-function: var(--sheet-ease-in);
+}
+
+.sheet-body{
+  position:absolute; left:0; right:0; bottom:0;
+  transform: translateY(100%);              /* старт — за пределами экрана */
+  will-change: transform;
+  transition: transform var(--sheet-open-dur) var(--sheet-ease-out);
+  background:#fff; border-radius:20px 20px 0 0;
+  padding: 10px 16px calc(14px + var(--safe-bottom));
+  box-shadow: 0 -10px 30px rgba(0,0,0,.12);
+  max-height: min(88svh, 720px);            /* если ссылок много — внутри можно скроллить */
+  overflow: auto;
+}
+.sheet.open .sheet-body{ transform: translateY(0); }     /* въезд вверх */
+.sheet.closing .sheet-body{
+  transform: translateY(100%);                          /* уезд вниз */
+  transition-duration: var(--sheet-close-dur);
+  transition-timing-function: var(--sheet-ease-in);
+}
+
+/* анимацию уважаем, но не навязываем */
+@media (prefers-reduced-motion: reduce){
+  .sheet-backdrop, .sheet-body{ transition: none !important; }
+}
