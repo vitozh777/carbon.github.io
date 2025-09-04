@@ -45,7 +45,7 @@
   /* ========== ГЕРОЙ (АНИМАЦИЯ) ========== */
   .hero{ width:100%; }
   .hero-video{
-    width:100%; height:48svh; /* компактно для iPhone; можно поменять */
+    width:100%; height:auto; /* компактно для iPhone; можно поменять */
     max-height:540px; display:block; object-fit:cover;
     background: #111; /* на случай, если видео не загрузилось */
   }
