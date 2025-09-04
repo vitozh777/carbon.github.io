@@ -59,3 +59,12 @@ if (heroVideo) {
     // НИКАКИХ классов и скрытия не добавляем
   });
 }
+
+// Обновление сайта по клику на логотип в шапке
+const logoLink = document.querySelector('.logo');
+if (logoLink) {
+  logoLink.addEventListener('click', (e) => {
+    e.preventDefault();        // не уходим на /
+    window.location.reload();  // просто перезагружаем текущую страницу
+  });
+}

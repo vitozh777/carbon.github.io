@@ -46,7 +46,7 @@
   .hero{ width:100%; }
   .hero-video{
     width:100%; height:auto; /* компактно для iPhone; можно поменять */
-    max-height:540px; display:block; object-fit:cover;
+    display:block; object-fit:cover;
     background: #111; /* на случай, если видео не загрузилось */
   }
   
@@ -148,15 +148,6 @@ main{
   height:calc(100svh - (56px + var(--safe-top)));
   overflow:hidden;              /* контент внутри тоже без скролла */
 }
-
-/* подгоняем высоты блоков, чтобы всё влезало на один экран */
-.hero-video{
-  height: clamp(28svh, 40svh, 44svh);     /* анимация */
-}
-.banner-img{
-  height: clamp(18svh, 26svh, 32svh);     /* баннер аксессуаров */
-}
-.cta-area{ gap:10px; padding:12px 14px 0; } /* чуть компактнее кнопки */
 
 /* Иконки в списке контактов */
 .links a{
