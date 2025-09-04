@@ -50,33 +50,36 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-// --- Telegram BackButton на странице каталога ---
+// --- Telegram BackButton: apple.html ---
 (() => {
     const tg = window.Telegram?.WebApp;
-    if (!tg) return;            // страница открыта не в Телеграме
+    if (!tg) return;          // если не в Telegram — ничего не делаем
   
-    tg.ready();                 // сообщаем, что страница готова
+    tg.ready();
     const BackButton = tg.BackButton;
   
-    // показать кнопку "Назад" в заголовке Телеграма
-    BackButton.show();
-  
-    // по нажатию: пытаемся вернуться в историю, иначе закрываем мини-приложение
-    BackButton.onClick(() => {
+    function onBackClick() {
       try {
+        // если есть история внутри вашего домена — возвращаемся
         if (document.referrer && new URL(document.referrer).origin === location.origin) {
           history.back();
         } else if (history.length > 1) {
           history.back();
         } else {
-          tg.close();
+          tg.close(); // иначе закрываем мини-апп
         }
       } catch {
         tg.close();
       }
-    });
+    }
   
-    // (необязательно) настроить цвет хедера под тему Telegram
-    // tg.setHeaderColor('secondary_bg_color'); // доступно в WebApp API
+    BackButton.onClick(onBackClick);
+    BackButton.show();
+  
+    // Чисто уходим со страницы: скрыть кнопку и снять обработчик
+    window.addEventListener('pagehide', () => {
+      try { BackButton.offClick(onBackClick); } catch {}
+      try { BackButton.hide(); } catch {}
+    });
   })();
   

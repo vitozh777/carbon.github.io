@@ -60,15 +60,29 @@ if (heroVideo) {
   });
 }
 
-// Обновление сайта по клику на логотип в шапке
-const logoLink = document.querySelector('.logo');
-if (logoLink) {
-  logoLink.addEventListener('click', (e) => {
-    e.preventDefault();        // не уходим на /
-    window.location.reload();  // просто перезагружаем текущую страницу
-  });
-}
 
+// --- Главная: гарантированно прячем BackButton при каждом показе ---
+(() => {
+  const tg = window.Telegram?.WebApp;
+  if (!tg) return;
+
+  function hideBack() {
+    try {
+      tg.ready();
+      tg.BackButton.hide();
+      // На всякий случай "затираем" возможный старый обработчик пустышкой
+      tg.BackButton.onClick(() => {});
+    } catch {}
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hideBack);
+  } else {
+    hideBack();
+  }
+  // Важно: срабатывает и при возврате из bfcache (Safari/iOS)
+  window.addEventListener('pageshow', hideBack);
+})();
 
 
 
