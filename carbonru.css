@@ -290,7 +290,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .p-dots .dot.is-active{ background:#111; }
 @media (prefers-color-scheme: dark){
   .p-dots .dot{ background:#afafaf; }
-  .p-dots .dot.is-active{ background:#595959; }
+  .p-dots .dot.is-active{ background:#686868; }
 }
 
 

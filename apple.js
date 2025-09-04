@@ -1,30 +1,3 @@
-// --- Telegram BackButton на apple.html ---
-(function(){
-    const tg = window.Telegram && window.Telegram.WebApp;
-    if (!tg) return;              // если открыто не в Telegram — просто выходим
-  
-    tg.ready();                   // сообщаем, что страница готова
-    tg.BackButton.show();         // показываем кнопку "Назад" в шапке бота
-  
-    const goBack = () => {
-      // если пришли с главной — шаг назад по истории; иначе — открываем index.html
-      if (document.referrer && /index\.html|\/$/.test(document.referrer)) {
-        history.back();
-      } else {
-        window.location.href = 'index.html';
-      }
-    };
-  
-    tg.BackButton.onClick(goBack);
-  
-    // На всякий случай прячем при уходе со страницы (чтобы не "залипала" в боте)
-    window.addEventListener('beforeunload', () => {
-      try { tg.BackButton.hide(); tg.BackButton.offClick(goBack); } catch(e){}
-    });
-  })();
-  
-
-
 // apple.js — нативный свайп без клика по карточке
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.product-grid');
@@ -75,4 +48,35 @@ document.addEventListener('DOMContentLoaded', () => {
       setActiveByScroll();
     });
   });
+
+
+// --- Telegram BackButton на странице каталога ---
+(() => {
+    const tg = window.Telegram?.WebApp;
+    if (!tg) return;            // страница открыта не в Телеграме
+  
+    tg.ready();                 // сообщаем, что страница готова
+    const BackButton = tg.BackButton;
+  
+    // показать кнопку "Назад" в заголовке Телеграма
+    BackButton.show();
+  
+    // по нажатию: пытаемся вернуться в историю, иначе закрываем мини-приложение
+    BackButton.onClick(() => {
+      try {
+        if (document.referrer && new URL(document.referrer).origin === location.origin) {
+          history.back();
+        } else if (history.length > 1) {
+          history.back();
+        } else {
+          tg.close();
+        }
+      } catch {
+        tg.close();
+      }
+    });
+  
+    // (необязательно) настроить цвет хедера под тему Telegram
+    // tg.setHeaderColor('secondary_bg_color'); // доступно в WebApp API
+  })();
   

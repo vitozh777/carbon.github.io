@@ -83,4 +83,11 @@ if (logoLink) {
 
 
 
+// --- Прячем телеграмную кнопку "Назад" на главной ---
+(() => {
+  const tg = window.Telegram?.WebApp;
+  if (!tg) return;
+  tg.ready();
+  tg.BackButton.hide?.();   // чтобы на главной не торчала
+})();
 
