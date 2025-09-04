@@ -61,7 +61,7 @@ if (heroVideo) {
 }
 
 
-// --- Главная: гарантированно прячем BackButton при каждом показе ---
+// === Главная: скрываем BackButton всегда ===
 (() => {
   const tg = window.Telegram?.WebApp;
   if (!tg) return;
@@ -70,7 +70,7 @@ if (heroVideo) {
     try {
       tg.ready();
       tg.BackButton.hide();
-      // На всякий случай "затираем" возможный старый обработчик пустышкой
+      // На всякий случай затираем возможный старый обработчик
       tg.BackButton.onClick(() => {});
     } catch {}
   }
@@ -80,7 +80,7 @@ if (heroVideo) {
   } else {
     hideBack();
   }
-  // Важно: срабатывает и при возврате из bfcache (Safari/iOS)
+  // Срабатывает и при возврате из bfcache (iOS/Safari)
   window.addEventListener('pageshow', hideBack);
 })();
 

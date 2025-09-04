@@ -50,36 +50,30 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-// --- Telegram BackButton: apple.html ---
+// === Telegram BackButton на странице apple ===
 (() => {
     const tg = window.Telegram?.WebApp;
-    if (!tg) return;          // если не в Telegram — ничего не делаем
+    if (!tg) return;                // если открыто не в Telegram — выходим
   
-    tg.ready();
+    tg.ready();                     // сообщаем Telegram, что страница готова
     const BackButton = tg.BackButton;
   
-    function onBackClick() {
-      try {
-        // если есть история внутри вашего домена — возвращаемся
-        if (document.referrer && new URL(document.referrer).origin === location.origin) {
-          history.back();
-        } else if (history.length > 1) {
-          history.back();
-        } else {
-          tg.close(); // иначе закрываем мини-апп
-        }
-      } catch {
-        tg.close();
-      }
+    function goHome() {
+      try { BackButton.offClick(goHome); } catch {}
+      try { BackButton.hide(); } catch {}
+      // Возврат на главную и убираем эту страницу из истории,
+      // чтобы повторный "назад" не возвращал обратно
+      location.replace('index.html');
     }
   
-    BackButton.onClick(onBackClick);
+    BackButton.onClick(goHome);
     BackButton.show();
   
-    // Чисто уходим со страницы: скрыть кнопку и снять обработчик
+    // Чистый уход со страницы (bfcache/уход по ссылке)
     window.addEventListener('pagehide', () => {
-      try { BackButton.offClick(onBackClick); } catch {}
+      try { BackButton.offClick(goHome); } catch {}
       try { BackButton.hide(); } catch {}
     });
   })();
+  
   
