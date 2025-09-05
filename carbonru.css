@@ -332,3 +332,143 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   color:#666;
   box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
 }
+
+
+
+
+
+
+
+/* ===== Страница товара (product-apple-*.html) ===== */
+.page-product main{ min-height:100svh; background:#fff; }
+
+/* Верхний блок со слайдером */
+.prod-hero{ position:relative; }
+.prod-slider{
+  height:100svh;                  /* картинка на ВСЮ высоту экрана */
+  width:100%;
+  overflow:hidden;
+}
+.prod-track{
+  display:flex;
+  height:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.prod-track::-webkit-scrollbar{ display:none; }
+.prod-track img{
+  flex:0 0 100%;
+  width:100%; height:100%;
+  object-fit:contain;             /* вписывается по высоте, без обрезки */
+  scroll-snap-align:center;
+  background:#fff;                /* фон вокруг изображения */
+}
+
+/* Индикаторы в виде ПОЛОСОК с круглыми краями */
+.hero-indicators{
+  position:absolute; top:0; left:0; right:0; height:30px; z-index:2; pointer-events:none;
+}
+.hero-indicators .bars{
+  position:relative; z-index:2;
+  display:flex; justify-content:center; gap:6px;
+  padding-top:8px;
+}
+.hero-indicators .bar{
+  width:26px; height:4px; border-radius:999px;
+  background:#d1d1d6;            /* светло-серая для неактивных */
+  flex:0 0 auto;
+}
+.hero-indicators .bar.is-active{ background:#fff; } /* активная — белая */
+.hero-gradient{
+  position:absolute; inset:0 0 auto 0; height:30px; z-index:1;
+  background: linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,0));
+}
+
+/* Низ: блок действий */
+.prod-actions{ padding:14px 12px 24px; }
+.choose-size.button{ width:100%; }   /* используем твой стиль .button для самой кнопки */
+.size-options{ display:flex; flex-direction:column; gap:8px; margin-top:10px; }
+.size-options[hidden]{ display:none !important; } /* скрытие без стилей самих кнопок */
+
+
+
+/* ===== Название и цена под слайдером ===== */
+.prod-info{
+  padding: 12px 12px 0;
+}
+.prod-title{
+  margin: 0;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1.2;
+}
+.prod-price{
+  margin-top: 4px;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+/* === Селектор размеров под продуктом === */
+#iphoneModelsWindow {
+  position: absolute;           /* поверх остального */
+  width: 50%;
+  max-height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100000;
+  overflow-y: auto;
+  margin-bottom: 290px;         /* как в вашем примере */
+  margin-left: 25%;
+
+  /* стекло */
+  background: rgba(39, 39, 39, 0.77);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.vbrazmera{
+  width:100%;
+  display:flex; justify-content:center; align-items:center;
+  position: relative;           /* чтобы абсолютный список якорился на блок */
+}
+
+.size-button{
+  width:100%;
+  height:50px;
+  border:1px solid grey;
+  background-color:#fff;
+  color:#000;
+  text-align:left;
+  font-size:12px;
+  position:relative;
+  padding:5px 34px 5px 15px;    /* справа место под стрелку */
+  cursor:pointer;
+  border-radius:20px;
+  margin-bottom:10px;
+  display:flex; align-items:center;
+}
+.size-text{ font-size:12px; margin:0; color:grey; }
+.arrow{
+  position:absolute; right:10px; top:50%;
+  transform: translateY(-50%) rotate(90deg);
+  color:grey; font-size:14px;
+}
+
+/* элементы списка моделей — без «красивого» стиля, но читабельные */
+.model1{
+  padding:10px 12px;
+  color:#fff;
+  cursor:pointer;
+}
+.model1 + .model1{ border-top:1px solid rgba(255,255,255,.12); }
+
+/* Ozon-кнопка: выключенное состояние */
+.ozon-btn:disabled{
+  opacity:.5; pointer-events:none;
+}
+

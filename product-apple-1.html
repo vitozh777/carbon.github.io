@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru" class="allow-scroll">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>FORGED GLOSSY — Obsidian</title>
+  <link rel="stylesheet" href="carbonru.css" />
+</head>
+<body class="page-product">
+  <main>
+    <!-- ВЕРХ: слайдер на всю высоту экрана -->
+    <section class="prod-hero">
+      <!-- Индикаторы-полоски + лёгкое затемнение сверху -->
+      <div class="hero-indicators">
+        <div class="bars" aria-hidden="true">
+          <!-- JS сам перерисует нужное количество полосок по числу фото -->
+          <span class="bar is-active"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <div class="hero-gradient"></div>
+      </div>
+
+      <!-- Нативный горизонтальный свайп (scroll-snap) -->
+      <div class="prod-slider">
+        <div class="prod-track">
+          <!-- 3 фото товара (на всю высоту) -->
+          <img src="FGB.JPG"  alt="FORGED GLOSSY — фото 1" />
+          <img src="FGB2.JPG" alt="FORGED GLOSSY — фото 2" />
+          <img src="FGB3.JPG" alt="FORGED GLOSSY — фото 3" />
+        </div>
+      </div>
+    </section>
+
+        <!-- НАЗВАНИЕ И ЦЕНА -->
+        <section class="prod-info">
+            <h1 class="prod-title">FORGED GLOSSY - OBSIDIAN</h1>
+            <div class="prod-price">5 000 ₽</div>
+          </section>
+      
+
+        <!-- НИЗ: выбор размера + Ozon -->
+<section class="prod-actions">
+    <div class="vbrazmera">
+      <div id="iphoneModelsWindow" style="display: none;">
+        <div class="model1">iPhone 16 Pro Max</div>
+        <div class="model1">iPhone 16 Pro</div>
+        <div class="model1">iPhone 15 Pro Max</div>
+        <div class="model1">iPhone 15 Pro</div>
+        <div class="model1">iPhone 14 Pro Max</div>
+        <div class="model1">iPhone 14 Pro</div>
+        <div class="model1">iPhone 13 Pro Max</div>
+        <div class="model1">iPhone 13 Pro</div>
+      </div>
+  
+      <button id="sizeButton" type="button" class="size-button">
+        <div class="size-text">Выберите размер</div>
+        <span class="arrow">&#x276F;</span>
+      </button>
+    </div>
+  
+    <!-- изначально неактивна; активируется после выбора модели -->
+    <button id="ozonBtn" type="button" class="button ozon-btn" disabled>
+      Открыть на Ozon
+    </button>
+  </section>
+  </main>
+
+  <script src="product.js"></script>
+</body>
+</html>
