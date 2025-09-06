@@ -91,5 +91,26 @@ document.addEventListener('DOMContentLoaded', () => {
       try { tg.enableVerticalSwipes?.(); } catch {}
     });
   })();
+
+  
+
+  // --- Анимация нажатия кнопок на apple.html ---
+(() => {
+    // включает :active на iOS для <a>
+    window.addEventListener('touchstart', ()=>{}, {passive:true});
+  
+    const pressables = document.querySelectorAll('.button, .buy-btn, .buy-btn-catalog');
+    if (!pressables.length) return;
+  
+    pressables.forEach(el => {
+      el.addEventListener('touchstart', () => el.classList.add('is-pressed'), {passive:true});
+      const clear = () => el.classList.remove('is-pressed');
+      el.addEventListener('touchend', clear,   {passive:true});
+      el.addEventListener('touchcancel', clear,{passive:true});
+      el.addEventListener('mouseleave', clear);
+      el.addEventListener('mouseup', clear);
+      el.addEventListener('blur', clear);
+    });
+  })();
   
   
