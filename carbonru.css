@@ -342,8 +342,8 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 
 .prod-track{
   display:flex;
-  margin-top: 20px;
-  height:600px;
+  margin-top: 110px;
+  height:550px;
   overflow-x:auto;
   overflow-y:hidden;
   scroll-snap-type:x mandatory;
@@ -382,7 +382,6 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 }
 
 /* Низ: блок действий */
-.prod-actions{ padding:14px 12px 24px; }
 .choose-size.button{ width:100%; }   /* используем твой стиль .button для самой кнопки */
 .size-options{ display:flex; flex-direction:column; gap:8px; margin-top:10px; }
 .size-options[hidden]{ display:none !important; } /* скрытие без стилей самих кнопок */
@@ -393,8 +392,8 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   display: flex; /* Устанавливаем контейнер в режим Flexbox */
   justify-content: space-between; /* Пространство между колонками */
   align-items: center;
-  margin-top: -20px;
-  margin-bottom: -45px;
+  margin-top: -30px;
+  margin-bottom: -35px;
   margin-left: 15px;
 }
 
@@ -452,7 +451,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 }
 
 .size-button{
-  width:100%;
+  width: min(560px, calc(100% - 24px));
   height:50px;
   border:1px solid grey;
   background-color:#fff;
@@ -504,6 +503,9 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 
 /* ===== product top bar (страница товара) ===== */
 .product-topbar{
+  position: fixed;
+  z-index: 100000;
+  left: 0; right: 0; top: 0;
   height: 95px;
   background: #fff;
   display: grid;
@@ -538,14 +540,14 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .ozon-bar{
   position: fixed;
   left: 0; right: 0; bottom: 0;
-  height: 40px;
+  height: 45px;
   background: var(--tg-secondary-bg, #ffffff);  /* <-- из темы Telegram */
   color: var(--tg-text, #000000);
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   box-shadow: 0 -8px 24px rgba(0,0,0,.12);
   z-index: 100000;
-  padding: 5px 12px calc(5px + var(--safe-bottom));
+  padding: 5px 0px calc(5px + var(--safe-bottom));
   display: none;                                /* скрыта по умолчанию */
   align-items: center; justify-content: center;
 }
