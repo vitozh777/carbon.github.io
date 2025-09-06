@@ -41,43 +41,41 @@ document.addEventListener('DOMContentLoaded', () => {
   
   
 
-// === Размеры, Ozon, Telegram MainButton ===
+// === Размеры, Ozon, Telegram MainButton (c ручными артикулами) ===
 document.addEventListener('DOMContentLoaded', () => {
     const sizeBtn   = document.getElementById('sizeButton');
     const sizeText  = document.querySelector('.size-text');
     const windowEl  = document.getElementById('iphoneModelsWindow');
   
-    // НОВОЕ:
     const ozonBar     = document.getElementById('ozonBar');
     const ozonOpenBtn = document.getElementById('ozonOpenBtn');
+    const ozonSkuEl   = document.getElementById('ozonSkuValue');
   
-  
-    // ваши ссылки на Ozon
-    const ozonLinks1 = {
-      "iPhone 16 Pro Max": "https://ozon.ru/t/632M186",
-      "iPhone 16 Pro":     "https://ozon.ru/t/VJ7cDuA",
-      "iPhone 15 Pro Max": "https://ozon.ru/t/qy0Jmjr",
-      "iPhone 15 Pro":     "https://ozon.ru/t/MuFau0t",
-      "iPhone 14 Pro Max": "https://ozon.ru/t/lQznGQN",
-      "iPhone 14 Pro":     "https://ozon.ru/t/hwUeEgU",
-      "iPhone 13 Pro Max": "https://ozon.ru/t/8UcZ4Lg",
-      "iPhone 13 Pro":     "https://ozon.ru/t/97OCEou",
+    // 💡 ЕДИНЫЙ СПРАВОЧНИК: для каждой модели задайте url и sku вручную
+    const ozonMap = {
+      "iPhone 16 Pro Max": { url: "https://ozon.ru/t/632M186", sku: "2403117048" },
+      "iPhone 16 Pro":     { url: "https://ozon.ru/t/VJ7cDuA", sku: "2406081070" },
+      "iPhone 15 Pro Max": { url: "https://ozon.ru/t/qy0Jmjr", sku: "2403281658" },
+      "iPhone 15 Pro":     { url: "https://ozon.ru/t/MuFau0t", sku: "2406081042" },
+      "iPhone 14 Pro Max": { url: "https://ozon.ru/t/lQznGQN", sku: "2406082851" },
+      "iPhone 14 Pro":     { url: "https://ozon.ru/t/hwUeEgU", sku: "2406082474" },
+      "iPhone 13 Pro Max": { url: "https://ozon.ru/t/8UcZ4Lg", sku: "2406125091" },
+      "iPhone 13 Pro":     { url: "https://ozon.ru/t/97OCEou", sku: "2406121255" },
     };
+    // меняйте sku на любые свои — они НЕ берутся из ссылки
   
     let selectedModel = null;
   
-    // открыть/закрыть окно с моделями
     function toggleModels(open){
-      const isOpen = windowEl.style.display !== 'none';
+      const isOpen = windowEl?.style.display !== 'none';
       const next = (typeof open === 'boolean') ? open : !isOpen;
+      if (!windowEl) return;
       windowEl.style.display = next ? 'block' : 'none';
-      // поворот стрелки
-      sizeBtn.querySelector('.arrow').style.transform =
-        `translateY(-50%) rotate(${next ? -90 : 90}deg)`;
+      const arrow = sizeBtn?.querySelector('.arrow');
+      if (arrow) arrow.style.transform = `translateY(-50%) rotate(${next ? -90 : 90}deg)`;
     }
   
     if (sizeBtn && windowEl) {
-      // старт: окно скрыто
       windowEl.style.display = 'none';
       sizeBtn.addEventListener('click', () => toggleModels());
   
@@ -93,67 +91,61 @@ document.addEventListener('DOMContentLoaded', () => {
     windowEl?.querySelectorAll('.model1').forEach(el => {
       el.addEventListener('click', () => {
         selectedModel = el.textContent.trim();
-        if (sizeText) {
-          sizeText.textContent = selectedModel;
-          sizeText.style.color = '#000'; // как выбранное значение
-        }
+  
+        // подпись на кнопке выбора
+        if (sizeText) { sizeText.textContent = selectedModel; sizeText.style.color = '#000'; }
         toggleModels(false);
   
-        // активируем Ozon-кнопку
-        // показать нижнюю панель и активировать синюю кнопку
-if (ozonBar && ozonOpenBtn) {
-    ozonBar.hidden = false;
-    ozonBar.classList.add('show');
-    ozonOpenBtn.disabled = !ozonLinks1[selectedModel];
+        // показываем нижнюю панель и настраиваем синюю кнопку Ozon
+        const entry = ozonMap[selectedModel] || {};
+        if (ozonBar && ozonOpenBtn) {
+          ozonBar.hidden = false;
+          ozonBar.classList.add('show');
+          ozonOpenBtn.disabled = !entry.url;
+          ozonOpenBtn.onclick = () => {
+            if (!entry.url) return;
+            const tg = window.Telegram?.WebApp;
+            if (tg?.openLink) tg.openLink(entry.url, { try_browser: true });
+            else window.open(entry.url, '_blank');
+          };
+        }
   
-    // кликом открываем соответствующую ссылку
-    ozonOpenBtn.onclick = () => {
-      const url = ozonLinks1[selectedModel];
-      if (!url) return;
-      const tg = window.Telegram?.WebApp;
-      if (tg?.openLink) {
-        tg.openLink(url, { try_browser: true });
-      } else {
-        window.open(url, '_blank');
-      }
-    };
-  }
+        // 🔢 выставляем артикул (берём из ozonMap, НЕ из ссылки)
+        if (ozonSkuEl) {
+          if (entry.sku) ozonSkuEl.textContent = entry.sku;
+          else ozonSkuEl.textContent = '(нет артикула)';
+        }
   
-  
-        // Telegram MainButton
+        // Telegram MainButton (чёрный) — «Добавить в корзину»
         const tg = window.Telegram?.WebApp;
         if (tg) {
-            tg.ready?.();
-            if (tg.MainButton.setParams) {
-              tg.MainButton.setParams({ color: '#000000', text_color: '#ffffff' });
-            } else {
-              // на всякий случай для старых клиентов
-              tg.MainButton.color = '#000000';
-              tg.MainButton.textColor = '#ffffff';
-            }
-            tg.MainButton.setText('Добавить в корзину');
-            tg.MainButton.show();
-            
+          tg.ready?.();
+          if (tg.MainButton.setParams) {
+            tg.MainButton.setParams({ color: '#000000', text_color: '#ffffff' });
+          } else {
+            tg.MainButton.color = '#000000';
+            tg.MainButton.textColor = '#ffffff';
+          }
+          tg.MainButton.setText('Добавить в корзину');
+          tg.MainButton.show();
   
-          // продукт берём из <title> (или задайте вручную)
           const productName = document.title || 'Товар';
-          tg.MainButton.offClick?.(); // на всякий случай снимем старый
+          tg.MainButton.offClick?.();
           tg.MainButton.onClick(() => {
-            // отправим боту данные заказа
             try {
               tg.sendData(JSON.stringify({
                 action: 'add_to_cart',
                 product: productName,
-                model: selectedModel
+                model: selectedModel,
+                sku: entry.sku || null
               }));
             } catch(e) {}
           });
         }
       });
     });
-  
- 
   });
+  
   
 
 
