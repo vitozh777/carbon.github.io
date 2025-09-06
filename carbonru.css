@@ -343,6 +343,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .prod-track{
   display:flex;
   margin-top: 20px;
+  margin-bottom: 20px;
   height:600px;
   overflow-x:auto;
   overflow-y:hidden;
