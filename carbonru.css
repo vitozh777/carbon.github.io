@@ -534,21 +534,48 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 }
 
 
-/* === Нижняя панель Ozon на странице товара === */
+/* === Нижняя панель Ozon (адаптация под тему Telegram) === */
 .ozon-bar{
   position: fixed;
   left: 0; right: 0; bottom: 0;
   height: 40px;
-  background: #ffffff;
+  background: var(--tg-secondary-bg, #ffffff);  /* <-- из темы Telegram */
+  color: var(--tg-text, #000000);
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   box-shadow: 0 -8px 24px rgba(0,0,0,.12);
   z-index: 100000;
-  display: none;                 /* ← оставляем ТОЛЬКО none в базовом правиле */
+  padding: 5px 12px calc(5px + var(--safe-bottom));
+  display: none;                                /* скрыта по умолчанию */
   align-items: center; justify-content: center;
 }
-.ozon-bar.show{ display: flex; }  /* показываем через класс */
-.ozon-bar[hidden]{ display: none !important; } /* hidden всегда скрывает */
+.ozon-bar.show{ display:flex; }
+.ozon-bar[hidden]{ display:none !important; }
+
+/* Внутренняя синяя кнопка: можно тоже брать цвета из темы Telegram */
+.ozon-inner-btn{
+  height: 30px;
+  line-height: 30px;
+  padding: 0 16px;
+  width: min(560px, calc(100% - 24px));
+  border: none;
+  border-radius: 16px;
+  background: var(--tg-btn, #2ea6ff);           /* кнопка в цвет темы, fallback — голубая */
+  color: var(--tg-btn-text, #ffffff);
+  font-weight: 700;
+  font-size: 14px;
+}
+.ozon-inner-btn:disabled{ opacity:.5; pointer-events:none; }
+
+/* На случай запуска вне Telegram — fallback по системной теме */
+@media (prefers-color-scheme: dark){
+  .ozon-bar{
+    background: #1c1c1e;
+    color: #ffffff;
+    box-shadow: 0 -8px 24px rgba(0,0,0,.4);
+  }
+}
+
 
 
 /* Голубая кнопка внутри, 30px высотой и шириной как MainButton (почти на всю) */

@@ -184,3 +184,31 @@ if (ozonBar && ozonOpenBtn) {
     autoplay: true, // автоматическое воспроизведение
     path: 'magsafe.json' // путь к вашему JSON-файлу
 });
+
+
+// === Telegram theme → CSS variables (для ozon-bar и др.) ===
+(() => {
+    const tg = window.Telegram?.WebApp;
+    if (!tg) return;
+  
+    function applyTheme(tp){
+      const r = document.documentElement.style;
+      // Базовые цвета из WebApp API
+      r.setProperty('--tg-bg',               tp.bg_color              || '');
+      r.setProperty('--tg-text',             tp.text_color            || '');
+      r.setProperty('--tg-hint',             tp.hint_color            || '');
+      r.setProperty('--tg-link',             tp.link_color            || '');
+      r.setProperty('--tg-btn',              tp.button_color          || '');
+      r.setProperty('--tg-btn-text',         tp.button_text_color     || '');
+      r.setProperty('--tg-secondary-bg',     tp.secondary_bg_color    || '');
+      // Сигнал браузеру о схеме цвета (влияет на системные элементы)
+      if (tg.colorScheme === 'dark' || tg.colorScheme === 'light') {
+        document.documentElement.style.colorScheme = tg.colorScheme;
+      }
+    }
+  
+    tg.ready?.();
+    applyTheme(tg.themeParams || {});
+    tg.onEvent?.('themeChanged', () => applyTheme(tg.themeParams || {}));
+  })();
+  
