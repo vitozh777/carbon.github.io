@@ -29,7 +29,7 @@
   }
   .link-button{
     justify-self:start;
-    background:none; border:none; padding:1px 1px; margin-top:15px;
+    background:none; border:none; padding:1px 1px; margin-top:10px;
     font-weight:600; color:#007aff; font-size:16px; cursor:pointer;
     margin-bottom: 30px;
   }
@@ -472,3 +472,17 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   opacity:.5; pointer-events:none;
 }
 
+
+/* Кнопки: плавная анимация и активное состояние */
+:where(a.button, button.button){
+  cursor:pointer;
+  transition: transform .08s ease, box-shadow .12s ease, color .12s ease, filter .12s ease;
+}
+
+:where(a.button, button.button):active,
+:where(a.button, button.button).is-pressed{
+  color:#666;
+  box-shadow: inset 4px 4px 12px #000, inset -4px -4px 12px #1f1f1f;
+  transform: translateY(0.5px) scale(.98);
+  filter: brightness(.96);
+}

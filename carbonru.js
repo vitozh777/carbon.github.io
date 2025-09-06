@@ -91,6 +91,27 @@ if (heroVideo) {
 
 
 
+// Включаем :active на iOS и даём кнопкам класс is-pressed при касании
+(() => {
+  // пустой touchstart — чтобы Safari начал применять :active к ссылкам
+  window.addEventListener('touchstart', ()=>{}, {passive:true});
+
+  const btns = document.querySelectorAll('.button');
+  if (!btns.length) return;
+
+  btns.forEach(btn => {
+    btn.addEventListener('touchstart', () => {
+      btn.classList.add('is-pressed');
+    }, {passive:true});
+
+    const clear = () => btn.classList.remove('is-pressed');
+    btn.addEventListener('touchend', clear, {passive:true});
+    btn.addEventListener('touchcancel', clear, {passive:true});
+    btn.addEventListener('mouseleave', clear);
+    btn.addEventListener('mouseup', clear);
+    btn.addEventListener('blur', clear);
+  });
+})();
 
 
 
