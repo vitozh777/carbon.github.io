@@ -419,7 +419,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .price1 {
   color: rgb(110, 110, 110);
   text-align: left;
-  font-size: 14px;
+  font-size: 15px;
 
 }
 
@@ -434,7 +434,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   z-index: 100000;
   overflow-y: auto;
-  margin-bottom: 290px;         /* как в вашем примере */
+  margin-bottom: 320px;         /* как в вашем примере */
   margin-left: 25%;
 
   /* стекло */
@@ -453,8 +453,8 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 
 .size-button{
   width: 100%;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 17px;
+  margin-right: 17px;
   height:50px;
   border:1px solid grey;
   background-color:#fff;
@@ -475,13 +475,23 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   color:grey; font-size:14px;
 }
 
-/* элементы списка моделей — без «красивого» стиля, но читабельные */
-.model1{
-  padding:10px 12px;
-  color:#fff;
-  cursor:pointer;
+.model1 {
+  font-size: 14px; /* Размер шрифта для моделей iPhone */
+  padding: 8px; /* Отступы для каждой модели */
+  cursor: pointer; /* Курсор в виде руки при наведении */
+  color: rgb(193, 193, 193); /* Цвет текста */
+  text-align: left; /* Текст выравнивается по левому краю */
+  padding: 10px; /* Внутренние отступы */
+  padding-left: 30px;
 }
-.model1 + .model1{ border-top:1px solid rgba(255,255,255,.12); }
+
+.model1:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* Подсветка при наведении */
+}
+
+.model1 + .model1 {
+  border-top: 1px solid rgb(88, 88, 88); /* Черная линия между моделями */
+}
 
 /* Ozon-кнопка: выключенное состояние */
 .ozon-btn:disabled{
@@ -612,9 +622,8 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .stripniz {
   width: 100%;
   height: 8px; /* Высота полоски */
-  background-color: #cdcdcd; /* Цвет полоски */
+  background-color: #e0e0e0; /* Цвет полоски */
   margin-top: 30px;
-  margin-bottom: 50px;
 }
 
 .text-container {
@@ -627,5 +636,27 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 }
 .text-container p {
   margin: 2px; /* Убирает отступы между текстовыми элементами */
-  color: #5a5a5a;
+  color: #000000;
+}
+
+
+.cont-support {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Кнопка "Написать в поддержку" — 100% ширина, 30px высота, серая */
+.support-btn{
+  width:100%;
+  height:40px;
+  margin-left: 17px;
+  margin-right: 17px;
+  margin-bottom: 50px;
+  text-align:center;
+  border:none;
+  border-radius:10px;
+  background:#f6f3f3;   /* светло-серая */
+  color:#111;
+  font-weight:500;
+  font-size:14px;
 }

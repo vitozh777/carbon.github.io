@@ -234,3 +234,22 @@ if (ozonBar && ozonOpenBtn) {
     });
   })();
   
+
+  // Открыть чат поддержки в Telegram
+(() => {
+    const btn = document.getElementById('supportBtn');
+    if (!btn) return;
+  
+    // ЗАМЕНИ на свой username/ссылку
+    const SUPPORT_LINK = 'https://t.me/carbonexpert';
+  
+    btn.addEventListener('click', () => {
+      const tg = window.Telegram?.WebApp;
+      if (tg?.openTelegramLink) {
+        tg.openTelegramLink(SUPPORT_LINK);
+      } else {
+        window.open(SUPPORT_LINK, '_blank');
+      }
+    });
+  })();
+  
