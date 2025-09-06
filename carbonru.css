@@ -485,7 +485,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .product-topbar{
   position: sticky;      /* остаётся наверху при прокрутке */
   top: 0;
-  height: 50px;
+  height: 90px;
   background: #fff;
   border-bottom: 1px solid rgba(0,0,0,.08);
   z-index: 10;
@@ -494,6 +494,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 }
 .product-topbar .brand{
   display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 40px
 }
 .product-topbar .brand-logo{
   width: 28px; height: 28px; border-radius: 50%;
