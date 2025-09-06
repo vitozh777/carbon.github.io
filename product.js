@@ -105,9 +105,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Telegram MainButton
         const tg = window.Telegram?.WebApp;
         if (tg) {
-          tg.ready?.();
-          tg.MainButton.setText('Добавить в корзину');
-          tg.MainButton.show();
+            tg.ready?.();
+            if (tg.MainButton.setParams) {
+              tg.MainButton.setParams({ color: '#000000', text_color: '#ffffff' });
+            } else {
+              // на всякий случай для старых клиентов
+              tg.MainButton.color = '#000000';
+              tg.MainButton.textColor = '#ffffff';
+            }
+            tg.MainButton.setText('Добавить в корзину');
+            tg.MainButton.show();
+            
   
           // продукт берём из <title> (или задайте вручную)
           const productName = document.title || 'Товар';
