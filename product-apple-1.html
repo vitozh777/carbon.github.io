@@ -7,9 +7,15 @@
   <link rel="stylesheet" href="carbonru.css" />
 </head>
 <body class="page-product">
-  <main>
-    <!-- ВЕРХ: слайдер на всю высоту экрана -->
-    <section class="prod-hero">
+
+    <header class="product-topbar">
+        <div class="brand">
+          <!-- если нет картинки, можно оставить пустой <span class="brand-logo"></span> -->
+          <img class="brand-logo" src="CARBONRUlogo.PNG" alt="">
+          <span class="brand-text">CARBONRU</span>
+        </div>
+      </header>
+
       <!-- Индикаторы-полоски + лёгкое затемнение сверху -->
       <div class="hero-indicators">
         <div class="bars" aria-hidden="true">
@@ -20,23 +26,26 @@
         </div>
         <div class="hero-gradient"></div>
       </div>
+      
+
+
 
       <!-- Нативный горизонтальный свайп (scroll-snap) -->
-      <div class="prod-slider">
+     
         <div class="prod-track">
           <!-- 3 фото товара (на всю высоту) -->
           <img src="FGB.JPG"  alt="FORGED GLOSSY — фото 1" />
           <img src="FGB2.JPG" alt="FORGED GLOSSY — фото 2" />
           <img src="FGB3.JPG" alt="FORGED GLOSSY — фото 3" />
         </div>
-      </div>
-    </section>
 
-        <!-- НАЗВАНИЕ И ЦЕНА -->
-        <section class="prod-info">
-            <h1 class="prod-title">FORGED GLOSSY - OBSIDIAN</h1>
-            <div class="prod-price">5 000 ₽</div>
-          </section>
+
+
+<!-- НАЗВАНИЕ И ЦЕНА -->
+<section class="prod-info">
+    <h1 class="prod-title">FORGED GLOSSY - OBSIDIAN</h1>
+    <div class="prod-price">3699₽</div>
+  </section>
       
 
         <!-- НИЗ: выбор размера + Ozon -->
@@ -64,7 +73,6 @@
       Открыть на Ozon
     </button>
   </section>
-  </main>
 
   <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
   <script src="product.js"></script>

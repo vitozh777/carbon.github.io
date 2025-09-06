@@ -1,7 +1,7 @@
 // product.js — нативный свайп на всю высоту + полоски-индикаторы + выбор размера
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.prod-track');
-    const slider = document.querySelector('.prod-slider');
+    const slider = document.querySelector('.prod-track');
     const barsWrap = document.querySelector('.hero-indicators .bars');
     const chooseBtn = document.getElementById('chooseSizeBtn');
     const sizeBox = document.getElementById('sizeOptions');
@@ -148,4 +148,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+  
+
+
+  // Отключаем сворачивание по вертикальному свайпу на apple.html
+(() => {
+    const tg = window.Telegram?.WebApp;
+    if (!tg) return;
+  
+    tg.ready?.();
+    tg.expand?.();                // на всякий случай разворачиваем
+    tg.disableVerticalSwipes?.(); // <- главное
+  
+    // при уходе со страницы — вернём поведение по умолчанию
+    window.addEventListener('pagehide', () => {
+      try { tg.enableVerticalSwipes?.(); } catch {}
+    });
+  })();
   

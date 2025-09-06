@@ -29,7 +29,7 @@
   }
   .link-button{
     justify-self:start;
-    background:none; border:none; padding:1px 1px; margin-top:4px;
+    background:none; border:none; padding:1px 1px; margin-top:8px;
     font-weight:600; color:#007aff; font-size:16px; cursor:pointer;
     margin-bottom: 30px;
   }
@@ -339,19 +339,11 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 
 
 
-/* ===== Страница товара (product-apple-*.html) ===== */
-.page-product main{ min-height:100svh; background:#fff; }
 
-/* Верхний блок со слайдером */
-.prod-hero{ position:relative; }
-.prod-slider{
-  height:100svh;                  /* картинка на ВСЮ высоту экрана */
-  width:100%;
-  overflow:hidden;
-}
 .prod-track{
   display:flex;
-  height:100%;
+  margin-top: 20px;
+  height:600px;
   overflow-x:auto;
   overflow-y:hidden;
   scroll-snap-type:x mandatory;
@@ -377,7 +369,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   padding-top:8px;
 }
 .hero-indicators .bar{
-  width:26px; height:4px; border-radius:999px;
+  width:32%; height:4px; border-radius:999px;
   background:#d1d1d6;            /* светло-серая для неактивных */
   flex:0 0 auto;
 }
@@ -397,18 +389,19 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 
 /* ===== Название и цена под слайдером ===== */
 .prod-info{
-  padding: 12px 12px 0;
+  margin-left: 15px;
 }
 .prod-title{
-  margin: 0;
-  font-weight: 800;
-  font-size: 18px;
-  line-height: 1.2;
+  color: black;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
 }
 .prod-price{
-  margin-top: 4px;
-  font-weight: 800;
-  font-size: 16px;
+  color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+    margin-top: -10px;
 }
 
 /* === Селектор размеров под продуктом === */
@@ -487,3 +480,37 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   filter: brightness(.96);
 }
 
+
+/* ===== product top bar (страница товара) ===== */
+.product-topbar{
+  position: sticky;      /* остаётся наверху при прокрутке */
+  top: 0;
+  height: 50px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  z-index: 10;
+  display: grid;
+  place-items: center;
+}
+.product-topbar .brand{
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.product-topbar .brand-logo{
+  width: 28px; height: 28px; border-radius: 50%;
+  object-fit: cover; background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.product-topbar .brand-text{
+  font-weight: 800; font-size: 14px; letter-spacing: 0.6px; color:#111;
+  text-transform: uppercase;
+}
+
+/* Слайдер на всю высоту ЭКРАНА минус шапка */
+.page-product .prod-slider{
+  height: calc(100svh - 50px) !important;
+}
+
+/* Полоски-индикаторы опускаем ниже шапки */
+.page-product .hero-indicators{
+  top: 50px !important;
+}
