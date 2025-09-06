@@ -50,31 +50,39 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-// === Telegram BackButton на странице apple ===
+// Telegram header: показываем "Назад", прячем "Settings", блокируем свайп-закрытие
 (() => {
     const tg = window.Telegram?.WebApp;
-    if (!tg) return;                // если открыто не в Telegram — выходим
+    if (!tg) return;
   
-    tg.ready();                     // сообщаем Telegram, что страница готова
+    tg.ready?.();
+    tg.expand?.();
+  
+    // 1) Назад -> главная
     const BackButton = tg.BackButton;
-  
-    function goHome() {
-      try { BackButton.offClick(goHome); } catch {}
-      try { BackButton.hide(); } catch {}
-      // Возврат на главную и убираем эту страницу из истории,
-      // чтобы повторный "назад" не возвращал обратно
-      location.replace('index.html');
-    }
-  
+    function goHome() { location.replace('index.html'); }
+    BackButton.offClick?.(goHome); // на всякий случай
     BackButton.onClick(goHome);
     BackButton.show();
   
-    // Чистый уход со страницы (bfcache/уход по ссылке)
+    // 2) Прячем кнопку настроек (правый верх)
+    tg.SettingsButton?.hide?.();
+  
+    // 3) Отключаем сворачивание свайпом вниз
+    tg.disableVerticalSwipes?.();
+  
+    // 4) (опционально) спрашивать подтверждение при закрытии крестиком
+    // tg.enableClosingConfirmation?.();
+  
+    // Чистый уход со страницы
     window.addEventListener('pagehide', () => {
-      try { BackButton.offClick(goHome); } catch {}
-      try { BackButton.hide(); } catch {}
+      BackButton.offClick?.(goHome);
+      BackButton.hide?.();
+      tg.enableVerticalSwipes?.();
+      // tg.disableClosingConfirmation?.();
     });
   })();
+  
 
   
   // Отключаем сворачивание по вертикальному свайпу на apple.html
