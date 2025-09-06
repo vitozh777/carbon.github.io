@@ -118,4 +118,11 @@ if (heroVideo) {
 
 
 
+// На главной возвращаем стандартное поведение свайпа Телеграма
+(() => {
+  const tg = window.Telegram?.WebApp;
+  if (!tg) return;
+  tg.ready?.();
+  tg.enableVerticalSwipes?.();
+})();
 

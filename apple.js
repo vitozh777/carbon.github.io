@@ -75,5 +75,21 @@ document.addEventListener('DOMContentLoaded', () => {
       try { BackButton.hide(); } catch {}
     });
   })();
+
+  
+  // Отключаем сворачивание по вертикальному свайпу на apple.html
+(() => {
+    const tg = window.Telegram?.WebApp;
+    if (!tg) return;
+  
+    tg.ready?.();
+    tg.expand?.();                // на всякий случай разворачиваем
+    tg.disableVerticalSwipes?.(); // <- главное
+  
+    // при уходе со страницы — вернём поведение по умолчанию
+    window.addEventListener('pagehide', () => {
+      try { tg.enableVerticalSwipes?.(); } catch {}
+    });
+  })();
   
   
