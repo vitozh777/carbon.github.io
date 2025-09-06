@@ -213,28 +213,28 @@ if (ozonBar && ozonOpenBtn) {
   })();
 
   
-  // === Telegram BackButton на странице товара ===
+// === Telegram BackButton на странице apple ===
 (() => {
     const tg = window.Telegram?.WebApp;
-    if (!tg) return;            // если открыто не в Telegram — ничего не делаем
+    if (!tg) return;                // если открыто не в Telegram — выходим
   
-    tg.ready?.();
+    tg.ready();                     // сообщаем Telegram, что страница готова
     const BackButton = tg.BackButton;
   
-    function goToCatalog() {
-      try { BackButton.offClick(goToCatalog); } catch {}
+    function goHome() {
+      try { BackButton.offClick(goHome); } catch {}
       try { BackButton.hide(); } catch {}
-      // Возвращаемся в каталог Apple; replace — чтобы не копить историю
+      // Возврат на главную и убираем эту страницу из истории,
+      // чтобы повторный "назад" не возвращал обратно
       location.replace('apple.html');
     }
   
-    BackButton.onClick(goToCatalog);
+    BackButton.onClick(goHome);
     BackButton.show();
   
-    // Чистый уход со страницы (в т.ч. bfcache на iOS)
+    // Чистый уход со страницы (bfcache/уход по ссылке)
     window.addEventListener('pagehide', () => {
-      try { BackButton.offClick(goToCatalog); } catch {}
+      try { BackButton.offClick(goHome); } catch {}
       try { BackButton.hide(); } catch {}
     });
   })();
-  
