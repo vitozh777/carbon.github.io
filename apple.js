@@ -112,5 +112,78 @@ document.addEventListener('DOMContentLoaded', () => {
       el.addEventListener('blur', clear);
     });
   })();
+
+  
+  // --- Клик по всей карточке -> страница товара (с защитой от свайпа) ---
+(() => {
+    const cards = document.querySelectorAll('.p-card');
+    if (!cards.length) return;
+  
+    const TAP_TOLERANCE = 12; // px — если палец сдвинулся больше, считаем жестом, а не тапом
+  
+    cards.forEach(card => {
+      let startX = 0, startY = 0, moved = 0, suppressTap = false;
+  
+      const getHref = () =>
+        card.dataset.href ||
+        card.querySelector('.buy-btn-catalog, .buy-btn')?.getAttribute('href');
+  
+      // --- touch
+      card.addEventListener('touchstart', (e) => {
+        const t = e.touches[0];
+        startX = t.clientX;
+        startY = t.clientY;
+        moved = 0;
+  
+        const target = e.target;
+        // не навигируем, если тап по кнопке "Купить" или по точкам
+        suppressTap = !!(
+          target.closest('.buy-btn-catalog, .buy-btn') ||
+          target.closest('.p-dots')
+        );
+      }, { passive: true });
+  
+      card.addEventListener('touchmove', (e) => {
+        const t = e.touches[0];
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        moved = Math.max(moved, Math.hypot(dx, dy));
+      }, { passive: true });
+  
+      card.addEventListener('touchend', () => {
+        if (suppressTap) return;
+        if (moved > TAP_TOLERANCE) return; // это был свайп — не открываем
+        const href = getHref();
+        if (href) window.location.href = href;
+      }, { passive: true });
+  
+      // --- mouse (на всякий случай для десктопа)
+      let mouseDown = false;
+      card.addEventListener('mousedown', (e) => {
+        mouseDown = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        moved = 0;
+        suppressTap = !!(
+          e.target.closest('.buy-btn-catalog, .buy-btn') ||
+          e.target.closest('.p-dots')
+        );
+      });
+      card.addEventListener('mousemove', (e) => {
+        if (!mouseDown) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        moved = Math.max(moved, Math.hypot(dx, dy));
+      });
+      card.addEventListener('mouseup', () => {
+        if (!mouseDown) return;
+        mouseDown = false;
+        if (suppressTap) return;
+        if (moved > TAP_TOLERANCE) return;
+        const href = getHref();
+        if (href) window.location.href = href;
+      });
+    });
+  })();
   
   
