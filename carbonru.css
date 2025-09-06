@@ -343,9 +343,8 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .prod-track{
   display:flex;
   margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
   height:600px;
   overflow-x:auto;
   overflow-y:hidden;
@@ -496,7 +495,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   margin-top: 60px
 }
 .product-topbar .brand-logo{
-  width: 28px; height: 28px; border-radius: 50%;
+  width: 24px; height: 24px; border-radius: 50%;
   object-fit: cover; background: #fff;
   box-shadow: 0 1px 4px rgba(0,0,0,.08);
 }
