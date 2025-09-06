@@ -50,7 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const sizeBtn   = document.getElementById('sizeButton');
     const sizeText  = document.querySelector('.size-text');
     const windowEl  = document.getElementById('iphoneModelsWindow');
-    const ozonBtn   = document.getElementById('ozonBtn');
+  
+    // НОВОЕ:
+    const ozonBar     = document.getElementById('ozonBar');
+    const ozonOpenBtn = document.getElementById('ozonOpenBtn');
+  
   
     // ваши ссылки на Ozon
     const ozonLinks1 = {
@@ -100,7 +104,25 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleModels(false);
   
         // активируем Ozon-кнопку
-        if (ozonBtn) ozonBtn.disabled = !ozonLinks1[selectedModel];
+        // показать нижнюю панель и активировать синюю кнопку
+if (ozonBar && ozonOpenBtn) {
+    ozonBar.hidden = false;
+    ozonBar.classList.add('show');
+    ozonOpenBtn.disabled = !ozonLinks1[selectedModel];
+  
+    // кликом открываем соответствующую ссылку
+    ozonOpenBtn.onclick = () => {
+      const url = ozonLinks1[selectedModel];
+      if (!url) return;
+      const tg = window.Telegram?.WebApp;
+      if (tg?.openLink) {
+        tg.openLink(url, { try_browser: true });
+      } else {
+        window.open(url, '_blank');
+      }
+    };
+  }
+  
   
         // Telegram MainButton
         const tg = window.Telegram?.WebApp;
@@ -134,19 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   
-    // переход на Ozon
-    ozonBtn?.addEventListener('click', () => {
-      if (!selectedModel) return;
-      const url = ozonLinks1[selectedModel];
-      if (!url) return;
-  
-      const tg = window.Telegram?.WebApp;
-      if (tg?.openLink) {
-        tg.openLink(url, { try_browser: true }); // корректно из Telegram
-      } else {
-        window.open(url, '_blank');
-      }
-    });
+ 
   });
   
 
@@ -166,3 +176,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
   
+
+  var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
+});

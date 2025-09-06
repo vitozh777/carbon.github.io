@@ -389,22 +389,41 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 
 
 
-/* ===== Название и цена под слайдером ===== */
-.prod-info{
+.namecont {
+  display: flex; /* Устанавливаем контейнер в режим Flexbox */
+  justify-content: space-between; /* Пространство между колонками */
+  align-items: center;
+  margin-top: -20px;
+  margin-bottom: -45px;
   margin-left: 15px;
 }
-.prod-title{
+
+.left-column {
+  display: flex;
+  flex-direction: column; /* Расположение элементов в колонку */
+  justify-content: flex-start; /* Выровнять элементы по началу колонки */
+}
+
+.right-column {
+  display: flex;
+ 
+}
+
+.namecase2 {
   color: black;
-    text-align: left;
-    font-size: 16px;
-    font-weight: bold;
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
 }
-.prod-price{
+
+.price1 {
   color: rgb(110, 110, 110);
-    text-align: left;
-    font-size: 14px;
-    margin-top: -10px;
+  text-align: left;
+  font-size: 14px;
+
 }
+
+
 
 /* === Селектор размеров под продуктом === */
 #iphoneModelsWindow {
@@ -513,3 +532,37 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .page-product .hero-indicators{
   top: 50px !important;
 }
+
+
+/* === Нижняя панель Ozon на странице товара === */
+.ozon-bar{
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 40px;
+  background: #ffffff;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  box-shadow: 0 -8px 24px rgba(0,0,0,.12);
+  z-index: 100000;
+  padding: 5px 12px calc(5px + var(--safe-bottom));
+  display: none;                 /* ← оставляем ТОЛЬКО none в базовом правиле */
+  align-items: center; justify-content: center;
+}
+.ozon-bar.show{ display: flex; }  /* показываем через класс */
+.ozon-bar[hidden]{ display: none !important; } /* hidden всегда скрывает */
+
+
+/* Голубая кнопка внутри, 30px высотой и шириной как MainButton (почти на всю) */
+.ozon-inner-btn{
+  height: 30px;
+  line-height: 30px;
+  padding: 0 16px;
+  width: min(560px, calc(100% - 24px));   /* «как mainbutton» по ширине с полями */
+  border: none;
+  border-radius: 16px;
+  background: #015afc;                    /* голубой */
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+}
+.ozon-inner-btn:disabled{ opacity:.5; pointer-events:none; }

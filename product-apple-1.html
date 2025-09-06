@@ -42,11 +42,16 @@
 
 
 
-<!-- НАЗВАНИЕ И ЦЕНА -->
-<section class="prod-info">
-    <h1 class="prod-title">FORGED GLOSSY - OBSIDIAN</h1>
-    <div class="prod-price">3699₽</div>
-  </section>
+        <div class="namecont">
+            <div class="left-column">
+              <div class="namecase2">FORGED GLOSSY-OBSIDIAN</div>
+              <div class="price1">3699₽</div>
+            </div>
+            <div class="right-column">
+              <div id="lottie-icon" style="width: 120px; height: 120px;"></div>
+            </div>
+        </div>
+  
       
 
         <!-- НИЗ: выбор размера + Ozon -->
@@ -68,12 +73,15 @@
         <span class="arrow">&#x276F;</span>
       </button>
     </div>
-  
-    <!-- изначально неактивна; активируется после выбора модели -->
-    <button id="ozonBtn" type="button" class="button ozon-btn" disabled>
+  </section>
+
+  <!-- Плавающая панель Ozon (скрыта до выбора модели) -->
+<div id="ozonBar" class="ozon-bar" hidden>
+    <button id="ozonOpenBtn" type="button" class="ozon-inner-btn" disabled>
       Открыть на Ozon
     </button>
-  </section>
+  </div>
+  
 
   <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
   <script src="product.js"></script>
