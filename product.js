@@ -211,4 +211,30 @@ if (ozonBar && ozonOpenBtn) {
     applyTheme(tg.themeParams || {});
     tg.onEvent?.('themeChanged', () => applyTheme(tg.themeParams || {}));
   })();
+
+  
+  // === Telegram BackButton на странице товара ===
+(() => {
+    const tg = window.Telegram?.WebApp;
+    if (!tg) return;            // если открыто не в Telegram — ничего не делаем
+  
+    tg.ready?.();
+    const BackButton = tg.BackButton;
+  
+    function goToCatalog() {
+      try { BackButton.offClick(goToCatalog); } catch {}
+      try { BackButton.hide(); } catch {}
+      // Возвращаемся в каталог Apple; replace — чтобы не копить историю
+      location.replace('apple.html');
+    }
+  
+    BackButton.onClick(goToCatalog);
+    BackButton.show();
+  
+    // Чистый уход со страницы (в т.ч. bfcache на iOS)
+    window.addEventListener('pagehide', () => {
+      try { BackButton.offClick(goToCatalog); } catch {}
+      try { BackButton.hide(); } catch {}
+    });
+  })();
   
