@@ -393,8 +393,9 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   justify-content: space-between; /* Пространство между колонками */
   align-items: center;
   margin-top: -30px;
-  margin-bottom: -35px;
-  margin-left: 15px;
+  margin-bottom: -25px;
+  margin-left: 17px;
+  margin-right: 17px;
 }
 
 .left-column {
@@ -525,11 +526,6 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .product-topbar .brand-text{
   font-weight: 800; font-size: 14px;  color:#111;
   text-transform: uppercase;
-}
-
-/* Слайдер на всю высоту ЭКРАНА минус шапка */
-.page-product .prod-slider{
-  height: calc(100svh - 50px) !important;
 }
 
 /* Полоски-индикаторы опускаем ниже шапки */

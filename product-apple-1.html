@@ -18,27 +18,24 @@
       </header>
 
       <!-- Индикаторы-полоски + лёгкое затемнение сверху -->
-      <div class="hero-indicators">
-        <div class="bars" aria-hidden="true">
-          <!-- JS сам перерисует нужное количество полосок по числу фото -->
-          <span class="bar is-active"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+      <section class="prod-hero">
+        <div class="hero-indicators">
+          <div class="bars">
+            <span class="bar is-active"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <div class="hero-gradient"></div>
         </div>
-        <div class="hero-gradient"></div>
-      </div>
       
-
-
-
-      <!-- Нативный горизонтальный свайп (scroll-snap) -->
-     
+        <!-- БЕЗ .prod-slider -->
         <div class="prod-track">
-          <!-- 3 фото товара (на всю высоту) -->
           <img src="FGB.JPG"  alt="FORGED GLOSSY — фото 1" />
           <img src="FGB2.JPG" alt="FORGED GLOSSY — фото 2" />
           <img src="FGB3.JPG" alt="FORGED GLOSSY — фото 3" />
         </div>
+      </section>
+      
 
 
 
@@ -99,7 +96,7 @@
 
 
   
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
   <script src="product.js"></script>
 </body>

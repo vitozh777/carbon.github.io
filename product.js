@@ -1,17 +1,15 @@
 // product.js — нативный свайп на всю высоту + полоски-индикаторы + выбор размера
 document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.prod-track');
-    const slider = document.querySelector('.prod-track');
+    const track    = document.querySelector('.prod-track');
+    const slider   = track; // ВЬЮПОРТ = САМА ДОРОЖКА (без .prod-slider)
     const barsWrap = document.querySelector('.hero-indicators .bars');
-    const chooseBtn = document.getElementById('chooseSizeBtn');
-    const sizeBox = document.getElementById('sizeOptions');
   
-    if (!track || !slider || !barsWrap) return;
+    if (!track || !barsWrap) return;
   
     const slides = Array.from(track.querySelectorAll('img'));
     let index = 0;
   
-    // 1) Перерисовать полоски под реальное количество фото
+    // Полоски под реальное число фото
     barsWrap.innerHTML = '';
     slides.forEach((_, i) => {
       const b = document.createElement('span');
@@ -21,14 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const bars = Array.from(barsWrap.querySelectorAll('.bar'));
   
     function setActiveByScroll() {
-      const w = slider.clientWidth || 1;
+      const w = (slider?.clientWidth || window.innerWidth || 1);
       const i = Math.round(track.scrollLeft / w);
       index = Math.max(0, Math.min(slides.length - 1, i));
       bars.forEach((bar, n) => bar.classList.toggle('is-active', n === index));
     }
   
-    // 2) Свайп/скролл: нативный scroll-snap
-    //    (точки/полоски кликабельными НЕ делаем — «обычный свайп» без клика)
+    // Нативный scroll-snap, без кликов
     let rafId = 0;
     track.addEventListener('scroll', () => {
       if (rafId) return;
@@ -40,9 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
     window.addEventListener('resize', setActiveByScroll, { passive: true });
     setActiveByScroll();
-  
-
   });
+  
   
 
 // === Размеры, Ozon, Telegram MainButton ===
@@ -213,28 +209,28 @@ if (ozonBar && ozonOpenBtn) {
   })();
 
   
-// === Telegram BackButton на странице apple ===
+// === Telegram BackButton на странице товара ===
 (() => {
     const tg = window.Telegram?.WebApp;
-    if (!tg) return;                // если открыто не в Telegram — выходим
+    if (!tg) return;          // если открыто не в Telegram — выходим
   
-    tg.ready();                     // сообщаем Telegram, что страница готова
+    tg.ready?.();
     const BackButton = tg.BackButton;
   
-    function goHome() {
-      try { BackButton.offClick(goHome); } catch {}
+    function goToCatalog() {
+      try { BackButton.offClick(goToCatalog); } catch {}
       try { BackButton.hide(); } catch {}
-      // Возврат на главную и убираем эту страницу из истории,
-      // чтобы повторный "назад" не возвращал обратно
+      // Возврат в каталог без сохранения этой страницы в истории
       location.replace('apple.html');
     }
   
-    BackButton.onClick(goHome);
+    BackButton.onClick(goToCatalog);
     BackButton.show();
   
-    // Чистый уход со страницы (bfcache/уход по ссылке)
+    // чистый уход со страницы (в т.ч. bfcache на iOS)
     window.addEventListener('pagehide', () => {
-      try { BackButton.offClick(goHome); } catch {}
+      try { BackButton.offClick(goToCatalog); } catch {}
       try { BackButton.hide(); } catch {}
     });
   })();
+  
