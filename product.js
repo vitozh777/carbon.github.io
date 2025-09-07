@@ -46,9 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sizeBtn   = document.getElementById('sizeButton');
     const sizeText  = document.querySelector('.size-text');
     const windowEl  = document.getElementById('iphoneModelsWindow');
-  
-    const ozonBar     = document.getElementById('ozonBar');
-    const ozonOpenBtn = document.getElementById('ozonOpenBtn');
+
     const ozonSkuEl   = document.getElementById('ozonSkuValue');
 
     // рисуем плейсхолдер или код (кликабелен только код)
@@ -126,91 +124,6 @@ function renderSku(sku){
     // меняйте sku на любые свои — они НЕ берутся из ссылки
   
     let selectedModel = null;
-
-    // ====== ДВЕ КНОПКИ ВНИЗУ + КОЛИЧЕСТВО ======
-const tg = window.Telegram?.WebApp;
-let qty = 1;
-let mainHandler = null;
-let secondaryHandler = null;
-
-function setMainHandler(fn){
-  if (!tg) return;
-  if (mainHandler) tg.offEvent?.('mainButtonClicked', mainHandler);
-  mainHandler = fn;
-  tg.onEvent?.('mainButtonClicked', mainHandler);
-}
-function setSecondaryHandler(fn){
-  if (!tg) return;
-  if (secondaryHandler) tg.offEvent?.('secondaryButtonClicked', secondaryHandler);
-  secondaryHandler = fn;
-  tg.onEvent?.('secondaryButtonClicked', secondaryHandler);
-}
-
-// Мини-панель количества (− / +) над кнопками Telegram
-let qtyBar = document.getElementById('qtyBar');
-if (!qtyBar){
-  qtyBar = document.createElement('div');
-  qtyBar.id = 'qtyBar';
-  qtyBar.className = 'qty-bar';
-  qtyBar.innerHTML = `
-    <button class="qty-btn" data-delta="-1">−</button>
-    <span class="qty-value" id="qtyValue">1</span>
-    <button class="qty-btn" data-delta="1">+</button>
-  `;
-  document.body.appendChild(qtyBar);
-}
-const qtyValueEl = qtyBar.querySelector('#qtyValue');
-function updateQty(delta){
-  qty = Math.max(1, qty + (delta||0));
-  if (qtyValueEl) qtyValueEl.textContent = String(qty);
-  tg?.SecondaryButton?.setParams?.({ text: `Количество: ${qty}` });
-}
-qtyBar.addEventListener('click', (e)=>{
-  const btn = e.target.closest('.qty-btn');
-  if (!btn) return;
-  updateQty(Number(btn.dataset.delta||0));
-  tg?.HapticFeedback?.impactOccurred?.('light');
-});
-function toggleQtyBar(show){
-  const next = (typeof show === 'boolean') ? show : !qtyBar.classList.contains('show');
-  qtyBar.classList.toggle('show', next);
-}
-
-// Вход в «режим корзины»
-function enterCartMode(){
-  // 1) спрятать панель Ozon
-  if (ozonBar){ ozonBar.classList.remove('show'); ozonBar.hidden = true; }
-
-  // 2) левая кнопка — SecondaryButton
-  tg?.SecondaryButton?.setParams?.({
-    is_visible: true,
-    position: 'left',
-    text: `Количество: ${qty}`
-  });
-
-  // 3) правая кнопка — MainButton
-  tg?.MainButton?.setParams?.({
-    text: 'Перейти в корзину',
-    color: '#000000',
-    text_color: '#ffffff',
-    is_visible: true,
-    is_active: true
-  });
-
-  // 4) обработчики
-  setSecondaryHandler(() => toggleQtyBar());           // открыть мини-панель
-  const CART_URL = 'cart.html';                        // при необходимости поменяй путь
-  setMainHandler(() => { location.href = CART_URL; }); // перейти в корзину
-}
-
-// очистка при уходе со страницы
-window.addEventListener('pagehide', () => {
-  if (mainHandler)      tg?.offEvent?.('mainButtonClicked', mainHandler);
-  if (secondaryHandler) tg?.offEvent?.('secondaryButtonClicked', secondaryHandler);
-  tg?.SecondaryButton?.setParams?.({ is_visible: false });
-  toggleQtyBar(false);
-});
-
   
     function toggleModels(open){
       const isOpen = windowEl?.style.display !== 'none';
@@ -242,50 +155,81 @@ window.addEventListener('pagehide', () => {
         if (sizeText) { sizeText.textContent = selectedModel; sizeText.style.color = '#000'; }
         toggleModels(false);
   
-        // показываем нижнюю панель и настраиваем синюю кнопку Ozon
-        const entry = ozonMap[selectedModel] || {};
-        if (ozonBar && ozonOpenBtn) {
-          ozonBar.hidden = false;
-          ozonBar.classList.add('show');
-          ozonOpenBtn.disabled = !entry.url;
-          ozonOpenBtn.onclick = () => {
-            if (!entry.url) return;
-            const tg = window.Telegram?.WebApp;
-            if (tg?.openLink) tg.openLink(entry.url, { try_browser: true });
-            else window.open(entry.url, '_blank');
-          };
-        }
+        // Показываем 2 системные кнопки Telegram: правая Main(чёрная), левая Secondary(синяя)
+function showTgBottomButtons(entry, productName, selectedModel){
+    const tg = window.Telegram?.WebApp;
+    if (!tg) return;
+  
+    tg.ready?.();
+  
+    // На части клиентов MainButton уже алиас BottomButton
+    const main = tg.BottomButton || tg.MainButton;  // правая: "Добавить в корзину"
+    const secondary = tg.SecondaryButton;           // левая: "Открыть Ozon"
+  
+    // --- MAIN (чёрная) ---
+    if (main){
+      if (main.setParams){
+        main.setParams({
+          text: 'Добавить в корзину',
+          color: '#000000',
+          text_color: '#ffffff',
+          is_visible: true,
+          is_active: true
+        });
+      } else {
+        main.setText?.('Добавить в корзину');
+        main.show?.();
+        main.color = '#000000';
+        main.textColor = '#ffffff';
+      }
+      main.offClick?.();
+      main.onClick?.(() => {
+        try{
+          tg.sendData(JSON.stringify({
+            action: 'add_to_cart',
+            product: productName,
+            model: selectedModel,
+            sku: entry.sku || null
+          }));
+        }catch(e){}
+      });
+    }
+  
+    // --- SECONDARY (синяя, слева) ---
+    if (secondary){
+      secondary.setParams?.({
+        text: 'Открыть Ozon',
+        position: 'left',
+        is_visible: true,
+        is_active: !!entry.url
+      });
+      if (!secondary.setParams){
+        secondary.setText?.('Открыть Ozon');
+        secondary.show?.();
+      }
+      secondary.offClick?.();
+      secondary.onClick?.(() => {
+        if (!entry.url) return;
+        if (tg.openLink) tg.openLink(entry.url, { try_browser: true });
+        else window.open(entry.url, '_blank');
+      });
+    }
+  
+    // (необязательно) покрасить фон нижней плашки под тему
+    tg.setBottomBarColor?.(tg.themeParams?.bottom_bar_bg_color || tg.themeParams?.secondary_bg_color || '#ffffff');
+  }
+  
   
         // 🔢 выставляем артикул (берём из ozonMap, НЕ из ссылки)
         // показать артикул (только код будет кликабельным и синим)
 renderSku(entry.sku || '');
 
+const productName = document.title || 'Товар';
+showTgBottomButtons(entry, productName, selectedModel);
+
+
   
-        // Telegram MainButton (чёрный) — «Добавить в корзину»
-const tg = window.Telegram?.WebApp;
-if (tg) {
-  tg.ready?.();
-  tg.MainButton.setParams?.({
-    color: '#000000',
-    text_color: '#ffffff',
-    text: 'Добавить в корзину',
-    is_visible: true,
-    is_active: true
-  });
-
-  // Вместо sendData — включаем «режим корзины» с двумя кнопками
-  setMainHandler(() => {
-    tg.HapticFeedback?.impactOccurred?.('medium');
-    enterCartMode();
-  });
-
-  // Пока SecondaryButton скрыт — появится после нажатия «Добавить в корзину»
-  tg.SecondaryButton?.setParams?.({ is_visible: false });
-
-  // сброс мини-панели количества
-  qty = 1; updateQty(0); toggleQtyBar(false);
-}
-
+        
       });
     });
   });
@@ -393,3 +337,14 @@ if (tg) {
   })();
   
 
+// При уходе со страницы товара — скрываем и отвязываем кнопки
+(() => {
+    const tg = window.Telegram?.WebApp;
+    if (!tg) return;
+    window.addEventListener('pagehide', () => {
+      const main = tg.BottomButton || tg.MainButton;
+      main?.offClick?.(); main?.hide?.();
+      tg.SecondaryButton?.offClick?.(); tg.SecondaryButton?.hide?.();
+    });
+  })();
+  
