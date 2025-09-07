@@ -50,57 +50,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const ozonSkuEl   = document.getElementById('ozonSkuValue');
 
     // рисуем плейсхолдер или код (кликабелен только код)
-function renderSku(sku){
-    if (!ozonSkuEl) return;
-  
-    if (!sku){
-      ozonSkuEl.innerHTML =
-        '<span class="sku-placeholder">(Выбери размер) <span class="hint-hand" aria-hidden="true">👆</span></span>';
-      ozonSkuEl.dataset.sku = '';
-      if (!sku){
-        ozonSkuEl.innerHTML =
-          '<span class="sku-placeholder">(Выбери размер) <span id="skuHandLottie" class="sku-hand" aria-hidden="true"></span></span>';
-        ozonSkuEl.dataset.sku = '';
-    
-        // запустить Lottie-руку
-        const el = document.getElementById('skuHandLottie');
-        if (window.lottie && el) {
-          lottie.loadAnimation({
-            container: el,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'rukaverh.json' // путь к вашему JSON
-          });
-        }
-        return;
-      }
-      return;
-    }
-  
-    ozonSkuEl.innerHTML = `<span class="sku-code" tabindex="0">${sku}</span>`;
-  ozonSkuEl.dataset.sku = sku;
-  
-    const codeEl = ozonSkuEl.querySelector('.sku-code');
-    const copy = (value) => {
-      const tg = window.Telegram?.WebApp;
-      const done = () => tg?.showAlert?.('Артикул скопирован');
-      (navigator.clipboard?.writeText(value) || Promise.reject())
-        .then(done)
-        .catch(() => {
+    function renderSku(sku){
+        if (!ozonSkuEl) return;
+      
+        // нет SKU -> плейсхолдер + Lottie-рука
+        if (!sku){
+          ozonSkuEl.innerHTML =
+            '<span class="sku-placeholder">(Выбери размер) <span id="skuHandLottie" class="sku-hand" aria-hidden="true"></span></span>';
+          ozonSkuEl.dataset.sku = '';
+      
+          const el = document.getElementById('skuHandLottie');
           try{
-            const tmp = document.createElement('textarea');
-            tmp.value = value; document.body.appendChild(tmp);
-            tmp.select(); document.execCommand('copy'); document.body.removeChild(tmp);
-            done();
+            if (window.lottie && el){
+              lottie.loadAnimation({
+                container: el,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'rukaverh.json' // твой JSON с рукой
+              });
+            }
           }catch(_){}
+          return;
+        }
+      
+        // есть SKU -> показываем только код (кликабельно и синим)
+        ozonSkuEl.innerHTML = `<span class="sku-code" tabindex="0">${sku}</span>`;
+        ozonSkuEl.dataset.sku = sku;
+      
+        const codeEl = ozonSkuEl.querySelector('.sku-code');
+        const copy = (value) => {
+          const tg = window.Telegram?.WebApp;
+          const done = () => tg?.showAlert?.('Артикул скопирован');
+          (navigator.clipboard?.writeText(value) || Promise.reject())
+            .then(done)
+            .catch(() => {
+              try{
+                const tmp = document.createElement('textarea');
+                tmp.value = value; document.body.appendChild(tmp);
+                tmp.select(); document.execCommand('copy'); document.body.removeChild(tmp);
+                done();
+              }catch(_){}
+            });
+        };
+        codeEl.addEventListener('click', () => copy(sku));
+        codeEl.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copy(sku); }
         });
-    };
-    codeEl.addEventListener('click', () => copy(sku));
-    codeEl.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copy(sku); }
-    });
-  }
+      }
+      
   
   // стартовое состояние: плейсхолдер
   renderSku('');
@@ -146,16 +144,7 @@ function renderSku(sku){
       });
     }
   
-    // выбор модели
-    windowEl?.querySelectorAll('.model1').forEach(el => {
-      el.addEventListener('click', () => {
-        selectedModel = el.textContent.trim();
-  
-        // подпись на кнопке выбора
-        if (sizeText) { sizeText.textContent = selectedModel; sizeText.style.color = '#000'; }
-        toggleModels(false);
-  
-        // Показываем 2 системные кнопки Telegram: правая Main(чёрная), левая Secondary(синяя)
+    // --- ДВЕ КНОПКИ ВНИЗУ TELEGRAM: правая Main(чёрная), левая Secondary(синяя)
 function showTgBottomButtons(entry, productName, selectedModel){
     const tg = window.Telegram?.WebApp;
     if (!tg) return;
@@ -215,23 +204,38 @@ function showTgBottomButtons(entry, productName, selectedModel){
       });
     }
   
-    // (необязательно) покрасить фон нижней плашки под тему
-    tg.setBottomBarColor?.(tg.themeParams?.bottom_bar_bg_color || tg.themeParams?.secondary_bg_color || '#ffffff');
+    // (опционально) покрасить фон нижней панели под тему
+    tg.setBottomBarColor?.(
+      tg.themeParams?.bottom_bar_bg_color ||
+      tg.themeParams?.secondary_bg_color ||
+      '#ffffff'
+    );
   }
   
+  // --- выбор модели
+  windowEl?.querySelectorAll('.model1').forEach(el => {
+    el.addEventListener('click', () => {
+      selectedModel = el.textContent.trim();
   
-        // 🔢 выставляем артикул (берём из ozonMap, НЕ из ссылки)
-        // показать артикул (только код будет кликабельным и синим)
-renderSku(entry.sku || '');
-
-const productName = document.title || 'Товар';
-showTgBottomButtons(entry, productName, selectedModel);
-
-
+      // подпись на кнопке выбора
+      if (sizeText){
+        sizeText.textContent = selectedModel;
+        sizeText.style.color = '#000';
+      }
+      toggleModels(false);
   
-        
-      });
+      // Данные по выбранной модели
+      const entry = ozonMap[selectedModel] || {};
+  
+      // Показать/обновить артикул (только код кликабелен и синий)
+      renderSku(entry.sku || '');
+  
+      // Показать две системные кнопки Telegram снизу
+      const productName = document.title || 'Товар';
+      showTgBottomButtons(entry, productName, selectedModel);
     });
+  });
+  
   });
 
 
@@ -256,13 +260,13 @@ showTgBottomButtons(entry, productName, selectedModel);
   })();
   
 
-  var animation = lottie.loadAnimation({
-    container: document.getElementById('lottie-icon'), // контейнер для анимации
-    renderer: 'svg', // тип рендера (svg, canvas, html)
-    loop: true, // зацикливание анимации
-    autoplay: true, // автоматическое воспроизведение
-    path: 'magsafe.json' // путь к вашему JSON-файлу
-});
+  try{
+    const cont = document.getElementById('lottie-icon');
+    if (window.lottie && cont){
+      lottie.loadAnimation({ container: cont, renderer: 'svg', loop: true, autoplay: true, path: 'magsafe.json' });
+    }
+  }catch(_){}
+  
 
 
 // === Telegram theme → CSS variables (для ozon-bar и др.) ===
