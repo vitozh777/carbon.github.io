@@ -690,35 +690,53 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 }
 #ozonSkuValue .sku-code:active{ opacity:.8; }
 
-/* ===== Мини-панель количества (− / +) ===== */
-.qty-bar{
+
+
+
+/* ===== Левый док с количеством (−  N  +) в одной строке с MainButton ===== */
+.qty-dock{
   position: fixed;
-  left: 12px; right: 12px;
-  bottom: calc(var(--tg-content-safe-area-inset-bottom, 0px) + 64px);
-  height: 36px;
+  z-index: 100001;
+  /* Левый «полубаттон»: отступы как у телеграм-кнопок */
+  left: 12px;
+  right: calc(50% + 8px); /* освобождаем правую половину под MainButton */
+  bottom: calc(var(--tg-content-safe-area-inset-bottom, 0px) + 8px);
+  height: 44px;
+
   display: none;
-  align-items: center; justify-content: center; gap: 12px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
   background: var(--tg-secondary-bg, #ffffff);
   color: var(--tg-text, #111);
-  border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.12);
-  z-index: 100001;
+  border-radius: 22px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.14);
 }
-.qty-bar.show{ display:flex; }
-.qty-bar .qty-btn{
-  width: 42px; height: 28px;
-  border-radius: 10px; border: 1px solid rgba(0,0,0,.12);
+.qty-dock.show{ display:flex; }
+
+.qty-dock .btn{
+  width: 44px; height: 32px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.12);
   background: var(--tg-bg, #f2f2f7);
   color: var(--tg-text, #111);
-  font-size: 18px; font-weight: 800;
-  line-height: 26px; text-align: center;
+  font-size: 20px; font-weight: 800;
+  line-height: 30px; text-align: center;
+  user-select: none;
 }
-.qty-bar .qty-btn:active{ filter: brightness(.95); }
-.qty-bar .qty-value{ min-width: 24px; text-align: center; font-weight: 800; }
+.qty-dock .btn:active{ filter: brightness(.95); }
+
+.qty-dock .value{
+  min-width: 28px; text-align: center; font-weight: 800; font-size: 16px;
+}
+
+/* тёмная тема вне Telegram */
 @media (prefers-color-scheme: dark){
-  .qty-bar{ box-shadow: 0 8px 24px rgba(0,0,0,.4); }
-  .qty-bar .qty-btn{ border-color: rgba(255,255,255,.12); }
+  .qty-dock{ box-shadow: 0 6px 20px rgba(0,0,0,.4); }
+  .qty-dock .btn{ border-color: rgba(255,255,255,.12); }
 }
+
 
 
 
