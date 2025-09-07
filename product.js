@@ -39,7 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
     setActiveByScroll();
   });
   
-  
+  // текущие обработчики, чтобы можно было корректно снять
+let __tgMainHandler = null;
+let __tgSecondaryHandler = null;
+
 
 // === Размеры, Ozon, Telegram MainButton (c ручными артикулами) ===
 document.addEventListener('DOMContentLoaded', () => {
@@ -202,6 +205,7 @@ initCartFab();
 
   
     // --- ДВЕ КНОПКИ ВНИЗУ TELEGRAM: правая Main(чёрная), левая Secondary(синяя)
+// --- ДВЕ КНОПКИ ВНИЗУ TELEGRAM: правая Main(чёрная), левая Secondary(синяя)
 function showTgBottomButtons(entry, productName, selectedModel){
     const tg = window.Telegram?.WebApp;
     if (!tg) return;
@@ -209,13 +213,19 @@ function showTgBottomButtons(entry, productName, selectedModel){
     tg.ready?.();
   
     // На части клиентов MainButton уже алиас BottomButton
-    const main = tg.BottomButton || tg.MainButton;  // правая: "Добавить в корзину"
-    const secondary = tg.SecondaryButton;           // левая: "Открыть Ozon"
+    const mainRef = tg.BottomButton || tg.MainButton;  // правая: "Добавить в корзину"
+    const secRef  = tg.SecondaryButton;                // левая: "Открыть Ozon"
   
-    // --- MAIN (чёрная) ---
-    if (main){
-      if (main.setParams){
-        main.setParams({
+    // ------ MAIN (чёрная) ------
+    if (mainRef){
+      // убрать предыдущий обработчик, если был
+      if (__tgMainHandler){
+        tg.MainButton?.offClick?.(__tgMainHandler);
+        tg.BottomButton?.offClick?.(__tgMainHandler);
+      }
+      // параметры/стиль
+      if (mainRef.setParams){
+        mainRef.setParams({
           text: 'Добавить в корзину',
           color: '#000000',
           text_color: '#ffffff',
@@ -223,13 +233,13 @@ function showTgBottomButtons(entry, productName, selectedModel){
           is_active: true
         });
       } else {
-        main.setText?.('Добавить в корзину');
-        main.show?.();
-        main.color = '#000000';
-        main.textColor = '#ffffff';
+        mainRef.setText?.('Добавить в корзину');
+        mainRef.show?.();
+        mainRef.color = '#000000';
+        mainRef.textColor = '#ffffff';
       }
-      main.offClick?.();
-      main.onClick?.(() => {
+      // новый обработчик
+      __tgMainHandler = () => {
         try{
           tg.sendData(JSON.stringify({
             action: 'add_to_cart',
@@ -238,40 +248,48 @@ function showTgBottomButtons(entry, productName, selectedModel){
             sku: entry.sku || null
           }));
         }catch(e){}
-        // ПОКАЗАТЬ КОРЗИНУ и УВЕЛИЧИТЬ КОЛ-ВО
+        // добавляем РОВНО +1 и показываем FAB
         showCartFab();
         updateCartBadge(1);
-      });
-      
+      };
+      mainRef.onClick?.(__tgMainHandler);
     }
   
-    // --- SECONDARY (синяя, слева) ---
-    if (secondary){
-      secondary.setParams?.({
-        text: 'Открыть Ozon',
-        position: 'left',
-        is_visible: true,
-        is_active: !!entry.url
-      });
-      if (!secondary.setParams){
-        secondary.setText?.('Открыть Ozon');
-        secondary.show?.();
+    // ------ SECONDARY (синяя, слева) ------
+    if (secRef){
+      // снять предыдущий
+      if (__tgSecondaryHandler){
+        secRef.offClick?.(__tgSecondaryHandler);
       }
-      secondary.offClick?.();
-      secondary.onClick?.(() => {
+      // параметры/стиль
+      if (secRef.setParams){
+        secRef.setParams({
+          text: 'Открыть Ozon',
+          position: 'left',
+          is_visible: true,
+          is_active: !!entry.url
+        });
+      } else {
+        secRef.setText?.('Открыть Ozon');
+        secRef.show?.();
+      }
+      // новый обработчик
+      __tgSecondaryHandler = () => {
         if (!entry.url) return;
         if (tg.openLink) tg.openLink(entry.url, { try_browser: true });
         else window.open(entry.url, '_blank');
-      });
+      };
+      secRef.onClick?.(__tgSecondaryHandler);
     }
   
-    // (опционально) покрасить фон нижней панели под тему
+    // (опционально) фон нижней панели под тему Telegram
     tg.setBottomBarColor?.(
       tg.themeParams?.bottom_bar_bg_color ||
       tg.themeParams?.secondary_bg_color ||
       '#ffffff'
     );
   }
+  
   
   // --- выбор модели
   windowEl?.querySelectorAll('.model1').forEach(el => {
@@ -402,16 +420,6 @@ function showTgBottomButtons(entry, productName, selectedModel){
   })();
   
 
-// При уходе со страницы товара — скрываем и отвязываем кнопки
-(() => {
-    const tg = window.Telegram?.WebApp;
-    if (!tg) return;
-    window.addEventListener('pagehide', () => {
-      const main = tg.BottomButton || tg.MainButton;
-      main?.offClick?.(); main?.hide?.();
-      tg.SecondaryButton?.offClick?.(); tg.SecondaryButton?.hide?.();
-    });
-  })();
 
 
   cartBtn?.addEventListener('click', () => {
@@ -420,4 +428,31 @@ function showTgBottomButtons(entry, productName, selectedModel){
     // или location.href = 'cart.html';
   });
   
+  // Чистый вход: спрятать кнопки на всякий случай (bfcache/возврат назад)
+(() => {
+    const tg = window.Telegram?.WebApp;
+    if (!tg) return;
+    (tg.BottomButton || tg.MainButton)?.hide?.();
+    tg.SecondaryButton?.hide?.();
+  })();
+  
+  // Уход со страницы: снять обработчики, скрыть кнопки
+  (() => {
+    const tg = window.Telegram?.WebApp;
+    if (!tg) return;
+    window.addEventListener('pagehide', () => {
+      const mainRef = tg.BottomButton || tg.MainButton;
+      if (__tgMainHandler){
+        tg.MainButton?.offClick?.(__tgMainHandler);
+        tg.BottomButton?.offClick?.(__tgMainHandler);
+        __tgMainHandler = null;
+      }
+      if (__tgSecondaryHandler){
+        tg.SecondaryButton?.offClick?.(__tgSecondaryHandler);
+        __tgSecondaryHandler = null;
+      }
+      mainRef?.hide?.();
+      tg.SecondaryButton?.hide?.();
+    });
+  })();
   
