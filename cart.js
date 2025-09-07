@@ -2,9 +2,10 @@
     const tg = window.Telegram?.WebApp;
     tg?.ready?.();
   
-    // ===== ХРАНИЛИЩЕ
+    /* ================== ХРАНИЛИЩЕ КОРЗИНЫ ================== */
     function getCart(){
-      try { return JSON.parse(localStorage.getItem('cartItems') || '[]'); } catch { return []; }
+      try { return JSON.parse(localStorage.getItem('cartItems') || '[]'); }
+      catch { return []; }
     }
     function saveCart(arr){
       localStorage.setItem('cartItems', JSON.stringify(arr));
@@ -14,30 +15,68 @@
     }
     const fmt = (n)=> new Intl.NumberFormat('ru-RU').format(Math.max(0, Math.round(n||0))) + ' ₽';
   
-    // ===== DOM
-    const $list  = document.getElementById('cartList');
-    const $clear = document.getElementById('cartClear');
-    const $items = document.getElementById('itemsCount');
-    const $total = document.getElementById('grandTotal');
+    /* ================== DOM ================== */
+    const $list    = document.getElementById('cartList');
+    const $clear   = document.getElementById('cartClear');
+    const $items   = document.getElementById('itemsCount');
+    const $total   = document.getElementById('grandTotal');
+    const $top     = document.querySelector('.cart-top');       // «Корзина / Очистить»
+    const $summary = document.querySelector('.cart-summary');   // блок итогов
   
-    // ===== RENDER
+    /* ============ ПУСТОЕ СОСТОЯНИЕ (только верхний топбар) ============ */
+    function ensureEmptyState(){
+      let box = document.getElementById('emptyState');
+      if (!box){
+        box = document.createElement('section');
+        box.id = 'emptyState';
+        box.className = 'empty-state';
+        box.innerHTML = `
+          <div class="empty-title">В корзине пусто...</div>
+          <div class="empty-sub">Посмотрите каталог и добавьте товары в корзину</div>
+          <button id="emptyBackBtn" class="empty-btn" type="button">Вернуться к покупкам</button>
+        `;
+        document.body.appendChild(box);
+        box.querySelector('#emptyBackBtn').addEventListener('click', () => {
+          location.href = 'index.html';
+        });
+      }
+      return box;
+    }
+    function showEmptyState(){
+      ensureEmptyState().style.display = 'flex';
+      if ($top)     $top.style.display = 'none';
+      if ($summary) $summary.style.display = 'none';
+      if ($list)    $list.style.display = 'none';
+      (tg?.BottomButton || tg?.MainButton)?.hide?.();
+    }
+    function hideEmptyState(){
+      const box = document.getElementById('emptyState');
+      if (box) box.style.display = 'none';
+      if ($top)     $top.style.display = '';
+      if ($summary) $summary.style.display = '';
+      if ($list)    $list.style.display = '';
+    }
+  
+    /* ================== РЕНДЕР СПИСКА ================== */
     function render(){
       const cart = getCart();
       $list.innerHTML = '';
   
       if (!cart.length){
-        $list.innerHTML = '<div class="cart-empty">Корзина пуста</div>';
-        updateTotals();
+        showEmptyState();
+        $items && ($items.textContent = '(0)');
+        $total && ($total.textContent = fmt(0));
         setupMainButton(0);
         return;
       }
+  
+      hideEmptyState();
   
       cart.forEach((it, idx) => {
         const lineTotal = (it.price||0) * (it.qty||0);
   
         const row = document.createElement('div');
         row.className = 'cart-item';
-  
         row.innerHTML = `
           <div class="ci-actions">
             <button class="ci-del" data-idx="${idx}">
@@ -62,16 +101,17 @@
         `;
         $list.appendChild(row);
   
-        // кнопка удаления
         row.querySelector('.ci-del').addEventListener('click', () => removeAt(idx));
-  
-        // свайп для строки
-        initSwipeRow(row);
+        initSwipeRow(row); // свайп-влево
       });
   
-      // bind +/- 
-      $list.querySelectorAll('.ci-btn.minus').forEach(b => b.addEventListener('click', () => changeQty(+b.dataset.idx, -1)));
-      $list.querySelectorAll('.ci-btn.plus').forEach(b => b.addEventListener('click',  () => changeQty(+b.dataset.idx, +1)));
+      // +/- количество
+      $list.querySelectorAll('.ci-btn.minus').forEach(b =>
+        b.addEventListener('click', () => changeQty(+b.dataset.idx, -1))
+      );
+      $list.querySelectorAll('.ci-btn.plus').forEach(b =>
+        b.addEventListener('click', () => changeQty(+b.dataset.idx, +1))
+      );
   
       updateTotals();
     }
@@ -97,12 +137,12 @@
       const cart = getCart();
       const itemsCount = cart.reduce((s,i)=>s + (i.qty||0), 0);
       const totalSum   = cart.reduce((s,i)=>s + (i.price||0)*(i.qty||0), 0);
-      $items.textContent = `(${itemsCount})`;
-      $total.textContent = fmt(totalSum);
+      if ($items) $items.textContent = `(${itemsCount})`;
+      if ($total) $total.textContent = fmt(totalSum);
       setupMainButton(totalSum);
     }
   
-    // ===== MAIN BUTTON «Перейти к оформлению»
+    /* ================== MAINBUTTON: «Перейти к оформлению» ================== */
     function setupMainButton(total){
       if (!tg) return;
       const main = tg.BottomButton || tg.MainButton;
@@ -118,20 +158,22 @@
       }
       main.offClick?.();
       main.onClick?.(()=> {
+        // здесь можно отправить данные боту или открыть страницу оформления
         tg?.showAlert?.('Дальше — оформление заказа');
+        // tg?.sendData?.(JSON.stringify({ action:'checkout' }));
       });
     }
   
     $clear?.addEventListener('click', () => { saveCart([]); render(); });
   
-    // ===== СВАЙП ВЛЕВО
+    /* ================== СВАЙП ВЛЕВО (с пружинкой) ================== */
     let openRow = null;
   
     function closeOpenRow(except){
       if (openRow && openRow !== except){
         const content = openRow.querySelector('.ci-content');
         if (content){
-          content.style.transition = 'transform .2s ease';
+          content.style.transition = 'transform .2s cubic-bezier(.22,.61,.36,1)';
           content.style.transform = 'translateX(0)';
           setTimeout(()=> content.style.transition = '', 200);
         }
@@ -140,84 +182,83 @@
     }
   
     function initSwipeRow(row){
-        const content = row.querySelector('.ci-content');
-        const actions = row.querySelector('.ci-actions');
-        if (!content || !actions) return;
-      
-        const ACTION_W = actions.offsetWidth || 92;
-      
-        // Easing-профили: открытие с легким овершутом, закрытие более «плотное»
-        const EASE_OPEN  = 'cubic-bezier(.34,1.56,.64,1)'; // back-out (пружинка)
-        const EASE_CLOSE = 'cubic-bezier(.22,.61,.36,1)';  // standard ease-out
-      
-        let startX=0, startY=0, dx=0, dy=0, dragging=false, opened=false;
-      
-        const onStart = (x,y) => {
-          closeOpenRow(row);                 // закрыть другую открытую строку
-          startX = x; startY = y; dx=0; dy=0; dragging=false;
-          content.style.transition = '';     // убираем анимацию на перетаскивание
-        };
-      
-        const onMove = (x,y, e) => {
-          dx = x - startX; dy = y - startY;
-          if (!dragging){
-            if (Math.abs(dx) > 6 && Math.abs(dx) > Math.abs(dy)){ dragging = true; e && e.preventDefault(); }
-            else return;
-          }
-      
-          // Резинка: позволяем вытянуть ~20% сверх ACTION_W, с демпфированием
-          const limit = ACTION_W * 1.2;
-          let base = opened ? dx - ACTION_W : dx;     // смещение от исходного состояния
-          let tx = Math.min(0, base);                  // только влево
-      
-          if (Math.abs(tx) > ACTION_W){                // сверх зоны — демпфируем
-            const over = Math.min(limit - ACTION_W, Math.abs(tx) - ACTION_W);
-            tx = -ACTION_W - over * 0.3;               // 0.3 — коэффициент резинки
-          }
-      
-          content.style.transform = `translateX(${tx}px)`;
-        };
-      
-        const onEnd = () => {
-          if (!dragging){
-            if (opened){ snap(0, EASE_CLOSE); opened=false; openRow=null; }
-            return;
-          }
-          const current = getTranslateX(content);
-          // Порог фиксации — половина ширины
-          if (current < -ACTION_W * 0.5){
-            snap(-ACTION_W, EASE_OPEN);  opened = true;  openRow = row;
-          } else {
-            snap(0, EASE_CLOSE);         opened = false; openRow = null;
-          }
-        };
-      
-        const snap = (to, ease) => {
-          content.style.transition = `transform .28s ${ease}`;
-          content.style.transform  = `translateX(${to}px)`;
-          setTimeout(()=> content.style.transition = '', 300);
-        };
-      
-        // helpers
-        function getTranslateX(el){
-          const m = new WebKitCSSMatrix(getComputedStyle(el).transform);
-          return m.m41;
-        }
-      
-        // touch
-        row.addEventListener('touchstart', (e)=> onStart(e.touches[0].clientX, e.touches[0].clientY), {passive:true});
-        row.addEventListener('touchmove',  (e)=> onMove(e.touches[0].clientX, e.touches[0].clientY, e), {passive:false});
-        row.addEventListener('touchend',   onEnd, {passive:true});
-        row.addEventListener('touchcancel',onEnd, {passive:true});
-      
-        // mouse (на всякий случай)
-        let md=false;
-        row.addEventListener('mousedown', (e)=> { md=true; onStart(e.clientX, e.clientY); });
-        row.addEventListener('mousemove', (e)=> { if (md) onMove(e.clientX, e.clientY); });
-        row.addEventListener('mouseup',   ()=> { if (md){ md=false; onEnd(); } });
-      }
-      
+      const content = row.querySelector('.ci-content');
+      const actions = row.querySelector('.ci-actions');
+      if (!content || !actions) return;
   
+      const ACTION_W = actions.offsetWidth || 92;
+      const EASE_OPEN  = 'cubic-bezier(.34,1.56,.64,1)'; // back-out
+      const EASE_CLOSE = 'cubic-bezier(.22,.61,.36,1)';  // ease-out
+  
+      let startX=0, startY=0, dx=0, dy=0, dragging=false, opened=false;
+  
+      const onStart = (x,y) => {
+        closeOpenRow(row);
+        startX = x; startY = y; dx=0; dy=0; dragging=false;
+        content.style.transition = '';
+      };
+  
+      const onMove = (x,y, e) => {
+        dx = x - startX; dy = y - startY;
+        if (!dragging){
+          if (Math.abs(dx) > 6 && Math.abs(dx) > Math.abs(dy)){ dragging = true; e && e.preventDefault(); }
+          else return;
+        }
+        const limit = ACTION_W * 1.2;
+        let base = opened ? dx - ACTION_W : dx;
+        let tx = Math.min(0, base);
+  
+        if (Math.abs(tx) > ACTION_W){
+          const over = Math.min(limit - ACTION_W, Math.abs(tx) - ACTION_W);
+          tx = -ACTION_W - over * 0.3; // резинка
+        }
+        content.style.transform = `translateX(${tx}px)`;
+      };
+  
+      const onEnd = () => {
+        if (!dragging){
+          if (opened){ snap(0, EASE_CLOSE); opened=false; openRow=null; }
+          return;
+        }
+        const current = getTranslateX(content);
+        if (current < -ACTION_W * 0.5){
+          snap(-ACTION_W, EASE_OPEN);  opened = true;  openRow = row;
+        } else {
+          snap(0, EASE_CLOSE);         opened = false; openRow = null;
+        }
+      };
+  
+      const snap = (to, ease) => {
+        content.style.transition = `transform .28s ${ease}`;
+        content.style.transform  = `translateX(${to}px)`;
+        setTimeout(()=> content.style.transition = '', 300);
+      };
+  
+      function getTranslateX(el){
+        const m = new WebKitCSSMatrix(getComputedStyle(el).transform);
+        return m.m41;
+      }
+  
+      // touch
+      row.addEventListener('touchstart', (e)=> onStart(e.touches[0].clientX, e.touches[0].clientY), {passive:true});
+      row.addEventListener('touchmove',  (e)=> onMove(e.touches[0].clientX, e.touches[0].clientY, e), {passive:false});
+      row.addEventListener('touchend',   onEnd, {passive:true});
+      row.addEventListener('touchcancel',onEnd, {passive:true});
+  
+      // mouse (на всякий случай)
+      let md=false;
+      row.addEventListener('mousedown', (e)=> { md=true; onStart(e.clientX, e.clientY); });
+      row.addEventListener('mousemove', (e)=> { if (md) onMove(e.clientX, e.clientY); });
+      row.addEventListener('mouseup',   ()=> { if (md){ md=false; onEnd(); } });
+    }
+  
+    // клик вне открытой строки — закрыть
+    document.addEventListener('click', (e)=>{
+      if (!openRow) return;
+      if (!openRow.contains(e.target)) closeOpenRow(null);
+    });
+  
+    /* ================== GO ================== */
     render();
   })();
   

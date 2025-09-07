@@ -513,7 +513,26 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   filter: brightness(.96);
 }
 
-
+.cart-topbar{
+  left: 0; right: 0; top: 0;
+  background: #fff;
+  height: 95px;
+  display: grid;
+  place-items: center;
+}
+.cart-topbar .brand{
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 60px
+}
+.cart-topbar .brand-logo{
+  width: 24px; height: 24px; border-radius: 50%;
+  object-fit: cover; background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.cart-topbar .brand-text{
+  font-weight: 800; font-size: 14px;  color:#111;
+  text-transform: uppercase;
+}
 /* ===== product top bar (страница товара) ===== */
 .product-topbar{
   position: fixed;
@@ -646,7 +665,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   width: 40px; height: 40px;
   border: none;
   border-radius: 50%;
-  background: #2ea6ff;              /* синий круг */
+  background: #007aff;              /* синий круг */
   box-shadow: 0 8px 20px rgba(46,166,255,.45);
   display: none;                     /* скрыта по умолчанию */
   align-items: center; justify-content: center;
@@ -697,7 +716,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 }
 .cart-title{ font-size:32px; font-weight:800; letter-spacing:.2px; }
 .cart-clear{
-  background:none; border:0; color:#2ea6ff; font-weight:700; font-size:18px; padding:6px 0;
+  background:none; border:0; color:#007aff; font-weight:400; font-size:18px; ;
 }
 
 .cart-main{ padding: 10px 12px 20px; }
@@ -749,3 +768,29 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 
 .ci-content{ will-change: transform; }
 
+/* === Пустая корзина === */
+.empty-state{
+  display:none;                    /* показываем через JS */
+  position:relative;
+  min-height: calc(100svh - 95px); /* на всю высоту экрана минус топбар */
+  padding: 24px;
+  gap: 12px;
+  text-align:center;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+.empty-title{
+  font-size:20px; font-weight:800; color:#111;
+}
+.empty-sub{
+  color:#8e8e93; font-size:14px; margin-bottom:8px;
+}
+.empty-btn{
+  height:40px; width:50%;
+  min-width: 220px;                /* чтобы кнопка не стала слишком узкой */
+  max-width: 420px;
+  border:none; border-radius:12px;
+  background:#000; color:#fff; font-weight:700; font-size:15px;
+}
+.empty-btn:active{ filter:brightness(.9); }
