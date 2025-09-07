@@ -126,8 +126,8 @@ function renderSku(sku){
     // меняйте sku на любые свои — они НЕ берутся из ссылки
   
     let selectedModel = null;
-    
-    // ===== ДВЕ НИЖНИЕ КНОПКИ: слева док (− N +), справа MainButton =====
+
+    // ====== ДВЕ КНОПКИ ВНИЗУ + КОЛИЧЕСТВО ======
 const tg = window.Telegram?.WebApp;
 let qty = 1;
 let mainHandler = null;
@@ -146,44 +146,49 @@ function setSecondaryHandler(fn){
   tg.onEvent?.('secondaryButtonClicked', secondaryHandler);
 }
 
-/* Левый док — наш кастомный (− N +) */
-let qtyDock = document.getElementById('qtyDock');
-if (!qtyDock){
-  qtyDock = document.createElement('div');
-  qtyDock.id = 'qtyDock';
-  qtyDock.className = 'qty-dock';
-  qtyDock.innerHTML = `
-    <button class="btn" data-delta="-1">−</button>
-    <span class="value" id="qtyValue">1</span>
-    <button class="btn" data-delta="1">+</button>
+// Мини-панель количества (− / +) над кнопками Telegram
+let qtyBar = document.getElementById('qtyBar');
+if (!qtyBar){
+  qtyBar = document.createElement('div');
+  qtyBar.id = 'qtyBar';
+  qtyBar.className = 'qty-bar';
+  qtyBar.innerHTML = `
+    <button class="qty-btn" data-delta="-1">−</button>
+    <span class="qty-value" id="qtyValue">1</span>
+    <button class="qty-btn" data-delta="1">+</button>
   `;
-  document.body.appendChild(qtyDock);
+  document.body.appendChild(qtyBar);
 }
-const qtyValue = qtyDock.querySelector('#qtyValue');
+const qtyValueEl = qtyBar.querySelector('#qtyValue');
+function updateQty(delta){
+  qty = Math.max(1, qty + (delta||0));
+  if (qtyValueEl) qtyValueEl.textContent = String(qty);
+  tg?.SecondaryButton?.setParams?.({ text: `Количество: ${qty}` });
+}
+qtyBar.addEventListener('click', (e)=>{
+  const btn = e.target.closest('.qty-btn');
+  if (!btn) return;
+  updateQty(Number(btn.dataset.delta||0));
+  tg?.HapticFeedback?.impactOccurred?.('light');
+});
+function toggleQtyBar(show){
+  const next = (typeof show === 'boolean') ? show : !qtyBar.classList.contains('show');
+  qtyBar.classList.toggle('show', next);
+}
 
-function renderQty(){
-  if (qtyValue) qtyValue.textContent = String(qty);
-}
-function showQtyDock(show){
-  qtyDock.classList.toggle('show', !!show);
-}
-
-/* Вход в режим корзины */
+// Вход в «режим корзины»
 function enterCartMode(){
-  // спрятать панель Ozon
+  // 1) спрятать панель Ozon
   if (ozonBar){ ozonBar.classList.remove('show'); ozonBar.hidden = true; }
 
-  // показываем слева SecondaryButton, чтобы разложить ряд на 2 колонки
+  // 2) левая кнопка — SecondaryButton
   tg?.SecondaryButton?.setParams?.({
     is_visible: true,
     position: 'left',
-    text: ' ' // пустой текст — всё равно место занимает
+    text: `Количество: ${qty}`
   });
 
-  // показываем наш левый док с количеством
-  qty = Math.max(1, qty); renderQty(); showQtyDock(true);
-
-  // справа — MainButton
+  // 3) правая кнопка — MainButton
   tg?.MainButton?.setParams?.({
     text: 'Перейти в корзину',
     color: '#000000',
@@ -192,56 +197,18 @@ function enterCartMode(){
     is_active: true
   });
 
-  // клики по правой кнопке — в корзину
-  const CART_URL = 'cart.html'; // поменяй на свой путь
-  setMainHandler(() => { location.href = CART_URL; });
-
-  // SecondaryButton не используем (он пустой), но оставим обработчик на случай
-  setSecondaryHandler(() => {});
+  // 4) обработчики
+  setSecondaryHandler(() => toggleQtyBar());           // открыть мини-панель
+  const CART_URL = 'cart.html';                        // при необходимости поменяй путь
+  setMainHandler(() => { location.href = CART_URL; }); // перейти в корзину
 }
 
-/* Выход из режима корзины (кол-во стало 0) */
-function exitCartMode(){
-  // скрыть левый док
-  showQtyDock(false);
-  // спрятать SecondaryButton, вернуть MainButton «Добавить в корзину»
+// очистка при уходе со страницы
+window.addEventListener('pagehide', () => {
+  if (mainHandler)      tg?.offEvent?.('mainButtonClicked', mainHandler);
+  if (secondaryHandler) tg?.offEvent?.('secondaryButtonClicked', secondaryHandler);
   tg?.SecondaryButton?.setParams?.({ is_visible: false });
-
-  tg?.MainButton?.setParams?.({
-    text: 'Добавить в корзину',
-    color: '#000000',
-    text_color: '#ffffff',
-    is_visible: true,
-    is_active: true
-  });
-
-  // вернуть голубую панель Ozon (если была)
-  if (ozonBar){ ozonBar.hidden = false; ozonBar.classList.add('show'); }
-
-  // обработчик MainButton теперь снова переводит в режим корзины
-  setMainHandler(() => {
-    tg?.HapticFeedback?.impactOccurred?.('medium');
-    enterCartMode();
-  });
-}
-
-/* Клики по − / + в левом доке */
-qtyDock.addEventListener('click', (e)=>{
-  const btn = e.target.closest('.btn');
-  if (!btn) return;
-  const delta = Number(btn.dataset.delta || 0);
-
-  if (delta < 0 && qty <= 1){
-    // удалить из корзины -> выходим из режима корзины
-    qty = 0; renderQty();
-    tg?.HapticFeedback?.impactOccurred?.('light');
-    exitCartMode();
-    return;
-  }
-
-  qty = Math.max(1, qty + delta);
-  renderQty();
-  tg?.HapticFeedback?.impactOccurred?.('light');
+  toggleQtyBar(false);
 });
 
   
@@ -317,27 +284,6 @@ if (tg) {
 
   // сброс мини-панели количества
   qty = 1; updateQty(0); toggleQtyBar(false);
-  // ... внутри обработки выбора модели ...
-if (tg) {
-    tg.ready?.();
-    tg.MainButton.setParams?.({
-      color: '#000000',
-      text_color: '#ffffff',
-      text: 'Добавить в корзину',
-      is_visible: true,
-      is_active: true
-    });
-  
-    // ПОСЛЕ ПЕРВОГО НАЖАТИЯ — ПЕРЕХОД В РЕЖИМ КОРЗИНЫ
-    setMainHandler(() => {
-      tg.HapticFeedback?.impactOccurred?.('medium');
-      enterCartMode();
-    });
-  
-    // SecondaryButton пока скрыт — станет видимым в enterCartMode()
-    tg.SecondaryButton?.setParams?.({ is_visible: false });
-  }
-  
 }
 
       });
@@ -446,3 +392,4 @@ if (tg) {
     });
   })();
   
+
