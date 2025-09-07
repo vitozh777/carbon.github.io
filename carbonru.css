@@ -701,28 +701,51 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 }
 
 .cart-main{ padding: 10px 12px 20px; }
+/* ===== КОРЗИНА: свайп-влево для удаления ===== */
 .cart-item{
+  position: relative;
+  overflow: hidden;
+  margin: 8px 0;
+  height: 110px;                 /* фиксированная высота карточки как на примере */
+}
+
+.ci-content{
+  position: absolute; inset: 0 0 0 0;
   display:grid; grid-template-columns: 72px 1fr auto; gap:12px;
   padding:10px 6px; align-items:center;
+  background: #fff; border-radius: 16px;
+  transform: translateX(0);
+  transition: transform .2s ease;
 }
+@media (prefers-color-scheme: dark){
+  .ci-content{ background:#1c1c1e; }
+}
+
+.ci-actions{
+  position:absolute; top:0; right:0; bottom:0;
+  width: 92px;                    /* ширина «скрытой» зоны */
+  display:flex; align-items:center; justify-content:center;
+  pointer-events: none;           /* кликабельна только кнопка */
+}
+
+.ci-del{
+  pointer-events: auto;
+  width:72px; height:72px; border-radius:16px;
+  background:#ff3b30; color:#fff; border:none;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  font-weight:700; gap:6px;
+}
+.ci-del .trash{ font-size:22px; line-height:22px; }
+.ci-del .del-text{ font-size:13px; }
+
+/* остальная типографика (как раньше) */
 .ci-thumb img{ width:72px; height:72px; object-fit:contain; border-radius:12px; background:#fff; }
 .ci-name{ font-weight:800; font-size:16px; }
 .ci-model{ color:#8e8e93; margin:2px 0 10px; }
 .ci-qty{ display:inline-flex; gap:18px; align-items:center; background:#f2f2f7; border-radius:14px; padding:8px 14px; }
 .ci-btn{ width:28px; height:28px; border-radius:8px; border:0; font-size:20px; background:#fff; }
 .ci-input{ width:28px; text-align:center; border:0; background:transparent; font-weight:700; }
-.ci-price{ font-weight:900; font-size:18px; white-space:nowrap; }
+.ci-price{ font-weight:900; font-size:18px; white-space:nowrap; margin-right:8px; }
 
-.cart-summary{
-  margin-top:8px; padding:14px 12px; border-top:8px solid #efeff4;
-}
-.sum-row{ color:#8e8e93; margin-bottom:10px; }
-.sum-total{ display:flex; align-items:center; justify-content:space-between; font-weight:800; font-size:22px; }
+.ci-content{ will-change: transform; }
 
-/* пустая корзина */
-.cart-empty{ padding:32px 12px; color:#8e8e93; text-align:center; }
-@media (prefers-color-scheme: dark){
-  .cart-top{ background:#1c1c1e; border-bottom-color:#2c2c2e; }
-  .ci-qty{ background:#2c2c2e; }
-  .cart-summary{ border-top-color:#2c2c2e; }
-}
