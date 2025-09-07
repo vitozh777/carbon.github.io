@@ -676,7 +676,62 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   object-fit:cover;
 }
 .sku-label{ font-weight:600; margin-right:6px; }
-.hint-hand{
-  display:inline-block;
-  animation: hand-wiggle 1.1s ease-in-out infinite alternate;
+.sku-hand{ width:18px; height:18px; display:inline-block; vertical-align:-3px; }
+
+
+/* Артикул: кликабельным и синим делаем ТОЛЬКО сам код */
+#ozonSkuValue { color: inherit; }
+#ozonSkuValue .sku-placeholder { color: inherit; cursor: default; }
+#ozonSkuValue .sku-code{
+  color: var(--tg-link, #007aff);
+  cursor: pointer;
+  user-select: all;
+  text-underline-offset: 2px;
+}
+#ozonSkuValue .sku-code:active{ opacity:.8; }
+
+/* ===== Мини-панель количества (− / +) ===== */
+.qty-bar{
+  position: fixed;
+  left: 12px; right: 12px;
+  bottom: calc(var(--tg-content-safe-area-inset-bottom, 0px) + 64px);
+  height: 36px;
+  display: none;
+  align-items: center; justify-content: center; gap: 12px;
+  background: var(--tg-secondary-bg, #ffffff);
+  color: var(--tg-text, #111);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  z-index: 100001;
+}
+.qty-bar.show{ display:flex; }
+.qty-bar .qty-btn{
+  width: 42px; height: 28px;
+  border-radius: 10px; border: 1px solid rgba(0,0,0,.12);
+  background: var(--tg-bg, #f2f2f7);
+  color: var(--tg-text, #111);
+  font-size: 18px; font-weight: 800;
+  line-height: 26px; text-align: center;
+}
+.qty-bar .qty-btn:active{ filter: brightness(.95); }
+.qty-bar .qty-value{ min-width: 24px; text-align: center; font-weight: 800; }
+@media (prefers-color-scheme: dark){
+  .qty-bar{ box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+  .qty-bar .qty-btn{ border-color: rgba(255,255,255,.12); }
+}
+
+
+
+
+
+
+
+.cart-button {
+  background: none; /* Убираем фон */
+  border: none; /* Убираем рамку */
+  cursor: pointer; /* Курсор при наведении */
+  width: 45px;
+  height: 45px;
+  margin-left: auto; /* Отталкиваем элемент в крайний правый угол */
+  margin-right: 25px
 }
