@@ -177,23 +177,22 @@ function initCartFab(){
   }catch(_){}
 }
 
-function updateCartBadge(delta = 0){
-  cartCount = Math.max(0, cartCount + delta);
-  localStorage.setItem('cartCount', String(cartCount));
-  if (!cartBadge) return;
-  if (cartCount <= 0){
-    cartBadge.classList.add('hidden');
-    cartBadge.textContent = '';
-  } else {
-    cartBadge.classList.remove('hidden');
-    cartBadge.textContent = String(cartCount);
-    // маленький «бумп»
-    cartBadge.classList.remove('bump');
-    // триггер рефлоу
-    void cartBadge.offsetWidth;
-    cartBadge.classList.add('bump');
+function updateCartBadge(deltaOrOpts=0){
+    if (typeof deltaOrOpts === 'object' && deltaOrOpts && 'set' in deltaOrOpts){
+      cartCount = Math.max(0, Number(deltaOrOpts.set) || 0);
+    } else {
+      cartCount = Math.max(0, cartCount + (Number(deltaOrOpts)||0));
+    }
+    localStorage.setItem('cartCount', String(cartCount));
+    if (!cartBadge) return;
+    if (cartCount <= 0){
+      cartBadge.classList.add('hidden'); cartBadge.textContent = '';
+    } else {
+      cartBadge.classList.remove('hidden'); cartBadge.textContent = String(cartCount);
+      cartBadge.classList.remove('bump'); void cartBadge.offsetWidth; cartBadge.classList.add('bump');
+    }
   }
-}
+  
 
 function showCartFab(){
   if (!cartBtn) return;
@@ -249,8 +248,17 @@ function showTgBottomButtons(entry, productName, selectedModel){
           }));
         }catch(e){}
         // добавляем РОВНО +1 и показываем FAB
-        showCartFab();
-        updateCartBadge(1);
+        // добавляем РОВНО +1 выбранной модели в локальную корзину
+const imgSrc = document.querySelector('.prod-track img')?.getAttribute('src') || '';
+const totalQty = addToLocalCart({
+  name: productName,
+  model: selectedModel,
+  price: entry.price ?? 0,   // если цены нет — 0, позже задашь
+  image: imgSrc
+});
+showCartFab();
+updateCartBadge({ set: totalQty });  // обновляем бейдж абсолютным значением
+
       };
       mainRef.onClick?.(__tgMainHandler);
     }
@@ -288,6 +296,27 @@ function showTgBottomButtons(entry, productName, selectedModel){
       tg.themeParams?.secondary_bg_color ||
       '#ffffff'
     );
+  }
+  
+
+  // ===== локальная корзина =====
+function _cartGet(){
+    try { return JSON.parse(localStorage.getItem('cartItems') || '[]'); } catch { return []; }
+  }
+  function _cartSave(arr){
+    localStorage.setItem('cartItems', JSON.stringify(arr));
+    const totalQty = arr.reduce((s,i)=>s + (i.qty||0), 0);
+    localStorage.setItem('cartCount', String(totalQty));
+    return totalQty;
+  }
+  function _cartItemId(name, model){ return (name+'|'+model).toLowerCase(); }
+  function addToLocalCart({name, model, price=0, image=''}) {
+    const id = _cartItemId(name, model);
+    const cart = _cartGet();
+    const found = cart.find(i => i.id === id);
+    if (found) found.qty += 1;
+    else cart.push({id, name, model, price, qty:1, image});
+    return _cartSave(cart); // вернёт общее количество
   }
   
   
@@ -422,10 +451,9 @@ function showTgBottomButtons(entry, productName, selectedModel){
 
 
 
-  cartBtn?.addEventListener('click', () => {
-    const tg = window.Telegram?.WebApp;
-    if (tg?.showAlert) tg.showAlert(`В корзине: ${cartCount}`);
-    // или location.href = 'cart.html';
+// открыть страницу корзины по нажатию на круг
+document.getElementById('cart-button')?.addEventListener('click', () => {
+    location.href = 'cart.html';
   });
   
   // Чистый вход: спрятать кнопки на всякий случай (bfcache/возврат назад)
