@@ -143,6 +143,63 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
+
+    // === Мини-корзина (FAB) внизу справа ===
+const cartBtn     = document.getElementById('cart-button');
+const cartIconBox = document.getElementById('cart-icon');
+const cartBadge   = document.getElementById('cart-counter');
+const CART_LOTTIE_PATH = 'cart.json'; // <-- укажи путь к своей иконке (JSON)
+
+let cartCount = Number(localStorage.getItem('cartCount') || 0);
+
+function initCartFab(){
+  // показать FAB, если уже есть товары
+  if (cartCount > 0) {
+    cartBtn?.classList.add('show');
+    updateCartBadge(0);
+  }
+  // Lottie корзины
+  try{
+    if (window.lottie && cartIconBox){
+      lottie.loadAnimation({
+        container: cartIconBox,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: CART_LOTTIE_PATH
+      });
+    } else if (cartIconBox && !cartIconBox.firstChild){
+      cartIconBox.textContent = '🛒'; // фолбэк-эмодзи
+    }
+  }catch(_){}
+}
+
+function updateCartBadge(delta = 0){
+  cartCount = Math.max(0, cartCount + delta);
+  localStorage.setItem('cartCount', String(cartCount));
+  if (!cartBadge) return;
+  if (cartCount <= 0){
+    cartBadge.classList.add('hidden');
+    cartBadge.textContent = '';
+  } else {
+    cartBadge.classList.remove('hidden');
+    cartBadge.textContent = String(cartCount);
+    // маленький «бумп»
+    cartBadge.classList.remove('bump');
+    // триггер рефлоу
+    void cartBadge.offsetWidth;
+    cartBadge.classList.add('bump');
+  }
+}
+
+function showCartFab(){
+  if (!cartBtn) return;
+  cartBtn.classList.add('show');
+}
+
+// инициализация при загрузке
+initCartFab();
+
   
     // --- ДВЕ КНОПКИ ВНИЗУ TELEGRAM: правая Main(чёрная), левая Secondary(синяя)
 function showTgBottomButtons(entry, productName, selectedModel){
@@ -181,7 +238,11 @@ function showTgBottomButtons(entry, productName, selectedModel){
             sku: entry.sku || null
           }));
         }catch(e){}
+        // ПОКАЗАТЬ КОРЗИНУ и УВЕЛИЧИТЬ КОЛ-ВО
+        showCartFab();
+        updateCartBadge(1);
       });
+      
     }
   
     // --- SECONDARY (синяя, слева) ---
@@ -351,4 +412,12 @@ function showTgBottomButtons(entry, productName, selectedModel){
       tg.SecondaryButton?.offClick?.(); tg.SecondaryButton?.hide?.();
     });
   })();
+
+
+  cartBtn?.addEventListener('click', () => {
+    const tg = window.Telegram?.WebApp;
+    if (tg?.showAlert) tg.showAlert(`В корзине: ${cartCount}`);
+    // или location.href = 'cart.html';
+  });
+  
   
