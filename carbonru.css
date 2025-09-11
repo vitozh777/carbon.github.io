@@ -795,15 +795,14 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 
 
 .sum-label {
-  color:#8e8e93; margin-left: 17px;
+  color:#8e8e93; 
 }
 
 .sum-total{
   display:flex; align-items:center; justify-content:space-between;
-  padding: 17px 20px;
   background:#fff; border-bottom:1px solid rgba(0,0,0,.06);
 }
-.sum-title{ font-size:26px; font-weight:600; letter-spacing:.2px; }
+.sum-title{ font-size:26px; font-weight:700; letter-spacing:.2px; }
 .sum-price{
-  font-weight:600; font-size:26px; white-space:nowrap; margin-right:8px;
+  font-weight:700; font-size:26px; white-space:nowrap;
 }
