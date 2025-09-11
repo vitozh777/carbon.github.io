@@ -415,30 +415,42 @@ function _cartGet(){
   })();
 
   
-// === Telegram BackButton на странице товара ===
+// === Telegram BackButton (товар) — устойчиво к возврату из bfcache ===
 (() => {
     const tg = window.Telegram?.WebApp;
-    if (!tg) return;          // если открыто не в Telegram — выходим
+    if (!tg) return;
   
     tg.ready?.();
-    const BackButton = tg.BackButton;
+    const BB = tg.BackButton;
   
-    function goToCatalog() {
-      try { BackButton.offClick(goToCatalog); } catch {}
-      try { BackButton.hide(); } catch {}
-      // Возврат в каталог без сохранения этой страницы в истории
+    function goCatalog() {
+      // Возврат в каталог Apple
       location.replace('apple.html');
     }
   
-    BackButton.onClick(goToCatalog);
-    BackButton.show();
+    function attachBack() {
+      // на всякий — спрячем Settings и развернём WebApp
+      tg.SettingsButton?.hide?.();
+      tg.expand?.();
   
-    // чистый уход со страницы (в т.ч. bfcache на iOS)
+      BB.offClick?.(goCatalog);
+      BB.onClick(goCatalog);
+      BB.show();
+    }
+  
+    // первичный показ
+    attachBack();
+  
+    // критично: повторная инициализация при возврате со страницы корзины (bfcache)
+    window.addEventListener('pageshow', attachBack);
+  
+    // уборка при уходе со страницы товара
     window.addEventListener('pagehide', () => {
-      try { BackButton.offClick(goToCatalog); } catch {}
-      try { BackButton.hide(); } catch {}
+      BB.offClick?.(goCatalog);
+      BB.hide?.();
     });
   })();
+  
   
 
   // Открыть чат поддержки в Telegram

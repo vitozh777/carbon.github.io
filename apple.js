@@ -50,31 +50,40 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-// === Telegram BackButton на странице apple ===
+// === Telegram BackButton (каталог Apple) — устойчиво к bfcache ===
 (() => {
     const tg = window.Telegram?.WebApp;
-    if (!tg) return;                // если открыто не в Telegram — выходим
+    if (!tg) return;
   
-    tg.ready();                     // сообщаем Telegram, что страница готова
-    const BackButton = tg.BackButton;
+    tg.ready?.();
+    const BB = tg.BackButton;
   
     function goHome() {
-      try { BackButton.offClick(goHome); } catch {}
-      try { BackButton.hide(); } catch {}
-      // Возврат на главную и убираем эту страницу из истории,
-      // чтобы повторный "назад" не возвращал обратно
       location.replace('index.html');
     }
   
-    BackButton.onClick(goHome);
-    BackButton.show();
+    function attachBack() {
+      tg.SettingsButton?.hide?.();
+      tg.expand?.();
   
-    // Чистый уход со страницы (bfcache/уход по ссылке)
+      BB.offClick?.(goHome);
+      BB.onClick(goHome);
+      BB.show();
+  
+      // если блокируешь сворачивание свайпом — включай здесь
+      tg.disableVerticalSwipes?.();
+    }
+  
+    attachBack();
+    window.addEventListener('pageshow', attachBack);
+  
     window.addEventListener('pagehide', () => {
-      try { BackButton.offClick(goHome); } catch {}
-      try { BackButton.hide(); } catch {}
+      BB.offClick?.(goHome);
+      BB.hide?.();
+      tg.enableVerticalSwipes?.();
     });
   })();
+  
 
   
   // Отключаем сворачивание по вертикальному свайпу на apple.html
