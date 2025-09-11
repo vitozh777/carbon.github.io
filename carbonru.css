@@ -757,7 +757,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .ci-thumb img{ width:72px; height:72px; object-fit:contain; border-radius:12px; background:#fff; }
 .ci-name{ font-weight:700; font-size:15px; }
 .ci-model{ color:#8e8e93; margin:2px 0 10px; }
-.ci-qty{ display:inline-flex; gap:18px; justify-content: center; align-items:center; background:#f1f0f6; border-radius:14px; padding:8px 14px; }
+.ci-qty{ display:inline-flex; gap:18px; text-align: center; justify-content: center; align-items:center; background:#f1f0f6; border-radius:14px; padding:8px 14px; }
 .ci-btn{ width:28px; height:28px; background: none; text-align:center; align-items:center; border-radius:8px; border:0; font-size:20px; color: #000; }
 .ci-input{ width:28px; font-size:12px; text-align:center; border:0; background:transparent; font-weight:700; }
 .ci-price{ font-weight:600; font-size:18px; white-space:nowrap; margin-right:8px; }
