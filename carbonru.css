@@ -794,7 +794,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 
 
 .sum-label {
-  color:#8e8e93; 
+  color:#8e8e93; border-top:1px solid rgba(0,0,0,.06);
 }
 
 .sum-total{
@@ -804,12 +804,4 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .sum-title{ font-size:26px; font-weight:700; letter-spacing:.2px; }
 .sum-price{
   font-weight:700; font-size:26px; white-space:nowrap;
-}
-
-.stripcart {
-  width: 120%;
-  margin-right: 10%;
-  height: 8px; /* Высота полоски */
-  background-color: #e0e0e0; /* Цвет полоски */
-  margin-top: 30px;
 }
