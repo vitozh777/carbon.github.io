@@ -719,11 +719,10 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   background:none; border:0; color:#007aff; font-weight:400; font-size:18px; ;
 }
 
-.cart-main{ padding: 10px 12px 20px; }
+.cart-main{ padding: 10px 17px 20px; }
 /* ===== КОРЗИНА: свайп-влево для удаления ===== */
 .cart-item{
   position: relative;
-  overflow: hidden;
   margin: 8px 0;
   height: 110px;                 /* фиксированная высота карточки как на примере */
 }
@@ -801,9 +800,15 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .sum-total{
   display:flex; align-items:center; justify-content:space-between;
   background:#fff;
-  border-top:8px solid rgba(0,0,0,.06);
 }
 .sum-title{ font-size:26px; font-weight:700; letter-spacing:.2px; }
 .sum-price{
   font-weight:700; font-size:26px; white-space:nowrap;
+}
+
+.stripcart {
+  width: 120%;
+  height: 8px; /* Высота полоски */
+  background-color: #e0e0e0; /* Цвет полоски */
+  margin-top: 30px;
 }
