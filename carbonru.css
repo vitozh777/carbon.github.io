@@ -736,9 +736,6 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
   transform: translateX(0);
   transition: transform .2s ease;
 }
-@media (prefers-color-scheme: dark){
-  .ci-content{ background:#1c1c1e; }
-}
 
 .ci-actions{
   position:absolute; top:0; right:0; bottom:0;
@@ -761,10 +758,11 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .ci-thumb img{ width:72px; height:72px; object-fit:contain; border-radius:12px; background:#fff; }
 .ci-name{ font-weight:800; font-size:16px; }
 .ci-model{ color:#8e8e93; margin:2px 0 10px; }
-.ci-qty{ display:inline-flex; gap:18px; align-items:center; background:#f2f2f7; border-radius:14px; padding:8px 14px; }
-.ci-btn{ width:28px; height:28px; border-radius:8px; border:0; font-size:20px; background:#fff; }
+.ci-qty{ display:inline-flex; gap:18px; align-items:center; background:#1313ab; border-radius:14px; padding:8px 14px; }
+.ci-btn{ width:28px; height:28px; border-radius:8px; border:0; font-size:20px; background:#d65151; }
 .ci-input{ width:28px; text-align:center; border:0; background:transparent; font-weight:700; }
 .ci-price{ font-weight:900; font-size:18px; white-space:nowrap; margin-right:8px; }
+
 
 .ci-content{ will-change: transform; }
 

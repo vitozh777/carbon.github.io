@@ -89,7 +89,7 @@
             <div class="ci-thumb"><img src="${it.image||''}" alt=""></div>
             <div class="ci-body">
               <div class="ci-name">${it.name||''}</div>
-              <div class="ci-model">Размер ${it.model||''}</div>
+              <div class="ci-model">Размер: ${it.model||''}</div>
               <div class="ci-qty">
                 <button class="ci-btn minus" data-idx="${idx}">−</button>
                 <input class="ci-input" value="${it.qty||1}" readonly>

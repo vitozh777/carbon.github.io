@@ -123,6 +123,14 @@ document.addEventListener('DOMContentLoaded', () => {
       "iPhone 13 Pro":     { url: "https://ozon.ru/t/97OCEou", sku: "2406121255" },
     };
     // меняйте sku на любые свои — они НЕ берутся из ссылки
+    // --- цена по коду продукта ---
+const PRODUCT_CODE = document.body?.dataset.product || 'model1';
+const PRODUCT_PRICES = {
+  model1: 3699,
+  // model2: 4599, // добавишь, когда появится вторая карточка с такой же сеткой размеров
+  // model3: 3999,
+};
+
   
     let selectedModel = null;
   
@@ -247,17 +255,20 @@ function showTgBottomButtons(entry, productName, selectedModel){
             sku: entry.sku || null
           }));
         }catch(e){}
-        // добавляем РОВНО +1 и показываем FAB
-        // добавляем РОВНО +1 выбранной модели в локальную корзину
+// добавляем РОВНО +1 выбранной модели в локальную корзину
 const imgSrc = document.querySelector('.prod-track img')?.getAttribute('src') || '';
+const unitPrice = PRODUCT_PRICES[PRODUCT_CODE] ?? 0;
+
 const totalQty = addToLocalCart({
   name: productName,
   model: selectedModel,
-  price: entry.price ?? 0,   // если цены нет — 0, позже задашь
+  price: unitPrice,   // <-- цена берётся из PRODUCT_PRICES по коду товара (model1)
   image: imgSrc
 });
+
 showCartFab();
-updateCartBadge({ set: totalQty });  // обновляем бейдж абсолютным значением
+updateCartBadge({ set: totalQty });
+
 
       };
       mainRef.onClick?.(__tgMainHandler);
