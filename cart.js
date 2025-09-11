@@ -261,4 +261,30 @@
     /* ================== GO ================== */
     render();
   })();
+
+  // === Telegram BackButton на странице корзины ===
+(() => {
+    const tg = window.Telegram?.WebApp;
+    if (!tg) return;
+  
+    tg.ready?.();
+    const BackButton = tg.BackButton;
+  
+    function goBack() {
+      // если есть история — вернёмся назад, иначе на главную
+      if (history.length > 1) history.back();
+      else location.replace('index.html');
+    }
+  
+    try { BackButton.offClick?.(goBack); } catch {}
+    BackButton.onClick(goBack);
+    BackButton.show();
+  
+    // чистим при уходе со страницы
+    window.addEventListener('pagehide', () => {
+      try { BackButton.offClick?.(goBack); } catch {}
+      try { BackButton.hide?.(); } catch {}
+    });
+  })();
+  
   
