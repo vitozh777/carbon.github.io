@@ -792,9 +792,11 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 }
 .empty-btn:active{ filter:brightness(.9); }
 
-
+.cart-summary {
+  border-top:1px solid rgba(0,0,0,.06);
+}
 .sum-label {
-  color:#8e8e93; border-top:1px solid rgba(0,0,0,.06);
+  color:#8e8e93; 
 }
 
 .sum-total{
