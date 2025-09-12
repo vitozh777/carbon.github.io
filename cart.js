@@ -144,25 +144,25 @@
   
     /* ================== MAINBUTTON: «Перейти к оформлению» ================== */
     function setupMainButton(total){
-      if (!tg) return;
-      const main = tg.BottomButton || tg.MainButton;
-      if (!main) return;
-  
-      const text = `Перейти к оформлению • ${fmt(total).replace(' ₽',' ₽')}`;
-      if (main.setParams){
-        main.setParams({ text, color:'#000000', text_color:'#ffffff', is_visible: total>0, is_active: total>0 });
-      } else {
-        main.setText(text);
-        total>0 ? main.show() : main.hide();
-        main.color = '#000000'; main.textColor = '#ffffff';
+        const tg = window.Telegram?.WebApp;
+        if (!tg) return;
+        const main = tg.BottomButton || tg.MainButton;
+        if (!main) return;
+      
+        const text = `Перейти к оформлению • ${fmt(total).replace(' ₽',' ₽')}`;
+        if (main.setParams){
+          main.setParams({ text, color:'#000000', text_color:'#ffffff', is_visible: total>0, is_active: total>0 });
+        } else {
+          main.setText(text);
+          total>0 ? main.show() : main.hide();
+          main.color = '#000000'; main.textColor = '#ffffff';
+        }
+        main.offClick?.();
+        main.onClick?.(() => {
+          location.href = 'checkout.html';    // ← идём на страницу оформления
+        });
       }
-      main.offClick?.();
-      main.onClick?.(()=> {
-        // здесь можно отправить данные боту или открыть страницу оформления
-        tg?.showAlert?.('Дальше — оформление заказа');
-        // tg?.sendData?.(JSON.stringify({ action:'checkout' }));
-      });
-    }
+      
   
     $clear?.addEventListener('click', () => { saveCart([]); render(); });
   

@@ -807,3 +807,33 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .sum-price{
   font-weight:700; font-size:26px; white-space:nowrap;
 }
+
+
+
+
+
+
+
+/* === Checkout === */
+.page-checkout .checkout-main{
+  padding: 12px 17px 24px;
+}
+.checkout-progress{
+  display:flex; gap:6px;
+  padding: 12px 0 8px;
+}
+.checkout-progress .seg{
+  flex:1 1 0; height:6px; border-radius:999px;
+  background:#e5e5ea;
+}
+.checkout-progress .seg.active{
+  background: var(--tg-link, #007aff);
+}
+.checkout-h1{
+  margin: 6px 0 8px;
+  font-size: 20px; font-weight: 800; color:#111;
+  text-align: left;
+}
+@media (prefers-color-scheme: dark){
+  .checkout-progress .seg{ background:#2c2c2e; }
+}
