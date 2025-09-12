@@ -262,28 +262,23 @@
     render();
   })();
 
-  // === Telegram BackButton на странице корзины ===
+// === Прячем MainButton при закрытии/уходе со страницы корзины ===
 (() => {
     const tg = window.Telegram?.WebApp;
     if (!tg) return;
   
-    tg.ready?.();
-    const BackButton = tg.BackButton;
+    const hideMain = () => {
+      const main = tg.BottomButton || tg.MainButton;
+      main?.offClick?.();
+      main?.hide?.();
+    };
   
-    function goBack() {
-      // если есть история — вернёмся назад, иначе на главную
-      if (history.length > 1) history.back();
-      else location.replace('index.html');
-    }
+    // когда уходим со страницы (назад, переход, закрытие mini-app)
+    window.addEventListener('pagehide', hideMain);
   
-    try { BackButton.offClick?.(goBack); } catch {}
-    BackButton.onClick(goBack);
-    BackButton.show();
-  
-    // чистим при уходе со страницы
-    window.addEventListener('pagehide', () => {
-      try { BackButton.offClick?.(goBack); } catch {}
-      try { BackButton.hide?.(); } catch {}
+    // если страница уезжает в фон (bfcache/сворачивание), тоже спрячем
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) hideMain();
     });
   })();
   
