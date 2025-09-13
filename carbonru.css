@@ -836,8 +836,6 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 
 .checkout-h1{ margin:10px 0 16px; font-size:28px; font-weight:800; }
 
-@media (prefers-color-scheme: dark){
-  .field input{ border-bottom-color:#2c2c2e; color:#fff; }
-  .phone-row{ border-bottom-color:#2c2c2e; }
-  .checkout-progress .seg{ background:#2c2c2e; }
-}
+/* placeholder внутри полей */
+.field input::placeholder{ color:#8e8e93; }
+.field input:focus::placeholder{ color:#c7c7cc; }

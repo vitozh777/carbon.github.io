@@ -1,14 +1,15 @@
 (function(){
     const tg = window.Telegram?.WebApp;
     tg?.ready?.();
+    tg?.disableVerticalSwipes?.(); // запрет «свайп-вниз = закрыть»
   
-    // ----- элементы
+    // элементы
     const firstName  = document.getElementById('firstName');
     const lastName   = document.getElementById('lastName');
     const middleName = document.getElementById('middleName');
     const phone      = document.getElementById('phone');
   
-    // восстановим, если уже вводили
+    // восстановление ввода
     try{
       const saved = JSON.parse(localStorage.getItem('checkoutContact') || '{}');
       if (saved.firstName)  firstName.value  = saved.firstName;
@@ -29,7 +30,11 @@
       hideError('phone');
     });
   
-    // показать/скрыть ошибки
+    // скрывать ошибку при вводе
+    [firstName,lastName,middleName].forEach(el=>{
+      el.addEventListener('input', ()=> hideError(el.id));
+    });
+  
     function showError(field, text){
       const el = document.getElementById('err-' + field);
       if (!el) return;
@@ -42,7 +47,6 @@
       el.style.display = 'none';
     }
   
-    // общая валидация
     function validate(){
       let ok = true;
   
@@ -51,29 +55,33 @@
       const mn = middleName.value.trim();
       const ph = phone.value.replace(/\D/g, '');
   
-      if (!fn){ showError('firstName', 'Обязательное поле'); ok = false; } else hideError('firstName');
-      if (!ln){ showError('lastName', 'Обязательное поле'); ok = false; } else hideError('lastName');
+      if (!fn){ showError('firstName',  'Обязательное поле'); ok = false; } else hideError('firstName');
+      if (!ln){ showError('lastName',   'Обязательное поле'); ok = false; } else hideError('lastName');
       if (!mn){ showError('middleName', 'Обязательное поле'); ok = false; } else hideError('middleName');
   
-      if (ph.length !== 10){
-        showError('phone', 'Неверный номер телефона');
-        ok = false;
-      } else hideError('phone');
+      if (ph.length !== 10){ showError('phone', 'Неверный номер телефона'); ok = false; } else hideError('phone');
   
       if (!ok){
-        // первый фокус на ошибку
-        if (!fn) firstName.focus();
-        else if (!ln) lastName.focus();
-        else if (!mn) middleName.focus();
-        else phone.focus();
-  
-        // вибро/хаптик
+        (fn ? (ln ? (mn ? phone : middleName) : lastName) : firstName).focus();
         tg?.HapticFeedback?.notificationOccurred?.('error');
       }
       return ok;
     }
   
-    // Синий MainButton
+    // скрывать клавиатуру по тапу вне полей
+    const isEditable = el => el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA');
+    function blurIfOutside(e){
+      const a = document.activeElement;
+      if (!isEditable(a)) return;
+      const t = e.target;
+      if (!t.closest('.field') && !t.closest('.phone-row')){
+        a.blur();
+      }
+    }
+    document.addEventListener('touchstart', blurIfOutside, {passive:true});
+    document.addEventListener('mousedown',  blurIfOutside);
+  
+    // MainButton — синий
     const main = tg?.BottomButton || tg?.MainButton;
     if (main){
       if (main.setParams){
@@ -95,7 +103,6 @@
       main.onClick?.(() => {
         if (!validate()) return;
   
-        // сохранить введённые данные
         const payload = {
           firstName:  firstName.value.trim(),
           lastName:   lastName.value.trim(),
@@ -103,9 +110,9 @@
           phone:      phone.value.trim()
         };
         localStorage.setItem('checkoutContact', JSON.stringify(payload));
-  
         tg?.HapticFeedback?.notificationOccurred?.('success');
-        // переход к шагу выбора доставки (страницу сделаем позже)
+  
+        // перейти к выбору доставки (следующий шаг)
         location.href = 'checkout-delivery.html';
       });
     }
@@ -126,6 +133,7 @@
       main?.hide?.();
       BB?.offClick?.(goBack);
       BB?.hide?.();
+      tg?.enableVerticalSwipes?.(); // вернуть свайпы при уходе
     });
   })();
   
