@@ -814,26 +814,30 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 
 
 
-/* === Checkout === */
-.page-checkout .checkout-main{
-  padding: 12px 17px 24px;
-}
-.checkout-progress{
-  display:flex; gap:6px;
-  padding: 12px 0 8px;
-}
-.checkout-progress .seg{
-  flex:1 1 0; height:6px; border-radius:999px;
-  background:#e5e5ea;
-}
-.checkout-progress .seg.active{
-  background: var(--tg-link, #007aff);
-}
-.checkout-h1{
-  margin: 6px 0 8px;
-  font-size: 20px; font-weight: 800; color:#111;
-  text-align: left;
-}
+/* Checkout form */
+.page-checkout .checkout-main{ padding: 12px 17px 24px; }
+.form-block{ margin-top: 6px; }
+.form-legend{ color:#8e8e93; font-weight:700; margin: 10px 0 8px; }
+.field{ margin: 0 0 14px; }
+.field-label{ color:#8e8e93; margin-bottom:6px; }
+.field input{ width:100%; border:0; outline:0; font-size:16px; padding:8px 0; border-bottom:1px solid #e5e5ea; }
+.field input:focus{ border-bottom-color:#007aff; }
+.field-error{ display:none; color:#ff3b30; font-size:13px; margin-top:4px; }
+
+.phone-row{ display:grid; grid-template-columns: 28px 42px 1fr; gap:8px; align-items:center; border-bottom:1px solid #e5e5ea; padding:8px 0; }
+.phone-row .flag{ font-size:20px; line-height:20px; }
+.phone-row .prefix{ color:#111; font-weight:700; }
+.phone-row input{ border:0 !important; padding:0; }
+
+/* прогресс */
+.checkout-progress{ display:flex; gap:6px; padding: 8px 0 6px; }
+.checkout-progress .seg{ flex:1 1 0; height:6px; border-radius:999px; background:#e5e5ea; }
+.checkout-progress .seg.active{ background:#007aff; }
+
+.checkout-h1{ margin:10px 0 16px; font-size:28px; font-weight:800; }
+
 @media (prefers-color-scheme: dark){
+  .field input{ border-bottom-color:#2c2c2e; color:#fff; }
+  .phone-row{ border-bottom-color:#2c2c2e; }
   .checkout-progress .seg{ background:#2c2c2e; }
 }

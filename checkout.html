@@ -8,7 +8,7 @@
   <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
 </head>
 <body class="page-checkout">
-  <!-- та же шапка, что в корзине -->
+  <!-- Шапка как в корзине -->
   <header class="cart-topbar">
     <div class="brand">
       <img class="brand-logo" src="CARBONRUlogo.PNG" alt="">
@@ -17,7 +17,7 @@
   </header>
 
   <main class="checkout-main">
-    <!-- 4 индикатора прогресса -->
+    <!-- Прогресс 1/4 -->
     <div class="checkout-progress">
       <span class="seg active" aria-label="Шаг 1/4"></span>
       <span class="seg"></span>
@@ -25,12 +25,38 @@
       <span class="seg"></span>
     </div>
 
-    <!-- Заголовок шага -->
     <h1 class="checkout-h1">Контактная информация</h1>
 
-    <!-- Место под форму (поля добавим позже) -->
-    <section class="checkout-content">
-      <!-- здесь позже будут: Имя, Телефон, Email... -->
+    <section class="form-block">
+      <div class="form-legend">Получатель</div>
+
+      <label class="field">
+        <div class="field-label">Имя</div>
+        <input id="firstName" type="text" autocomplete="given-name" inputmode="text" />
+        <div class="field-error" id="err-firstName">Обязательное поле</div>
+      </label>
+
+      <label class="field">
+        <div class="field-label">Фамилия</div>
+        <input id="lastName" type="text" autocomplete="family-name" inputmode="text" />
+        <div class="field-error" id="err-lastName">Обязательное поле</div>
+      </label>
+
+      <label class="field">
+        <div class="field-label">Отчество</div>
+        <input id="middleName" type="text" inputmode="text" />
+        <div class="field-error" id="err-middleName">Обязательное поле</div>
+      </label>
+
+      <div class="field">
+        <div class="field-label">Телефон</div>
+        <div class="phone-row">
+          <span class="flag" aria-hidden="true">🇷🇺</span>
+          <span class="prefix">+7</span>
+          <input id="phone" type="tel" inputmode="numeric" placeholder="000 000 00 00" />
+        </div>
+        <div class="field-error" id="err-phone">Неверный номер телефона</div>
+      </div>
     </section>
   </main>
 
