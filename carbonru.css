@@ -818,7 +818,7 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 .page-checkout .checkout-main{ padding: 12px 17px 24px; }
 .form-block{ margin-top: 6px; }
 .form-legend{ color:#8e8e93; font-weight:700; margin: 10px 0 8px; }
-.field{ margin: 0 0 14px; }
+.field{ margin: 20px 0 14px; }
 .field-label{ color:#8e8e93; margin-bottom:6px; }
 .field input{ width:100%; border:0; outline:0; font-size:16px; padding:8px 0; border-bottom:1px solid #e5e5ea; }
 .field input:focus{ border-bottom-color:#007aff; }
@@ -839,3 +839,40 @@ html.allow-scroll, html.allow-scroll body{ overflow:auto !important; height:auto
 /* placeholder внутри полей */
 .field input::placeholder{ color:#8e8e93; }
 .field input:focus::placeholder{ color:#c7c7cc; }
+
+
+/* === Delivery step === */
+.delivery-block{ margin-top: 14px; }
+.section-title{ color:#8e8e93; font-weight:700; margin-bottom:10px; }
+
+.addr-btn{
+  width:100%; background:#fff; border:0; border-radius:14px;
+  padding:12px 14px; display:flex; align-items:center; gap:12px;
+  position:relative;
+}
+.addr-btn .chevron{ margin-left:auto; font-size:22px; color:#c7c7cc; }
+.cdek-logo{
+  width:36px; height:36px; border-radius:50%;
+  background:#14a44d; color:#fff; font-weight:900;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.addr-text{ font-weight:800; font-size:16px; }
+
+/* способ доставки */
+.ship-option{
+  background:#fff; border-radius:14px; padding:12px 14px;
+  display:grid; grid-template-columns: 24px 1fr auto; gap:12px; align-items:center;
+}
+.blue-check{
+  width:20px; height:20px; border-radius:50%;
+  background:#0a84ff; position:relative;
+}
+.blue-check::after{
+  content:''; position:absolute; left:6px; top:3px;
+  width:7px; height:12px; border:2px solid #fff; border-top:0; border-left:0;
+  transform: rotate(45deg);
+}
+.ship-title{ font-weight:800; }
+.ship-sub{ color:#8e8e93; margin-top:2px; }
+.ship-price{ font-weight:900; white-space:nowrap; }
+

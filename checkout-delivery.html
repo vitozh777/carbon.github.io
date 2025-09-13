@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru" class="allow-scroll">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>Оформление — Доставка</title>
+  <link rel="stylesheet" href="carbonru.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
+</head>
+<body class="page-checkout">
+  <!-- Шапка как в корзине -->
+  <header class="cart-topbar">
+    <div class="brand">
+      <img class="brand-logo" src="CARBONRUlogo.PNG" alt="">
+      <span class="brand-text">CARBONSTORE</span>
+    </div>
+  </header>
+
+  <main class="checkout-main">
+    <!-- Прогресс 2/4 -->
+    <div class="checkout-progress">
+      <span class="seg active" aria-label="Шаг 1/4"></span>
+      <span class="seg active" aria-label="Шаг 2/4"></span>
+      <span class="seg" aria-label="Шаг 3/4"></span>
+      <span class="seg" aria-label="Шаг 4/4"></span>
+    </div>
+
+    <h1 class="checkout-h1">Информация о доставке</h1>
+
+    <!-- Адрес доставки -->
+    <section class="delivery-block">
+      <div class="section-title">Адрес доставки</div>
+
+      <button class="addr-btn" id="addrBtn" type="button">
+        <span class="cdek-logo" aria-hidden="true">С</span>
+        <span class="addr-text">СДЭК</span>
+        <span class="chevron">›</span>
+      </button>
+    </section>
+
+    <!-- Способ доставки -->
+    <section class="delivery-block">
+      <div class="section-title">Способ доставки</div>
+
+      <div class="ship-option selected" id="shipCdek">
+        <span class="blue-check" aria-hidden="true"></span>
+        <div class="ship-body">
+          <div class="ship-title">Посылка склад-склад</div>
+          <div class="ship-sub" id="etaText">Прибытие …</div>
+        </div>
+        <div class="ship-price" id="shipPrice">300 ₽</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="checkout-delivery.js"></script>
+</body>
+</html>
