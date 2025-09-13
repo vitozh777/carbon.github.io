@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru" class="allow-scroll">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>Выбор пункта СДЭК</title>
+  <link rel="stylesheet" href="carbonru.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
+
+  <!-- Виджет СДЭК -->
+  <script id="ISDEKscript" src="https://widget.cdek.ru/widget/widjet.js" charset="utf-8"></script>
+  <style>
+    /* на всю высоту окна, с учётом шапки */
+    .pvz-wrap{ height: calc(100svh - 60px); }
+    #cdekMap{ width:100%; height:100%; }
+  </style>
+</head>
+<body class="page-checkout">
+  <!-- та же шапка, что и на шагах оформления -->
+  <header class="cart-topbar">
+    <div class="brand">
+      <img class="brand-logo" src="CARBONRUlogo.PNG" alt="">
+      <span class="brand-text">CARBONSTORE</span>
+    </div>
+  </header>
+
+  <main class="pvz-wrap">
+    <div id="cdekMap" role="region" aria-label="Карта пунктов СДЭК"></div>
+  </main>
+
+  <script src="checkout-pvz.js"></script>
+</body>
+</html>

@@ -72,10 +72,19 @@
       tg?.enableVerticalSwipes?.();
     });
   
-    /* ---------- Заглушка на кнопку «Адрес доставки» ---------- */
-    document.getElementById('addrBtn')?.addEventListener('click', () => {
-      tg?.HapticFeedback?.selectionChanged?.();
-      // здесь подключишь выбор ПВЗ/адреса (карта/модалка)
-    });
+    // Прочитать выбранный ПВЗ (если уже есть) и показать его в кнопке
+(function hydrateChosenPvz(){
+    const pvz = JSON.parse(localStorage.getItem('checkoutPvz') || 'null');
+    const addrText = document.querySelector('.addr-text');
+    if (pvz && addrText){
+      addrText.textContent = pvz.address_short || pvz.address || 'СДЭК';
+    }
+  })();
+  
+  // Открыть карту выбора ПВЗ
+  document.getElementById('addrBtn')?.addEventListener('click', () => {
+    tg?.HapticFeedback?.selectionChanged?.();
+    location.href = 'checkout-pvz.html';
+  });
   })();
   
