@@ -2,22 +2,23 @@
 <html lang="ru" class="allow-scroll">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <title>Выбор пункта СДЭК</title>
   <link rel="stylesheet" href="carbonru.css" />
   <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
 
-  <!-- Виджет СДЭК -->
-  <script id="ISDEKscript" src="https://widget.cdek.ru/widget/widjet.js" charset="utf-8"></script>
+  <!-- Яндекс.Карты JS API -->
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=c50e3179-5458-4110-a0e6-7476e629eb2c"></script>
+
   <style>
-    /* на всю высоту окна, с учётом шапки */
     .pvz-wrap{ height: calc(100svh - 60px); }
-    #cdekMap{ width:100%; height:100%; }
+    #yMap{ width:100%; height:100%; }
+    .pvz-balloon { font: 14px/1.4 -apple-system, system-ui, Segoe UI, Roboto, sans-serif; }
+    .pvz-title { font-weight: 700; margin-bottom: 6px; }
+    .pvz-sub { color:#8e8e93; margin-top:4px;}
   </style>
 </head>
 <body class="page-checkout">
-  <!-- та же шапка, что и на шагах оформления -->
   <header class="cart-topbar">
     <div class="brand">
       <img class="brand-logo" src="CARBONRUlogo.PNG" alt="">
@@ -26,9 +27,8 @@
   </header>
 
   <main class="pvz-wrap">
-    <div id="cdekMap" role="region" aria-label="Карта пунктов СДЭК"></div>
+    <div id="yMap" aria-label="Карта пунктов СДЭК"></div>
   </main>
-  
 
   <script src="checkout-pvz.js"></script>
 </body>
